@@ -1,18 +1,55 @@
-+12345               -+20+d
+---Decimal Integer---+12345               -+20+d
+Return size: 28
                12345 <space>20d
+Return size: 32
               -12345 <space>20d
+Return size: 32
               +12345 +20d
+Return size: 26
               -12345 +20d
+Return size: 26
 00000000000000012345 020d
+Return size: 26
 +0000012345 +.10d
+Return size: 18
 12345678 -5d
+Return size: 13
 123456789 .5d
+Return size: 14
 0000012345 .10d
+Return size: 16
 +123456789 +.5d
+Return size: 16
  0000012345  .10d
+Return size: 18
 0000012345       -15.10d
+Return size: 25
      0000012345  15.10d
+Return size: 24
      0000012345  015.10d
+Return size: 25
 +0000012345      -+15.10d
+Return size: 26
     +0000012345  +15.10d
+Return size: 25
     +0000012345 +015.10d
+Return size: 25
+---Unsigned Int---
+00000000000000012345 020u
+Return size: 26
+12345                -20u
+Return size: 26
+00000000000000012345 -.020u
+Return size: 28
+12345678 -5u
+Return size: 13
+123456789 .5u
+Return size: 14
+0000012345 .10u
+Return size: 16
+0000012345       -15.10u
+Return size: 25
+     0000012345  15.10u
+Return size: 24
+     0000012345  015.10u
+Return size: 25

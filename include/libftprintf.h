@@ -27,6 +27,7 @@ typedef struct	s_fmt
 	int			width;
 	int			min_width;
 	int			length;
+	int			is_upper;
 }				t_fmt;
 
 int				ft_printf(const char *format, ...);
