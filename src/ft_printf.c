@@ -6,7 +6,7 @@
 /*   By: ahunt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/18 09:35:14 by ahunt             #+#    #+#             */
-/*   Updated: 2016/10/25 03:56:21 by ahunt            ###   ########.fr       */
+/*   Updated: 2016/10/25 05:38:14 by ahunt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,38 +74,52 @@ intmax_t	ft_get_int_length(va_list *ap, t_fmt **args)
 	return(nbr);
 }
 
-size_t		ft_printf_dec_int(va_list *ap, t_fmt **args)
+int		ft_printf_dec_int(va_list *ap, t_fmt **args)
 {
-	intmax_t	nbr;
+	int			nbr;
 	char		*nstr;
-//	int			nbrlen;
-	char		prefix;
-	char		prepend;
-	size_t		size;
-	//char		prefix;
+	//int			nbrlen;
+	char		*prefix;
+	char		*prepend;
+	int			size;
 
-	prefix = 0;
+	//prefix = 0;
 	nbr = ft_get_int_length(ap, args);
 	//nbrlen = get_number_length(nbr);
-	if (nbr < 0)
-		prefix = '-';
+	prefix = ft_strnew(1);
+	prepend = ft_strnew(1);
+	if ((int)nbr < 0)
+		prefix[0] = '-';
 	else if ((*args)->pos_val)
-		prefix = '+';
+		prefix[0] = '+';
 	else if ((*args)->prepend_sp && !(*args)->prepend_zeros)
-		prefix = ' ';
-	prepend = ((*args)->prepend_zeros && !(*args)->pos_val) ? '0' : ' ';
+		prefix[0] = ' ';
+	else
+		prefix[0] = '\0';
+	/*if ((*args)->prepend_zeros && !(*args)->pos_val)
+		prepend = '0';
+	else
+		prepend = ' ';*/
+	prepend[0] = ((*args)->prepend_zeros && !(*args)->pos_val && 
+			!(*args)->min_width) ? '0' : ' ';
 	nstr = ft_itoa_base((long)nbr,(long)10);
 	size = ft_strlen(nstr);
-	while ((*args)->min_width > size++)
+	while ((*args)->min_width > size)
+	{
 		nstr = ft_strjoin("0", nstr);
-	if (prefix != 0)
-		nstr = ft_strjoin(&prefix, nstr);
-//	size = ft_strlen(nstr);
-	while  ((*args)->width > size++)
+		size++;
+	}
+	if (prefix[0] != '\0')
+		nstr = ft_strjoin(prefix, nstr);
+	size = ft_strlen(nstr);
+	while  ((*args)->width > size)
 	{
 		nstr = (*args)->left_just ? ft_strjoin(nstr, " ") : ft_strjoin(
-				" ", nstr);
+				prepend, nstr);
+		size++;
 	}
+	/*if ((*args)->prepend_zeros)
+		ft_putendl("Pad zerors");*/
 	ft_putstr(nstr);
 	return (size);
 }
@@ -187,7 +201,7 @@ int	parse_conv_spec(va_list *ap, t_fmt **args, char **fmt)
 //	if (**fmt == 'x' || **fmt == 'X')
 	//	ft_printf_hex(ap, args, fmt);
 	if (**fmt == 'd' || **fmt == 'i')
-		ft_printf_dec_int(ap, args);
+		size += ft_printf_dec_int(ap, args);
 //	else if (**fmt == 'o' || **fmt == 'O')
 	//	ft_printf_oct(ap, args, fmt);
 ///	else if (**fmt = 'u')
