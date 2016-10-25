@@ -6,7 +6,7 @@
 /*   By: ahunt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 09:22:06 by ahunt             #+#    #+#             */
-/*   Updated: 2016/10/24 22:18:48 by ahunt            ###   ########.fr       */
+/*   Updated: 2016/10/25 01:33:51 by ahunt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ typedef struct	s_fmt
 	int			pos_val;
 	int			prepend_sp;
 	int			prepend_zeros;
-	int			width;
-	int			min_width;
+	size_t		width;
+	size_t		min_width;
 	int			length;
 }				t_fmt;
 

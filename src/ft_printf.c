@@ -6,7 +6,7 @@
 /*   By: ahunt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/18 09:35:14 by ahunt             #+#    #+#             */
-/*   Updated: 2016/10/25 01:17:20 by ahunt            ###   ########.fr       */
+/*   Updated: 2016/10/25 01:33:27 by ahunt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,14 +94,26 @@ int		ft_printf_dec_int(va_list *ap, t_fmt **args)
 		prefix = ' ';
 	//prepend = (*args)->prepend_zeros ? '0' : ' ';
 	nstr = ft_itoa_base((long)nbr, (long)10);
-	if ((*args)->width < (*args)->min_width)
+	if ((*args)->min_width > ft_strlen(nstr))
 	{
-		while ((size_t)(*args)->min_width > ft_strlen(nstr))
+		while ((*args)->min_width > ft_strlen(nstr))
 			nstr = ft_strjoin("0", nstr);
 	}
 	if (prefix != 0)
 		nstr = ft_strjoin(&prefix, nstr);
-	//if (prefix != 0)
+	if ((*args)->width > ft_strlen(nstr))
+	{
+		if ((*args)->left_just)
+		{
+			while ((*args)->width > ft_strlen(nstr))
+				nstr = ft_strjoin(nstr, " ");
+		}
+		else
+		{
+			while ((*args)->width > ft_strlen(nstr))
+				nstr = ft_strjoin(" ", nstr);
+		}
+	}
 //		ft_putchar(prefix);
 //	ft_putnbr(nbr);
 	ft_putstr(nstr);
