@@ -6,7 +6,7 @@
 /*   By: ahunt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 09:22:06 by ahunt             #+#    #+#             */
-/*   Updated: 2016/10/25 01:33:51 by ahunt            ###   ########.fr       */
+/*   Updated: 2016/10/25 03:37:38 by ahunt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int				parse_conv_spec(va_list *ap, t_fmt **args, char **fmt);
 void			parse_flags(t_fmt **args, char **fmt);
 void			parse_num(t_fmt **args, char **fmt, int is_width);
 void			parse_length(t_fmt **args, char **fmt);
-int				ft_printf_int(va_list *ap, t_fmt **args);
+size_t			ft_printf_int(va_list *ap, t_fmt **args);
 intmax_t		ft_get_int_length(va_list *ap, t_fmt **args);
 int				get_number_length(int nbr);
 

@@ -6,7 +6,7 @@
 /*   By: ahunt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/18 09:35:14 by ahunt             #+#    #+#             */
-/*   Updated: 2016/10/25 01:33:27 by ahunt            ###   ########.fr       */
+/*   Updated: 2016/10/25 03:56:21 by ahunt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ long	ft_pow(long  base, int i)
 		return (base * ft_pow(base, i - 1));
 }
 
-char	*ft_itoa_base(long value, long  base)
+char	*ft_itoa_base(long value, long base)
 {
 	char buf []  = "0123456789ABECDEF";
 	int size;
@@ -74,50 +74,40 @@ intmax_t	ft_get_int_length(va_list *ap, t_fmt **args)
 	return(nbr);
 }
 
-int		ft_printf_dec_int(va_list *ap, t_fmt **args)
+size_t		ft_printf_dec_int(va_list *ap, t_fmt **args)
 {
-	intmax_t 	nbr;
+	intmax_t	nbr;
 	char		*nstr;
-	int			nbrlen;
+//	int			nbrlen;
 	char		prefix;
-//	char		prepend;
+	char		prepend;
+	size_t		size;
 	//char		prefix;
 
 	prefix = 0;
 	nbr = ft_get_int_length(ap, args);
-	nbrlen = get_number_length(nbr);
+	//nbrlen = get_number_length(nbr);
 	if (nbr < 0)
 		prefix = '-';
 	else if ((*args)->pos_val)
 		prefix = '+';
-	else if ((*args)->prepend_sp)
+	else if ((*args)->prepend_sp && !(*args)->prepend_zeros)
 		prefix = ' ';
-	//prepend = (*args)->prepend_zeros ? '0' : ' ';
-	nstr = ft_itoa_base((long)nbr, (long)10);
-	if ((*args)->min_width > ft_strlen(nstr))
-	{
-		while ((*args)->min_width > ft_strlen(nstr))
-			nstr = ft_strjoin("0", nstr);
-	}
+	prepend = ((*args)->prepend_zeros && !(*args)->pos_val) ? '0' : ' ';
+	nstr = ft_itoa_base((long)nbr,(long)10);
+	size = ft_strlen(nstr);
+	while ((*args)->min_width > size++)
+		nstr = ft_strjoin("0", nstr);
 	if (prefix != 0)
 		nstr = ft_strjoin(&prefix, nstr);
-	if ((*args)->width > ft_strlen(nstr))
+//	size = ft_strlen(nstr);
+	while  ((*args)->width > size++)
 	{
-		if ((*args)->left_just)
-		{
-			while ((*args)->width > ft_strlen(nstr))
-				nstr = ft_strjoin(nstr, " ");
-		}
-		else
-		{
-			while ((*args)->width > ft_strlen(nstr))
-				nstr = ft_strjoin(" ", nstr);
-		}
+		nstr = (*args)->left_just ? ft_strjoin(nstr, " ") : ft_strjoin(
+				" ", nstr);
 	}
-//		ft_putchar(prefix);
-//	ft_putnbr(nbr);
 	ft_putstr(nstr);
-	return (nbrlen);
+	return (size);
 }
 
 void	parse_length(t_fmt **args, char **fmt)
@@ -264,6 +254,7 @@ int	parse_format(va_list *ap, const char *fmt)
 		ft_putstr(cursor);
 		args = new_format();
 		size += parse_args(ap, &args, &iter);
+		ft_memdel((void **)&args);
 		cursor = iter + 1;
 	}
 	if (*cursor != '\0')
