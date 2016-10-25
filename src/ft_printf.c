@@ -6,12 +6,39 @@
 /*   By: ahunt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/18 09:35:14 by ahunt             #+#    #+#             */
-/*   Updated: 2016/10/24 22:29:56 by ahunt            ###   ########.fr       */
+/*   Updated: 2016/10/25 01:17:20 by ahunt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+long	ft_pow(long  base, int i)
+{
+	if (i == 0)
+		return (1);
+	else
+		return (base * ft_pow(base, i - 1));
+}
 
+char	*ft_itoa_base(long value, long  base)
+{
+	char buf []  = "0123456789ABECDEF";
+	int size;
+	char *nbr;
+
+	size = 1;
+	if (value < 0)
+		value *= -1;
+	while (ft_pow(base, size) - 1 < value)
+		size++;
+	nbr = (char *)malloc(sizeof(char) * (size));
+	nbr[size] = '\0';
+	while (size-- > 0)
+	{
+		nbr[size] = buf[value % base];
+		value /= base;
+	}
+	return (nbr);
+}
 int	get_number_length(int nbr)
 {
 	int cnt;
@@ -50,8 +77,10 @@ intmax_t	ft_get_int_length(va_list *ap, t_fmt **args)
 int		ft_printf_dec_int(va_list *ap, t_fmt **args)
 {
 	intmax_t 	nbr;
+	char		*nstr;
 	int			nbrlen;
 	char		prefix;
+//	char		prepend;
 	//char		prefix;
 
 	prefix = 0;
@@ -63,10 +92,19 @@ int		ft_printf_dec_int(va_list *ap, t_fmt **args)
 		prefix = '+';
 	else if ((*args)->prepend_sp)
 		prefix = ' ';
-	//if (*args->min_width <  nbrlen)
+	//prepend = (*args)->prepend_zeros ? '0' : ' ';
+	nstr = ft_itoa_base((long)nbr, (long)10);
+	if ((*args)->width < (*args)->min_width)
+	{
+		while ((size_t)(*args)->min_width > ft_strlen(nstr))
+			nstr = ft_strjoin("0", nstr);
+	}
 	if (prefix != 0)
-		ft_putchar(prefix);
-	ft_putnbr(nbr);
+		nstr = ft_strjoin(&prefix, nstr);
+	//if (prefix != 0)
+//		ft_putchar(prefix);
+//	ft_putnbr(nbr);
+	ft_putstr(nstr);
 	return (nbrlen);
 }
 
@@ -103,9 +141,17 @@ void	parse_num(t_fmt **args, char **fmt, int is_width)
 	 int nbr;
 
 	 nbr = 0;
+	 if (!is_width)
+		 (*fmt)++;
+	 if (**fmt == '0')
+	 {
+		 (*args)->prepend_zeros = 1;
+		 (*fmt)++;
+	 }
 	 while (ft_isdigit(**fmt))
 	 {
-		nbr *= 10 + (**fmt - '0');
+		nbr *= 10;
+	   	nbr	+=  (**fmt - '0');
 		(*fmt)++;
 	 }
 	 if (is_width)
