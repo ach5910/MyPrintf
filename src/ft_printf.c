@@ -141,7 +141,7 @@ intmax_t	ft_get_int_length(va_list *ap, t_fmt **args)
 	else if ((*args)->length == 5)
 		nbr = (intmax_t)nbr;
 	else if ((*args)->length == 6)
-		nbr = (ssize_t)nbr;
+		nbr = (signed)(size_t)nbr;
 	else
 		nbr = (int)nbr;
 	return(nbr);

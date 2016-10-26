@@ -10,6 +10,78 @@ Return size: 26
 Return size: 26
 00000000000000012345 020d
 Return size: 26
++123                 -+20+hhd
+Return size: 30
+                 123 <space>20hhd
+Return size: 34
+                -123 <space>20hhd
+Return size: 34
+                +123 +20hhd
+Return size: 28
+                -123 +20hhd
+Return size: 28
+00000000000000000123 020hhd
+Return size: 28
++12345               -+20+hd
+Return size: 29
+               12345 <space>20hd
+Return size: 33
+              -12345 <space>20hd
+Return size: 33
+              +12345 +20hd
+Return size: 27
+              -12345 +20hd
+Return size: 27
+00000000000000012345 020hd
+Return size: 27
++12345               -+20+ld
+Return size: 29
+               12345 <space>20ld
+Return size: 33
+              -12345 <space>20ld
+Return size: 33
+              +12345 +20ld
+Return size: 27
+              -12345 +20ld
+Return size: 27
+00000000000000012345 020ld
+Return size: 27
++12345               -+20+lld
+Return size: 30
+               12345 <space>20lld
+Return size: 34
+              -12345 <space>20lld
+Return size: 34
+              +12345 +20lld
+Return size: 28
+              -12345 +20lld
+Return size: 28
+00000000000000012345 020lld
+Return size: 28
++12345               -+20+jd
+Return size: 29
+               12345 <space>20jd
+Return size: 33
+              -12345 <space>20jd
+Return size: 33
+              +12345 +20jd
+Return size: 27
+              -12345 +20jd
+Return size: 27
+00000000000000012345 020jd
+Return size: 27
++12345               -+20+zd
+Return size: 29
+               12345 <space>20zd
+Return size: 33
+              -12345 <space>20zd
+Return size: 33
+              +12345 +20zd
+Return size: 27
+              -12345 +20zd
+Return size: 27
+00000000000000012345 020zd
+Return size: 27
 +0000012345 +.10d
 Return size: 18
 12345678 -5d
@@ -53,3 +125,51 @@ Return size: 25
 Return size: 24
      0000012345  015.10u
 Return size: 25
+               00123 <space>20hhu
+Return size: 34
+                 123 20hhu
+Return size: 27
+                 123 20hhu
+Return size: 27
+00000000000000000123 020hhu
+Return size: 28
+               53191 20.5hu
+Return size: 28
+               12345 20hu
+Return size: 26
+               53191 20hu
+Return size: 26
+00000000000000012345 020hu
+Return size: 27
+               12345 20.5lu
+Return size: 28
+               12345 20lu
+Return size: 26
+               12345 20lu
+Return size: 26
+00000000000000012345 020lu
+Return size: 27
+00000000000000000000000000000000000000000000012345 20.5llu
+Return size: 59
+               12345 20llu
+Return size: 27
+               12345 20llu
+Return size: 27
+00000000000000012345 020llu
+Return size: 28
+               12345 20.5ju
+Return size: 28
+               12345 20ju
+Return size: 26
+               12345 20ju
+Return size: 26
+00000000000000012345 020ju
+Return size: 27
+               12345 20.5zu
+Return size: 28
+               12345 20zu
+Return size: 26
+               12345 20zu
+Return size: 26
+00000000000000012345 020zu
+Return size: 27
