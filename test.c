@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <unistd.h>
 #include <stdlib.h>
 
 int main(void)
@@ -258,13 +259,145 @@ int main(void)
 	size = printf("%020zu 020zu\n", (size_t)12345);
 	printf("Return size: %d\n", size);
 
+	printf("---Hexadecimal--\n");
 	size = printf("%#x #x\n", 45);
+	printf("Return size: %d\n", size);
+	size = printf("%#x #x\n", 128);
+	printf("Return size: %d\n", size);
+	size = printf("%#x #x\n", -45);
+	printf("Return size: %d\n", size);
+	size = printf("%#20x #20x\n", 45);
+	printf("Return size: %d\n", size);
+	size = printf("%#-20x #-20x\n", 45);
+	printf("Return size: %d\n", size);
+	size = printf("%#20.10x #20.10x\n", 45);
+	printf("Return size: %d\n", size);
+	size = printf("%#-20.10x #-20.10x\n", 45);
 	printf("Return size: %d\n", size);
 	size = printf("%#X #X\n", 45);
 	printf("Return size: %d\n", size);
+	size = printf("%#X #X\n", 128);
+	printf("Return size: %d\n", size);
+	size = printf("%#X #X\n", -45);
+	printf("Return size: %d\n", size);
+	size = printf("%#20X #20X\n", 45);
+	printf("Return size: %d\n", size);
+	size = printf("%#-20X #-20X\n", 45);
+	printf("Return size: %d\n", size);
+	size = printf("%#20.10X #20.10X\n", 45);
+	printf("Return size: %d\n", size);
+	size = printf("%#-20.10X #-20.10X\n", 45);
+
+	printf("---Octal---\n");
 	size = printf("%#o #o\n", 45);
 	printf("Return size: %d\n", size);
+	size = printf("%#o #o\n", 128);
+	printf("Return size: %d\n", size);
+	size = printf("%#o #o\n", -45);
+	printf("Return size: %d\n", size);
+	size = printf("%#20o #20o\n", 45);
+	printf("Return size: %d\n", size);
+	size = printf("%#-20o #-20o\n", 45);
+	printf("Return size: %d\n", size);
+	size = printf("%#20.10o #20.10o\n", 45);
+	printf("Return size: %d\n", size);
+	size = printf("%#-20.10o #-20.10o\n", 45);
 	size = printf("%#O #O\n", 45);
 	printf("Return size: %d\n", size);
+	size = printf("%#O #O\n", 128);
+	printf("Return size: %d\n", size);
+	size = printf("%#O #O\n", -45);
+	printf("Return size: %d\n", size);
+	size = printf("%#20O #20O\n", 45);
+	printf("Return size: %d\n", size);
+	size = printf("%#-20O #-20O\n", 45);
+	printf("Return size: %d\n", size);
+	size = printf("%#20.10O #20.10O\n", 45);
+	printf("Return size: %d\n", size);
+	size = printf("%#-20.10O #-20.10O\n", 45);
+
+	printf("---String---\n");
+	size = printf("%s s\n", "Hello World");
+	printf("Return size: %d\n", size);
+	size = printf("%.10s .10s\n", "Hello World");
+	printf("Return size: %d\n", size);
+	size = printf("%.15s .15s\n", "Hello World");
+	printf("Return size: %d\n", size);
+	size = printf("%20.10s 20.10s\n", "Hello World");
+	printf("Return size: %d\n", size);
+	size = printf("%20.15s 20.15s\n", "Hello World");
+	printf("Return size: %d\n", size);
+	size = printf("%-20.10s -20.10s\n", "Hello World");
+	printf("Return size: %d\n", size);
+	size = printf("%-20.15s -20.15s\n", "Hello World");
+	printf("Return size: %d\n", size);
+
+	printf("---Character---\n");
+	size = printf("%c c\n", 'a');
+	printf("Return size: %d\n", size);
+	size = printf("%10c 10c\n", 'a');
+	printf("Return size: %d\n", size);
+	size = printf("%-10c -10c\n", 'a');
+	printf("Return size: %d\n", size);
+	size = printf("%20c 20c\n", 'a');
+	printf("Return size: %d\n", size);
+	size = printf("%-20c -20c\n", 'a');
+	printf("Return size: %d\n", size);
+	size = printf("%c c\n", 49);
+	printf("Return size: %d\n", size);
+	size = printf("%10c 10c\n", 49);
+	printf("Return size: %d\n", size);
+	size = printf("%-10c -10c\n", 49);
+	printf("Return size: %d\n", size);
+	size = printf("%20c 20c\n", 49);
+	printf("Return size: %d\n", size);
+	size = printf("%-20c -20c\n", 49);
+	printf("Return size: %d\n", size);
+	size = printf("%c c\n", 20);
+	printf("Return size: %d\n", size);
+	size = printf("%10c 10c\n", 20);
+	printf("Return size: %d\n", size);
+	size = printf("%-10c -10c\n", 20);
+	printf("Return size: %d\n", size);
+	size = printf("%20c 20c\n", 20);
+	printf("Return size: %d\n", size);
+	size = printf("%-20c -20c\n", 20);
+	printf("Return size: %d\n", size);
+
+	// size = printf("%c c\n", 0);
+	// printf("Return size: %d\n", size);
+	// size = printf("%10c 10c\n", 0);
+	// printf("Return size: %d\n", size);
+	// size = printf("%-10c -10c\n", 0);
+	// printf("Return size: %d\n", size);
+	// size = printf("%20c 20c\n", 0);
+	// printf("Return size: %d\n", size);
+	// size = printf("%-20c -20c\n", 0);
+	// printf("Return size: %d\n", size);
+
+	size = printf("%c c\n", 10);
+	printf("Return size: %d\n", size);
+	size = printf("%10c 10c\n", 10);
+	printf("Return size: %d\n", size);
+	size = printf("%-10c -10c\n", 10);
+	printf("Return size: %d\n", size);
+	size = printf("%20c 20c\n", 10);
+	printf("Return size: %d\n", size);
+	size = printf("%-20c -20c\n", 10);
+	printf("Return size: %d\n", size);
+
+	printf("---Pointer---\n");
+	int buf[10] = {150, 255, 12, 16, 21, 42};
+	int *tab = buf;
+	char *str = "Hello World";
+	int a = 10;
+
+	size = printf("%p p\n", tab);
+	printf("Return size: %d\n", size);
+	size = printf("%p p\n", str);
+	printf("Return size: %d\n", size);
+	size = printf("%p p\n", &a);
+	printf("Return size: %d\n", size);
+
 	return (0);
 }

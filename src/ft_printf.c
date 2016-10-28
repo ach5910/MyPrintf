@@ -12,8 +12,9 @@
 
 #include "libftprintf.h"
 #include <stdio.h>
+#include <unistd.h>
 
-long	ft_pow(long  base, int i)
+uintmax_t	ft_pow(int  base, int i)
 {
 	if (i == 0)
 		return (1);
@@ -21,17 +22,17 @@ long	ft_pow(long  base, int i)
 		return (base * ft_pow(base, i - 1));
 }
 
-char	*ft_itoa_base(long value, long base, int is_upper)
+char	*ft_itoa_base(uintmax_t value, int base, int is_upper)
 {
 	char *buf;
 	int size;
 	char *nbr;
 
-	buf = is_upper ? ft_strdup("0123456789ABCDEF") : 
+	buf = is_upper ? ft_strdup("0123456789ABCDEF") :
 		ft_strdup("0123456789abcdef");
 	size = 1;
-	if (value < 0)
-		value *= -1;
+	// if (value < 0)
+	// 	value *= -1;
 	while (ft_pow(base, size) - 1 < value)
 		size++;
 	nbr = (char *)malloc(sizeof(char) * (size));
@@ -54,6 +55,79 @@ int	get_number_length(int nbr)
 		cnt++;
 	}
 	return (cnt);
+}
+
+// void ft_printf_hexa(int	o, int r)
+// {
+// 	char buf[] = "0123456789abcdef";
+//
+// 	if (r > 1)
+// 		ft_printf_hexa(o >> 4, r - 1);
+// 	write(1, &buf[o % 16], 1);
+// }
+//
+// void ft_printf_ptr(va_list *ap, t_fmt **args)
+// {
+// 	const unsigned char *adr;
+// 	size_t	ptr_size;
+// 	size_t 	i;
+// 	size_t a;
+//
+// 	(void)args;
+// 	adr = (unsigned const char *)va_arg(*ap, void*);
+// 	ptr_size = sizeof(adr);
+// 	i = 0;
+// 	while (i < ptr_size)
+// 	{
+// 		a = 0;
+// 		while (a < 16 && a + i < ptr_size)
+// 		{
+// 			ft_printf_hexa(*(adr + a + i), 2);
+// 			a++;
+// 		}
+// 		i += 16;
+// 	}
+// }
+
+
+int			ft_printf_char(va_list *ap, t_fmt **args)
+{
+	unsigned char		ch;
+	int			size;
+
+	size = 1;
+	ch = (unsigned char)va_arg(*ap, int);
+	if ((*args)->left_just)
+		ft_putchar(ch);
+	while  ((*args)->width > size)
+	{
+		ft_putchar(' ');
+		size++;
+	}
+	if (!(*args)->left_just)
+		ft_putchar(ch);
+	return (size);
+}
+
+int			ft_printf_string(va_list *ap, t_fmt **args)
+{
+	char		*str;
+	int			size;
+
+	str = ft_strdup(va_arg(*ap, char*));
+	if ((*args)->min_width)
+		str[(*args)->min_width] = '\0';
+	size = ft_strlen(str);
+	while  ((*args)->width > size)
+	{
+		str = (*args)->left_just ? ft_strjoin(str, " ") : ft_strjoin(
+				" ", str);
+		size++;
+	}
+	/*if ((*args)->prepend_zeros)
+		ft_putendl("Pad zerors");*/
+	ft_putstr(str);
+	return (size);
 }
 
 uintmax_t	ft_get_uint_length(va_list *ap, t_fmt **args)
@@ -88,7 +162,7 @@ int			ft_printf_hex(va_list *ap, t_fmt **args)
 	int			size;
 
 	//prefix = 0;
-	nbr = ft_get_int_length(ap, args);
+	nbr = ft_get_uint_length(ap, args);
 	//nbrlen = get_number_length(nbr);
 	prefix = ft_strnew(2);
 	prepend = ft_strnew(1);
@@ -108,9 +182,9 @@ int			ft_printf_hex(va_list *ap, t_fmt **args)
 		prepend = '0';
 	else
 		prepend = ' ';*/
-	prepend[0] = ((*args)->prepend_zeros && !(*args)->pos_val && 
+	prepend[0] = ((*args)->prepend_zeros && !(*args)->pos_val &&
 			!(*args)->min_width) ? '0' : ' ';
-	nstr = ft_itoa_base((long)nbr,(long)16, (*args)->is_upper);
+	nstr = ft_itoa_base((uintmax_t)nbr,16, (*args)->is_upper);
 	size = ft_strlen(nstr);
 	while ((*args)->min_width > size)
 	{
@@ -142,7 +216,7 @@ int			ft_printf_oct(va_list *ap, t_fmt **args)
 	int			size;
 
 	//prefix = 0;
-	nbr = ft_get_int_length(ap, args);
+	nbr = ft_get_uint_length(ap, args);
 	//nbrlen = get_number_length(nbr);
 	prefix = ft_strnew(1);
 	prepend = ft_strnew(1);
@@ -160,16 +234,16 @@ int			ft_printf_oct(va_list *ap, t_fmt **args)
 		prepend = '0';
 	else
 		prepend = ' ';*/
-	prepend[0] = ((*args)->prepend_zeros && !(*args)->pos_val && 
+	prepend[0] = ((*args)->prepend_zeros && !(*args)->pos_val &&
 			!(*args)->min_width) ? '0' : ' ';
-	nstr = ft_itoa_base((long)nbr,(long)8, (*args)->is_upper);
+	nstr = ft_itoa_base((uintmax_t)nbr, 8, (*args)->is_upper);
 	size = ft_strlen(nstr);
 	while ((*args)->min_width > size)
 	{
 		nstr = ft_strjoin("0", nstr);
 		size++;
 	}
-	if (prefix[0] != '\0')
+	if (prefix[0] != '\0' && prefix[0] != nstr[0])
 		nstr = ft_strjoin(prefix, nstr);
 	size = ft_strlen(nstr);
 	while  ((*args)->width > size)
@@ -187,6 +261,21 @@ int			ft_printf_oct(va_list *ap, t_fmt **args)
 	return (size);
 }
 
+int ft_printf_ptr(va_list *ap, t_fmt **args)
+{
+	uintmax_t nbr;
+	int	size;
+	char *nstr;
+
+	(*args)->length = 5;
+	nbr = ft_get_uint_length(ap, args);
+	nstr = ft_itoa_base(nbr, 16, (*args)->is_upper);
+	nstr = ft_strjoin("Ox", nstr);
+	size = ft_strlen(nstr);
+	ft_putstr(nstr);
+	return (size);
+}
+
 int			ft_printf_uint(va_list *ap, t_fmt **args)
 {
 	uintmax_t		nbr;
@@ -197,7 +286,7 @@ int			ft_printf_uint(va_list *ap, t_fmt **args)
 	int			size;
 
 	//prefix = 0;
-	nbr = ft_get_int_length(ap, args);
+	nbr = ft_get_uint_length(ap, args);
 	//nbrlen = get_number_length(nbr);
 	prefix = ft_strnew(1);
 	prepend = ft_strnew(1);
@@ -212,9 +301,9 @@ int			ft_printf_uint(va_list *ap, t_fmt **args)
 		prepend = '0';
 	else
 		prepend = ' ';*/
-	prepend[0] = ((*args)->prepend_zeros && !(*args)->pos_val && 
+	prepend[0] = ((*args)->prepend_zeros && !(*args)->pos_val &&
 			!(*args)->min_width) ? '0' : ' ';
-	nstr = ft_itoa_base((long)nbr,(long)10, 0);
+	nstr = ft_itoa_base((uintmax_t)nbr, 10, 0);
 	size = ft_strlen(nstr);
 	while ((*args)->min_width > size)
 	{
@@ -252,7 +341,7 @@ intmax_t	ft_get_int_length(va_list *ap, t_fmt **args)
 	else if ((*args)->length == 5)
 		nbr = (intmax_t)nbr;
 	else if ((*args)->length == 6)
-		nbr = (signed)(size_t)nbr;
+		nbr = (ssize_t)nbr;
 	else
 		nbr = (int)nbr;
 	return(nbr);
@@ -272,8 +361,11 @@ int		ft_printf_dec_int(va_list *ap, t_fmt **args)
 	//nbrlen = get_number_length(nbr);
 	prefix = ft_strnew(1);
 	prepend = ft_strnew(1);
-	if ((int)nbr < 0)
+	if (nbr < 0)
+	{
 		prefix[0] = '-';
+		nbr *= -1;
+	}
 	else if ((*args)->pos_val)
 		prefix[0] = '+';
 	else if ((*args)->prepend_sp && !(*args)->prepend_zeros)
@@ -284,9 +376,9 @@ int		ft_printf_dec_int(va_list *ap, t_fmt **args)
 		prepend = '0';
 	else
 		prepend = ' ';*/
-	prepend[0] = ((*args)->prepend_zeros && !(*args)->pos_val && 
+	prepend[0] = ((*args)->prepend_zeros && !(*args)->pos_val &&
 			!(*args)->min_width) ? '0' : ' ';
-	nstr = ft_itoa_base((long)nbr,(long)10, 0);
+	nstr = ft_itoa_base((uintmax_t)nbr, 10, 0);
 	size = ft_strlen(nstr);
 	while ((*args)->min_width > size)
 	{
@@ -333,7 +425,7 @@ void	parse_length(t_fmt **args, char **fmt)
 		else
 			(*args)->length = 6;
 		(*fmt)++;
-	}	
+	}
 }
 
 void	parse_num(t_fmt **args, char **fmt, int is_width)
@@ -357,7 +449,7 @@ void	parse_num(t_fmt **args, char **fmt, int is_width)
 	 if (is_width)
 	 	(*args)->width = nbr;
 	 else
-		(*args)->min_width = nbr; 
+		(*args)->min_width = nbr;
 }
 
 void parse_flags(t_fmt **args, char **fmt)
@@ -382,7 +474,7 @@ void parse_flags(t_fmt **args, char **fmt)
 int	parse_conv_spec(va_list *ap, t_fmt **args, char **fmt)
 {
 	int size = 0;
-	if (**fmt == 'S' || **fmt == 'O' || **fmt == 'D' || **fmt == 'U' || 
+	if (**fmt == 'S' || **fmt == 'O' || **fmt == 'D' || **fmt == 'U' ||
 			**fmt == 'C')
 	{
 		(*args)->length = 3;
@@ -397,10 +489,16 @@ int	parse_conv_spec(va_list *ap, t_fmt **args, char **fmt)
 		size += ft_printf_oct(ap, args);
 	else if (**fmt == 'u' || **fmt == 'U')
 		size += ft_printf_uint(ap, args);
+	else if (**fmt == 's')
+		size += ft_printf_string(ap, args);
+	else if (**fmt == 'c')
+		size += ft_printf_char(ap, args);
+	else if (**fmt == 'p')
+		size += ft_printf_ptr(ap, args);
 	//	ft_printf_unsigned_int(ap, args, fmt);
 //	else
 	//	ft_print_null();
-	
+
 	return (size);
 }
 
@@ -409,7 +507,7 @@ int	parse_args(va_list *ap,t_fmt **args, char **fmt)
 	int size;
 //	conv_spec conv_funct;
 	size = 0;
-	
+
 	(*fmt)++;
 	if (**fmt == '%')
 	{

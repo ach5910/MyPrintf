@@ -26,11 +26,11 @@ Return size: 28
 Return size: 29
                12345 <space>20hd
 Return size: 33
-              -12345 <space>20hd
+          4294954951 <space>20hd
 Return size: 33
               +12345 +20hd
 Return size: 27
-              -12345 +20hd
+         +4294954951 +20hd
 Return size: 27
 00000000000000012345 020hd
 Return size: 27
@@ -74,11 +74,11 @@ Return size: 27
 Return size: 29
                12345 <space>20zd
 Return size: 33
-              -12345 <space>20zd
+          4294954951 <space>20zd
 Return size: 33
               +12345 +20zd
 Return size: 27
-              -12345 +20zd
+         +4294954951 +20zd
 Return size: 27
 00000000000000012345 020zd
 Return size: 27
@@ -125,11 +125,11 @@ Return size: 25
 Return size: 24
      0000012345  015.10u
 Return size: 25
-               00123 <space>20hhu
+               00133 <space>20hhu
 Return size: 34
                  123 20hhu
 Return size: 27
-                 123 20hhu
+                 133 20hhu
 Return size: 27
 00000000000000000123 020hhu
 Return size: 28
@@ -141,43 +141,158 @@ Return size: 26
 Return size: 26
 00000000000000012345 020hu
 Return size: 27
-               12345 20.5lu
-Return size: 28
+0000000000000000000000000000000000000000000018446744073709539271 20.5lu
+Return size: 72
                12345 20lu
 Return size: 26
-               12345 20lu
-Return size: 26
+0000000000000000000000000000000000000000000018446744073709539271 20lu
+Return size: 70
 00000000000000012345 020lu
 Return size: 27
-00000000000000000000000000000000000000000000012345 20.5llu
-Return size: 59
+0000000000000000000000000000000000000000000018446744073709539271 20.5llu
+Return size: 73
                12345 20llu
 Return size: 27
-               12345 20llu
-Return size: 27
+0000000000000000000000000000000000000000000018446744073709539271 20llu
+Return size: 71
 00000000000000012345 020llu
 Return size: 28
-               12345 20.5ju
-Return size: 28
+0000000000000000000000000000000000000000000018446744073709539271 20.5ju
+Return size: 72
                12345 20ju
 Return size: 26
-               12345 20ju
-Return size: 26
+0000000000000000000000000000000000000000000018446744073709539271 20ju
+Return size: 70
 00000000000000012345 020ju
 Return size: 27
-               12345 20.5zu
-Return size: 28
+0000000000000000000000000000000000000000000018446744073709539271 20.5zu
+Return size: 72
                12345 20zu
 Return size: 26
-               12345 20zu
-Return size: 26
+0000000000000000000000000000000000000000000018446744073709539271 20zu
+Return size: 70
 00000000000000012345 020zu
 Return size: 27
+---Hexadecimal--
 0x2d #x
 Return size: 8
+0x80 #x
+Return size: 8
+0xffffffd3 #x
+Return size: 14
+                0x2d #20x
+Return size: 26
+0x2d                 #-20x
+Return size: 27
+        0x000000002d #20.10x
+Return size: 29
+0x000000002d         #-20.10x
+Return size: 30
 0X2D #X
 Return size: 8
+0X80 #X
+Return size: 8
+0XFFFFFFD3 #X
+Return size: 14
+                0X2D #20X
+Return size: 26
+0X2D                 #-20X
+Return size: 27
+        0X000000002D #20.10X
+Return size: 29
+0X000000002D         #-20.10X
+---Octal---
 055 #o
 Return size: 7
+0200 #o
+Return size: 8
+037777777723 #o
+Return size: 16
+                 055 #20o
+Return size: 26
+055                  #-20o
+Return size: 27
+          0000000055 #20.10o
+Return size: 29
+0000000055           #-20.10o
 055 #O
 Return size: 7
+0200 #O
+Return size: 8
+037777777723 #O
+Return size: 16
+                 055 #20O
+Return size: 26
+055                  #-20O
+Return size: 27
+          0000000055 #20.10O
+Return size: 29
+0000000055           #-20.10O
+---String---
+Hello World s
+Return size: 14
+Hello Worl .10s
+Return size: 16
+Hello World .15s
+Return size: 17
+          Hello Worl 20.10s
+Return size: 28
+         Hello World 20.15s
+Return size: 28
+Hello Worl           -20.10s
+Return size: 29
+Hello World          -20.15s
+Return size: 29
+---Character---
+a c
+Return size: 4
+         a 10c
+Return size: 15
+a          -10c
+Return size: 16
+                   a 20c
+Return size: 25
+a                    -20c
+Return size: 26
+1 c
+Return size: 4
+         1 10c
+Return size: 15
+1          -10c
+Return size: 16
+                   1 20c
+Return size: 25
+1                    -20c
+Return size: 26
+ c
+Return size: 4
+          10c
+Return size: 15
+          -10c
+Return size: 16
+                    20c
+Return size: 25
+                    -20c
+Return size: 26
+
+ c
+Return size: 4
+         
+ 10c
+Return size: 15
+
+          -10c
+Return size: 16
+                   
+ 20c
+Return size: 25
+
+                    -20c
+Return size: 26
+---Pointer---
+Ox7fff53e42af0 p
+Return size: 17
+Ox10bdc1ef5 p
+Return size: 14
+Ox7fff53e42ad4 p
+Return size: 17
