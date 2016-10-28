@@ -22,8 +22,18 @@ INC_DIR = ./include
 INCS = -I$(INC_DIR)
 
 SRC_DIR = ./src
-SRC_BASE = ft_printf.c \
-		   main.c
+SRC_BASE =	ft_printf.c \
+						ft_get_length.c \
+						ft_parse_args.c \
+						ft_printf_char.c \
+						ft_printf_hex.c \
+						ft_printf_int.c \
+						ft_printf_oct.c \
+						ft_printf_ptr.c \
+						ft_printf_string.c \
+						ft_printf_uint.c \
+						ft_putuint.c \
+		   			main.c
 
 OBJ_DIR = ./obj
 

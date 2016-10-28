@@ -39,9 +39,16 @@ void			parse_flags(t_fmt **args, char **fmt);
 void			parse_num(t_fmt **args, char **fmt, int is_width);
 void			parse_length(t_fmt **args, char **fmt);
 int				ft_printf_int(va_list *ap, t_fmt **args);
-intmax_t		ft_get_int_length(va_list *ap, t_fmt **args);
-int				get_number_length(int nbr);
+int				ft_printf_uint(va_list *ap, t_fmt **args);
+int				ft_printf_hex(va_list *ap, t_fmt **args);
+int				ft_printf_oct(va_list *ap, t_fmt **args);
+int				ft_printf_char(va_list *ap, t_fmt **args);
+int				ft_printf_string(va_list *ap, t_fmt **args);
+int				ft_printf_ptr(va_list *ap, t_fmt **args);
+int				ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base);
+intmax_t	ft_get_int_length(va_list *ap, t_fmt **args);
+uintmax_t	ft_get_uint_length(va_list *ap, t_fmt **args);
+char			*ft_itoa_base(uintmax_t value, int base, int is_uppper);
+uintmax_t ft_pow(int base, int i);
 
 #endif
-
-
