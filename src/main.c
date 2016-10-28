@@ -95,17 +95,17 @@ int main(void)
     size = ft_printf("%020jd 020jd\n", (intmax_t)12345);
     ft_printf("Return size: %d\n", size);
 
-    size = ft_printf("%-+20zd -+20+zd\n", (signed)(size_t)12345);
+    size = ft_printf("%-+20zd -+20+zd\n", (ssize_t)12345);
     ft_printf("Return size: %d\n", size);
-    size = ft_printf("% 20zd <space>20zd\n", (signed)(size_t)12345);
+    size = ft_printf("% 20zd <space>20zd\n", (ssize_t)12345);
     ft_printf("Return size: %d\n", size);
-    size = ft_printf("% 20zd <space>20zd\n", (signed)(size_t)-12345);
+    size = ft_printf("% 20zd <space>20zd\n", (ssize_t)-12345);
     ft_printf("Return size: %d\n", size);
-    size = ft_printf("%+20zd +20zd\n", (signed)(size_t)12345);
+    size = ft_printf("%+20zd +20zd\n", (ssize_t)12345);
     ft_printf("Return size: %d\n", size);
-    size = ft_printf("%+20zd +20zd\n", (signed)(size_t)-12345);
+    size = ft_printf("%+20zd +20zd\n", (ssize_t)-12345);
     ft_printf("Return size: %d\n", size);
-    size = ft_printf("%020zd 020zd\n", (signed)(size_t)12345);
+    size = ft_printf("%020zd 020zd\n", (ssize_t)12345);
     ft_printf("Return size: %d\n", size);
 
     /*	ft_printf("%x x\n", 12345);

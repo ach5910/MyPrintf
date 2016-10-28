@@ -74,11 +74,11 @@ Return size: 27
 Return size: 29
                12345 <space>20zd
 Return size: 33
-          4294954951 <space>20zd
+              -12345 <space>20zd
 Return size: 33
               +12345 +20zd
 Return size: 27
-         +4294954951 +20zd
+              -12345 +20zd
 Return size: 27
 00000000000000012345 020zd
 Return size: 27
@@ -290,9 +290,9 @@ Return size: 25
                     -20c
 Return size: 26
 ---Pointer---
-Ox7fff53e42af0 p
+Ox7fff5de7baf0 p
 Return size: 17
-Ox10bdc1ef5 p
+Ox101d88ee9 p
 Return size: 14
-Ox7fff53e42ad4 p
+Ox7fff5de7bad4 p
 Return size: 17

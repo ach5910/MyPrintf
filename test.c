@@ -96,17 +96,17 @@ int main(void)
 	size = printf("%020jd 020jd\n", (intmax_t)12345);
 	printf("Return size: %d\n", size);
 
-	size = printf("%-+20zd -+20+zd\n", (signed)(size_t)12345);
+	size = printf("%-+20zd -+20+zd\n", (ssize_t)12345);
 	printf("Return size: %d\n", size);
-	size = printf("% 20zd <space>20zd\n", (signed)(size_t)12345);
+	size = printf("% 20zd <space>20zd\n", (ssize_t)12345);
 	printf("Return size: %d\n", size);
-	size = printf("% 20zd <space>20zd\n", (signed)(size_t)-12345);
+	size = printf("% 20zd <space>20zd\n", (ssize_t)-12345);
 	printf("Return size: %d\n", size);
-	size = printf("%+20zd +20zd\n", (signed)(size_t)12345);
+	size = printf("%+20zd +20zd\n", (ssize_t)12345);
 	printf("Return size: %d\n", size);
-	size = printf("%+20zd +20zd\n", (signed)(size_t)-12345);
+	size = printf("%+20zd +20zd\n", (ssize_t)-12345);
 	printf("Return size: %d\n", size);
-	size = printf("%020zd 020zd\n", (signed)(size_t)12345);
+	size = printf("%020zd 020zd\n", (ssize_t)12345);
 	printf("Return size: %d\n", size);
 
 	size = printf("%+.10d +.10d\n", 12345);

@@ -57,6 +57,39 @@ int	get_number_length(int nbr)
 	return (cnt);
 }
 
+int		ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base)
+{
+	char	*nstr;
+	char	*prepend;
+	int		size;
+
+	prepend = ft_strnew(1);
+	prepend[0] = ((*args)->prepend_zeros && !(*args)->pos_val &&
+			!(*args)->min_width) ? '0' : ' ';
+	nstr = ft_itoa_base(nbr, base, (*args)->is_upper);
+	size = ft_strlen(nstr);
+	while ((*args)->min_width > size)
+	{
+		nstr = ft_strjoin("0", nstr);
+		size++;
+	}
+	if (prefix[0] != '\0' && base == 8 && prefix[0] != nstr[0])
+		nstr = ft_strjoin(prefix, nstr);
+	else if (prefix[0] != '\0' && base != 8)
+		nstr = ft_strjoin(prefix, nstr);
+	size = ft_strlen(nstr);
+	while  ((*args)->width > size)
+	{
+		nstr = (*args)->left_just ? ft_strjoin(nstr, " ") : ft_strjoin(
+				prepend, nstr);
+		size++;
+	}
+	/*if ((*args)->prepend_zeros)
+		ft_putendl("Pad zerors");*/
+	ft_putstr(nstr);
+	return (size);
+}
+
 // void ft_printf_hexa(int	o, int r)
 // {
 // 	char buf[] = "0123456789abcdef";
@@ -155,17 +188,17 @@ uintmax_t	ft_get_uint_length(va_list *ap, t_fmt **args)
 int			ft_printf_hex(va_list *ap, t_fmt **args)
 {
 	uintmax_t		nbr;
-	char		*nstr;
+	//char		*nstr;
 	//int			nbrlen;
 	char		*prefix;
-	char		*prepend;
+	//char		*prepend;
 	int			size;
 
 	//prefix = 0;
 	nbr = ft_get_uint_length(ap, args);
 	//nbrlen = get_number_length(nbr);
 	prefix = ft_strnew(2);
-	prepend = ft_strnew(1);
+	// prepend = ft_strnew(1);
 	if ((*args)->hash && (*args)->is_upper)
 		prefix = "0X";
 	else if ((*args)->hash && !(*args)->is_upper)
@@ -182,44 +215,46 @@ int			ft_printf_hex(va_list *ap, t_fmt **args)
 		prepend = '0';
 	else
 		prepend = ' ';*/
-	prepend[0] = ((*args)->prepend_zeros && !(*args)->pos_val &&
-			!(*args)->min_width) ? '0' : ' ';
-	nstr = ft_itoa_base((uintmax_t)nbr,16, (*args)->is_upper);
-	size = ft_strlen(nstr);
-	while ((*args)->min_width > size)
-	{
-		nstr = ft_strjoin("0", nstr);
-		size++;
-	}
-	if (prefix[0] != '\0')
-		nstr = ft_strjoin(prefix, nstr);
-	size = ft_strlen(nstr);
-	while  ((*args)->width > size)
-	{
-		nstr = (*args)->left_just ? ft_strjoin(nstr, " ") : ft_strjoin(
-				prepend, nstr);
-		size++;
-	}
-	/*if ((*args)->prepend_zeros)
-		ft_putendl("Pad zerors");*/
-	ft_putstr(nstr);
+
+	// prepend[0] = ((*args)->prepend_zeros && !(*args)->pos_val &&
+	// 		!(*args)->min_width) ? '0' : ' ';
+	// nstr = ft_itoa_base((uintmax_t)nbr,16, (*args)->is_upper);
+	// size = ft_strlen(nstr);
+	// while ((*args)->min_width > size)
+	// {
+	// 	nstr = ft_strjoin("0", nstr);
+	// 	size++;
+	// }
+	// if (prefix[0] != '\0')
+	// 	nstr = ft_strjoin(prefix, nstr);
+	// size = ft_strlen(nstr);
+	// while  ((*args)->width > size)
+	// {
+	// 	nstr = (*args)->left_just ? ft_strjoin(nstr, " ") : ft_strjoin(
+	// 			prepend, nstr);
+	// 	size++;
+	// }
+	// /*if ((*args)->prepend_zeros)
+	// 	ft_putendl("Pad zerors");*/
+	// ft_putstr(nstr);
+	size = ft_putuint(args, prefix, nbr, 16);
 	return (size);
 }
 
 int			ft_printf_oct(va_list *ap, t_fmt **args)
 {
 	uintmax_t		nbr;
-	char		*nstr;
+	// char		*nstr;
 	//int			nbrlen;
 	char		*prefix;
-	char		*prepend;
+	// char		*prepend;
 	int			size;
 
 	//prefix = 0;
 	nbr = ft_get_uint_length(ap, args);
 	//nbrlen = get_number_length(nbr);
 	prefix = ft_strnew(1);
-	prepend = ft_strnew(1);
+	// prepend = ft_strnew(1);
 	if ((*args)->hash)
 		prefix[0] = '0';
 	else
@@ -234,30 +269,32 @@ int			ft_printf_oct(va_list *ap, t_fmt **args)
 		prepend = '0';
 	else
 		prepend = ' ';*/
-	prepend[0] = ((*args)->prepend_zeros && !(*args)->pos_val &&
-			!(*args)->min_width) ? '0' : ' ';
-	nstr = ft_itoa_base((uintmax_t)nbr, 8, (*args)->is_upper);
-	size = ft_strlen(nstr);
-	while ((*args)->min_width > size)
-	{
-		nstr = ft_strjoin("0", nstr);
-		size++;
-	}
-	if (prefix[0] != '\0' && prefix[0] != nstr[0])
-		nstr = ft_strjoin(prefix, nstr);
-	size = ft_strlen(nstr);
-	while  ((*args)->width > size)
-	{
-		nstr = (*args)->left_just ? ft_strjoin(nstr, " ") : ft_strjoin(
-				prepend, nstr);
-		size++;
-	}
-	/*if ((*args)->prepend_zeros)
-		ft_putendl("Pad zerors");*/
-	ft_putstr(nstr);
-	// ft_putendl("Size lving prinft:");
-	// ft_putnbr(size);
-	// ft_putchar('\n');
+
+	// prepend[0] = ((*args)->prepend_zeros && !(*args)->pos_val &&
+	// 		!(*args)->min_width) ? '0' : ' ';
+	// nstr = ft_itoa_base((uintmax_t)nbr, 8, (*args)->is_upper);
+	// size = ft_strlen(nstr);
+	// while ((*args)->min_width > size)
+	// {
+	// 	nstr = ft_strjoin("0", nstr);
+	// 	size++;
+	// }
+	// if (prefix[0] != '\0' && prefix[0] != nstr[0])
+	// 	nstr = ft_strjoin(prefix, nstr);
+	// size = ft_strlen(nstr);
+	// while  ((*args)->width > size)
+	// {
+	// 	nstr = (*args)->left_just ? ft_strjoin(nstr, " ") : ft_strjoin(
+	// 			prepend, nstr);
+	// 	size++;
+	// }
+	// /*if ((*args)->prepend_zeros)
+	// 	ft_putendl("Pad zerors");*/
+	// ft_putstr(nstr);
+	// // ft_putendl("Size lving prinft:");
+	// // ft_putnbr(size);
+	// // ft_putchar('\n');
+	size = ft_putuint(args, prefix, nbr, 8);
 	return (size);
 }
 
@@ -279,17 +316,17 @@ int ft_printf_ptr(va_list *ap, t_fmt **args)
 int			ft_printf_uint(va_list *ap, t_fmt **args)
 {
 	uintmax_t		nbr;
-	char		*nstr;
+	// char		*nstr;
 	//int			nbrlen;
 	char		*prefix;
-	char		*prepend;
+	// char		*prepend;
 	int			size;
 
 	//prefix = 0;
 	nbr = ft_get_uint_length(ap, args);
 	//nbrlen = get_number_length(nbr);
 	prefix = ft_strnew(1);
-	prepend = ft_strnew(1);
+	// prepend = ft_strnew(1);
 	prefix[0] = '\0';
 	// if ((*args)->pos_val)
 	// 	prefix[0] = '+';
@@ -301,27 +338,29 @@ int			ft_printf_uint(va_list *ap, t_fmt **args)
 		prepend = '0';
 	else
 		prepend = ' ';*/
-	prepend[0] = ((*args)->prepend_zeros && !(*args)->pos_val &&
-			!(*args)->min_width) ? '0' : ' ';
-	nstr = ft_itoa_base((uintmax_t)nbr, 10, 0);
-	size = ft_strlen(nstr);
-	while ((*args)->min_width > size)
-	{
-		nstr = ft_strjoin("0", nstr);
-		size++;
-	}
-	if (prefix[0] != '\0')
-		nstr = ft_strjoin(prefix, nstr);
-	size = ft_strlen(nstr);
-	while  ((*args)->width > size)
-	{
-		nstr = (*args)->left_just ? ft_strjoin(nstr, " ") : ft_strjoin(
-				prepend, nstr);
-		size++;
-	}
-	/*if ((*args)->prepend_zeros)
-		ft_putendl("Pad zerors");*/
-	ft_putstr(nstr);
+
+	// prepend[0] = ((*args)->prepend_zeros && !(*args)->pos_val &&
+	// 		!(*args)->min_width) ? '0' : ' ';
+	// nstr = ft_itoa_base((uintmax_t)nbr, 10, 0);
+	// size = ft_strlen(nstr);
+	// while ((*args)->min_width > size)
+	// {
+	// 	nstr = ft_strjoin("0", nstr);
+	// 	size++;
+	// }
+	// if (prefix[0] != '\0')
+	// 	nstr = ft_strjoin(prefix, nstr);
+	// size = ft_strlen(nstr);
+	// while  ((*args)->width > size)
+	// {
+	// 	nstr = (*args)->left_just ? ft_strjoin(nstr, " ") : ft_strjoin(
+	// 			prepend, nstr);
+	// 	size++;
+	// }
+	// /*if ((*args)->prepend_zeros)
+	// 	ft_putendl("Pad zerors");*/
+	// ft_putstr(nstr);
+	size = ft_putuint(args, prefix, nbr, 10);
 	return (size);
 }
 
@@ -350,17 +389,17 @@ intmax_t	ft_get_int_length(va_list *ap, t_fmt **args)
 int		ft_printf_dec_int(va_list *ap, t_fmt **args)
 {
 	intmax_t		nbr;
-	char		*nstr;
+	//char		*nstr;
 	//int			nbrlen;
 	char		*prefix;
-	char		*prepend;
+	//char		*prepend;
 	int			size;
 
 	//prefix = 0;
 	nbr = ft_get_int_length(ap, args);
 	//nbrlen = get_number_length(nbr);
 	prefix = ft_strnew(1);
-	prepend = ft_strnew(1);
+//prepend = ft_strnew(1);
 	if (nbr < 0)
 	{
 		prefix[0] = '-';
@@ -376,27 +415,29 @@ int		ft_printf_dec_int(va_list *ap, t_fmt **args)
 		prepend = '0';
 	else
 		prepend = ' ';*/
-	prepend[0] = ((*args)->prepend_zeros && !(*args)->pos_val &&
-			!(*args)->min_width) ? '0' : ' ';
-	nstr = ft_itoa_base((uintmax_t)nbr, 10, 0);
-	size = ft_strlen(nstr);
-	while ((*args)->min_width > size)
-	{
-		nstr = ft_strjoin("0", nstr);
-		size++;
-	}
-	if (prefix[0] != '\0')
-		nstr = ft_strjoin(prefix, nstr);
-	size = ft_strlen(nstr);
-	while  ((*args)->width > size)
-	{
-		nstr = (*args)->left_just ? ft_strjoin(nstr, " ") : ft_strjoin(
-				prepend, nstr);
-		size++;
-	}
-	/*if ((*args)->prepend_zeros)
-		ft_putendl("Pad zerors");*/
-	ft_putstr(nstr);
+
+	// prepend[0] = ((*args)->prepend_zeros && !(*args)->pos_val &&
+	// 		!(*args)->min_width) ? '0' : ' ';
+	// nstr = ft_itoa_base((uintmax_t)nbr, 10, 0);
+	// size = ft_strlen(nstr);
+	// while ((*args)->min_width > size)
+	// {
+	// 	nstr = ft_strjoin("0", nstr);
+	// 	size++;
+	// }
+	// if (prefix[0] != '\0')
+	// 	nstr = ft_strjoin(prefix, nstr);
+	// size = ft_strlen(nstr);
+	// while  ((*args)->width > size)
+	// {
+	// 	nstr = (*args)->left_just ? ft_strjoin(nstr, " ") : ft_strjoin(
+	// 			prepend, nstr);
+	// 	size++;
+	// }
+	// /*if ((*args)->prepend_zeros)
+	// 	ft_putendl("Pad zerors");*/
+	// ft_putstr(nstr);
+	size = ft_putuint(args, prefix, (uintmax_t)nbr, 10);
 	return (size);
 }
 
