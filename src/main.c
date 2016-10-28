@@ -269,5 +269,14 @@ int main(void)
     size = ft_printf("%020zu 020zu\n", (size_t)12345);
     ft_printf("Return size: %d\n", size);
 
+    size = ft_printf("%#x #x\n", 45);
+    ft_printf("Return size: %d\n", size);
+    size = ft_printf("%#X #X\n", 45);
+    ft_printf("Return size: %d\n", size);
+    size = ft_printf("%#o #o\n", 45);
+    ft_printf("Return size: %d\n", size);
+    size = ft_printf("%#O #O\n", 45);
+    ft_printf("Return size: %d\n", size);
+
 	return (0);
 }

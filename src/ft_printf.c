@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include <stdio.h>
+
 long	ft_pow(long  base, int i)
 {
 	if (i == 0)
@@ -74,6 +76,115 @@ uintmax_t	ft_get_uint_length(va_list *ap, t_fmt **args)
 	else
 		nbr = (unsigned int)nbr;
 	return (nbr);
+}
+
+int			ft_printf_hex(va_list *ap, t_fmt **args)
+{
+	uintmax_t		nbr;
+	char		*nstr;
+	//int			nbrlen;
+	char		*prefix;
+	char		*prepend;
+	int			size;
+
+	//prefix = 0;
+	nbr = ft_get_int_length(ap, args);
+	//nbrlen = get_number_length(nbr);
+	prefix = ft_strnew(2);
+	prepend = ft_strnew(1);
+	if ((*args)->hash && (*args)->is_upper)
+		prefix = "0X";
+	else if ((*args)->hash && !(*args)->is_upper)
+		prefix = "0x";
+	else
+		prefix[0] = '\0';
+	// if ((*args)->pos_val)
+	// 	prefix[0] = '+';
+	// else if ((*args)->prepend_sp && !(*args)->prepend_zeros)
+	// 	prefix[0] = ' ';
+	// else
+	// 	prefix[0] = '\0';
+	/*if ((*args)->prepend_zeros && !(*args)->pos_val)
+		prepend = '0';
+	else
+		prepend = ' ';*/
+	prepend[0] = ((*args)->prepend_zeros && !(*args)->pos_val && 
+			!(*args)->min_width) ? '0' : ' ';
+	nstr = ft_itoa_base((long)nbr,(long)16, (*args)->is_upper);
+	size = ft_strlen(nstr);
+	while ((*args)->min_width > size)
+	{
+		nstr = ft_strjoin("0", nstr);
+		size++;
+	}
+	if (prefix[0] != '\0')
+		nstr = ft_strjoin(prefix, nstr);
+	size = ft_strlen(nstr);
+	while  ((*args)->width > size)
+	{
+		nstr = (*args)->left_just ? ft_strjoin(nstr, " ") : ft_strjoin(
+				prepend, nstr);
+		size++;
+	}
+	/*if ((*args)->prepend_zeros)
+		ft_putendl("Pad zerors");*/
+	ft_putstr(nstr);
+	return (size);
+}
+
+int			ft_printf_oct(va_list *ap, t_fmt **args)
+{
+	uintmax_t		nbr;
+	char		*nstr;
+	//int			nbrlen;
+	char		*prefix;
+	char		*prepend;
+	int			size;
+
+	//prefix = 0;
+	nbr = ft_get_int_length(ap, args);
+	//nbrlen = get_number_length(nbr);
+	prefix = ft_strnew(1);
+	prepend = ft_strnew(1);
+	if ((*args)->hash)
+		prefix[0] = '0';
+	else
+		prefix[0] = '\0';
+	// if ((*args)->pos_val)
+	// 	prefix[0] = '+';
+	// else if ((*args)->prepend_sp && !(*args)->prepend_zeros)
+	// 	prefix[0] = ' ';
+	// else
+	// 	prefix[0] = '\0';
+	/*if ((*args)->prepend_zeros && !(*args)->pos_val)
+		prepend = '0';
+	else
+		prepend = ' ';*/
+	prepend[0] = ((*args)->prepend_zeros && !(*args)->pos_val && 
+			!(*args)->min_width) ? '0' : ' ';
+	nstr = ft_itoa_base((long)nbr,(long)8, (*args)->is_upper);
+	size = ft_strlen(nstr);
+	while ((*args)->min_width > size)
+	{
+		nstr = ft_strjoin("0", nstr);
+		size++;
+	}
+	if (prefix[0] != '\0')
+		nstr = ft_strjoin(prefix, nstr);
+	size = ft_strlen(nstr);
+	while  ((*args)->width > size)
+	{
+		nstr = (*args)->left_just ? ft_strjoin(nstr, " ") : ft_strjoin(
+				prepend, nstr);
+		size++;
+	}
+	/*if ((*args)->prepend_zeros)
+		ft_putendl("Pad zerors");*/
+	ft_putstr(nstr);
+	// ft_putendl("Size lving prinft:");
+	// ft_putnbr(size);
+	// ft_putchar('\n');
+	return (size);
 }
 
 int			ft_printf_uint(va_list *ap, t_fmt **args)
@@ -271,18 +382,19 @@ void parse_flags(t_fmt **args, char **fmt)
 int	parse_conv_spec(va_list *ap, t_fmt **args, char **fmt)
 {
 	int size = 0;
-	if (**fmt == 'S' || **fmt == 'O' || **fmt == 'D' || **fmt == 'U' ||
-		**fmt == 'C')
+	if (**fmt == 'S' || **fmt == 'O' || **fmt == 'D' || **fmt == 'U' || 
+			**fmt == 'C')
 	{
 		(*args)->length = 3;
-		(*args)->is_upper = 1;
 	}
-//	if (**fmt == 'x' || **fmt == 'X')
-	//	ft_printf_hex(ap, args, fmt);
-	if (**fmt == 'd' || **fmt == 'i')
+	if (**fmt == 'O' || **fmt == 'X')
+		(*args)->is_upper = 1;
+	if (**fmt == 'x' || **fmt == 'X')
+		size += ft_printf_hex(ap, args);
+	else if (**fmt == 'd' || **fmt == 'i')
 		size += ft_printf_dec_int(ap, args);
-//	else if (**fmt == 'o' || **fmt == 'O')
-	//	ft_printf_oct(ap, args, fmt);
+	else if (**fmt == 'o' || **fmt == 'O')
+		size += ft_printf_oct(ap, args);
 	else if (**fmt == 'u' || **fmt == 'U')
 		size += ft_printf_uint(ap, args);
 	//	ft_printf_unsigned_int(ap, args, fmt);
@@ -342,10 +454,13 @@ int	parse_format(va_list *ap, const char *fmt)
 	size = 0;
 //	iter = (char *)fmt;
 	cursor = ft_strdup(fmt);
-	while ((iter = ft_strchr(cursor, '%')))
+	while ((iter = ft_strchr(cursor, '%')) != NULL)
 	{
 		*iter = '\0';
 		size += ft_strlen(cursor);
+		// ft_putendl("size first");
+		// ft_putnbr(size);
+		// ft_putchar('\n');
 		ft_putstr(cursor);
 		args = new_format();
 		size += parse_args(ap, &args, &iter);
@@ -354,7 +469,12 @@ int	parse_format(va_list *ap, const char *fmt)
 	}
 	if (*cursor != '\0')
 	{
+		// ft_putnbr(ft_strlen(cursor));
+		// ft_putchar('\n');
 		size += ft_strlen(cursor);
+		// ft_putendl("Size after reading rest of string");
+		// ft_putnbr(size);
+		// ft_putchar('\n');
 		ft_putstr(cursor);
 	}
 	return (size);

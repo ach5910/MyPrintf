@@ -173,3 +173,11 @@ Return size: 26
 Return size: 26
 00000000000000012345 020zu
 Return size: 27
+0x2d #x
+Return size: 8
+0X2D #X
+Return size: 8
+055 #o
+Return size: 7
+055 #O
+Return size: 7

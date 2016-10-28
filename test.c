@@ -257,5 +257,14 @@ int main(void)
 	printf("Return size: %d\n", size);
 	size = printf("%020zu 020zu\n", (size_t)12345);
 	printf("Return size: %d\n", size);
+
+	size = printf("%#x #x\n", 45);
+	printf("Return size: %d\n", size);
+	size = printf("%#X #X\n", 45);
+	printf("Return size: %d\n", size);
+	size = printf("%#o #o\n", 45);
+	printf("Return size: %d\n", size);
+	size = printf("%#O #O\n", 45);
+	printf("Return size: %d\n", size);
 	return (0);
 }
