@@ -22,5 +22,6 @@ int			ft_printf_uint(va_list *ap, t_fmt **args)
 	prefix = ft_strnew(1);
 	prefix[0] = '\0';
 	size = ft_putuint(args, prefix, nbr, 10);
+	ft_strdel(&prefix);
 	return (size);
 }

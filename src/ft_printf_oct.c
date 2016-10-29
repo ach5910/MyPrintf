@@ -25,5 +25,6 @@ int			ft_printf_oct(va_list *ap, t_fmt **args)
 	else
 		prefix[0] = '\0';
 	size = ft_putuint(args, prefix, nbr, 8);
+	ft_strdel(&prefix);
 	return (size);
 }

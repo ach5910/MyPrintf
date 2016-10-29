@@ -28,5 +28,6 @@ int			ft_printf_string(va_list *ap, t_fmt **args)
 		size++;
 	}
 	ft_putstr(str);
+	ft_strdel(&str);
 	return (size);
 }

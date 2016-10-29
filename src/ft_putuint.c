@@ -31,13 +31,13 @@ char	*ft_itoa_base(uintmax_t value, int base, int is_upper)
 	size = 1;
 	while (ft_pow(base, size) - 1 < value)
 		size++;
-	nbr = (char *)malloc(sizeof(char) * (size));
-	nbr[size] = '\0';
+	nbr = ft_strnew(size);
 	while (size-- > 0)
 	{
 		nbr[size] = buf[value % base];
 		value /= base;
 	}
+	ft_strdel(&buf);
 	return (nbr);
 }
 
@@ -69,5 +69,7 @@ int		ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base)
 		size++;
 	}
 	ft_putstr(nstr);
+	ft_strdel(&prepend);
+	ft_strdel(&nstr);
 	return (size);
 }

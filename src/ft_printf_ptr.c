@@ -18,11 +18,12 @@ int ft_printf_ptr(va_list *ap, t_fmt **args)
 	int	size;
 	char *nstr;
 
-	(*args)->length = 5;
+	(*args)->length = LEN_MOD_J;
 	nbr = ft_get_uint_length(ap, args);
 	nstr = ft_itoa_base(nbr, 16, (*args)->is_upper);
 	nstr = ft_strjoin("Ox", nstr);
 	size = ft_strlen(nstr);
 	ft_putstr(nstr);
+	ft_strdel(&nstr);
 	return (size);
 }

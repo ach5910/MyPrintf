@@ -15,26 +15,26 @@ void	parse_length(t_fmt **args, char **fmt)
 {
 	if (**fmt == 'h' && *(*fmt + 1) == 'h')
 	{
-	  (*args)->length = 1;
+	  (*args)->length = LEN_MOD_HH;
 	  (*fmt) +=  2;
 	  return ;
 	}
 	else if (**fmt == 'l' && *(*fmt + 1) == 'l')
 	{
-		(*args)->length = 4;
+		(*args)->length = LEN_MOD_LL;
 		(*fmt) +=  2;
 		return ;
 	}
 	else if (**fmt == 'h' || **fmt == 'l' || **fmt == 'j' || **fmt == 'z')
 	{
 		if (**fmt == 'h')
-			(*args)->length = 2;
+			(*args)->length = LEN_MOD_H;
 		if (**fmt == 'l')
-			(*args)->length = 3;
+			(*args)->length = LEN_MOD_L;
 		if (**fmt == 'j')
-			(*args)->length = 5;
+			(*args)->length = LEN_MOD_J;
 		else
-			(*args)->length = 6;
+			(*args)->length = LEN_MOD_Z;
 		(*fmt)++;
 	}
 }
@@ -53,9 +53,9 @@ void	parse_num(t_fmt **args, char **fmt, int is_width)
 	 }
 	 while (ft_isdigit(**fmt))
 	 {
-		nbr *= 10;
+			nbr *= 10;
 	   	nbr	+=  (**fmt - '0');
-		(*fmt)++;
+			(*fmt)++;
 	 }
 	 if (is_width)
 	 	(*args)->width = nbr;
@@ -88,7 +88,7 @@ int	parse_conv_spec(va_list *ap, t_fmt **args, char **fmt)
 	if (**fmt == 'S' || **fmt == 'O' || **fmt == 'D' || **fmt == 'U' ||
 			**fmt == 'C')
 	{
-		(*args)->length = 3;
+		(*args)->length = LEN_MOD_L;
 	}
 	if (**fmt == 'O' || **fmt == 'X')
 		(*args)->is_upper = 1;

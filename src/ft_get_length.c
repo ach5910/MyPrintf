@@ -17,17 +17,17 @@ uintmax_t	ft_get_uint_length(va_list *ap, t_fmt **args)
 	uintmax_t nbr;
 
 	nbr = va_arg(*ap, uintmax_t);
-	if ((*args)->length == 1)
+	if ((*args)->length == LEN_MOD_HH)
 		nbr = (unsigned char)nbr;
-	else if ((*args)->length == 2)
+	else if ((*args)->length == LEN_MOD_H)
 		nbr = (unsigned short)nbr;
-	else if ((*args)->length == 3)
+	else if ((*args)->length == LEN_MOD_L)
 		nbr = (unsigned long)nbr;
-	else if ((*args)->length == 4)
+	else if ((*args)->length == LEN_MOD_LL)
 		nbr = (unsigned long long)nbr;
-	else if ((*args)->length == 5)
+	else if ((*args)->length == LEN_MOD_J)
 		nbr = (uintmax_t)nbr;
-	else if ((*args)->length == 6)
+	else if ((*args)->length == LEN_MOD_Z)
 		nbr = (size_t)nbr;
 	else
 		nbr = (unsigned int)nbr;
@@ -39,17 +39,17 @@ intmax_t	ft_get_int_length(va_list *ap, t_fmt **args)
 	intmax_t nbr;
 
 	nbr = va_arg(*ap, intmax_t);
-	if ((*args)->length == 1)
+	if ((*args)->length == LEN_MOD_HH)
 		nbr = (char)nbr;
-	else if ((*args)->length == 2)
+	else if ((*args)->length == LEN_MOD_H)
 		nbr = (short)nbr;
-	else if ((*args)->length == 3)
+	else if ((*args)->length == LEN_MOD_L)
 		nbr = (long)nbr;
-	else if ((*args)->length == 4)
+	else if ((*args)->length == LEN_MOD_LL)
 		nbr = (long long)nbr;
-	else if ((*args)->length == 5)
+	else if ((*args)->length == LEN_MOD_J)
 		nbr = (intmax_t)nbr;
-	else if ((*args)->length == 6)
+	else if ((*args)->length == LEN_MOD_Z)
 		nbr = (ssize_t)nbr;
 	else
 		nbr = (int)nbr;

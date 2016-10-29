@@ -16,6 +16,12 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <stdarg.h>
+# define LEN_MOD_HH 1
+# define LEN_MOD_H  2
+# define LEN_MOD_L	3
+# define LEN_MOD_LL	4
+# define LEN_MOD_J	5
+# define LEN_MOD_Z	6
 
 typedef struct	s_fmt
 {
