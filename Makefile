@@ -6,7 +6,7 @@
 #    By: ahunt <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/24 20:29:02 by ahunt             #+#    #+#              #
-#    Updated: 2016/10/24 20:53:58 by ahunt            ###   ########.fr        #
+#    Updated: 2016/10/31 16:46:26 by ahunt            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,17 +23,18 @@ INCS = -I$(INC_DIR)
 
 SRC_DIR = ./src
 SRC_BASE =	ft_printf.c \
-						ft_get_length.c \
-						ft_parse_args.c \
-						ft_printf_char.c \
-						ft_printf_hex.c \
-						ft_printf_int.c \
-						ft_printf_oct.c \
-						ft_printf_ptr.c \
-						ft_printf_string.c \
-						ft_printf_uint.c \
-						ft_putuint.c \
-		   			main.c
+			ft_get_length.c \
+			ft_parse_args.c \
+			ft_printf_char.c \
+			ft_printf_wchar.c \
+			ft_printf_hex.c \
+			ft_printf_int.c \
+			ft_printf_oct.c \
+			ft_printf_ptr.c \
+			ft_printf_string.c \
+			ft_printf_uint.c \
+			ft_putuint.c \
+			main.c
 
 OBJ_DIR = ./obj
 

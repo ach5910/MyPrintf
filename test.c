@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <locale.h>
 
 int main(void)
 {
@@ -385,6 +386,19 @@ int main(void)
 	printf("Return size: %d\n", size);
 	size = printf("%-20c -20c\n", 10);
 	printf("Return size: %d\n", size);
+
+	printf("---Wide Character---\n");
+	setlocale(LC_ALL, "");
+	wchar_t c = L'Ω';
+	wchar_t d = L'a';
+	wchar_t f = L'¥';
+
+    size = printf("%lc lc\n", c);
+    printf("Return size: %d\n", size);
+    size = printf("%lc lc\n", d);
+    printf("Return size: %d\n", size);
+    size = printf("%lc lc\n", f);
+    printf("Return size: %d\n", size);
 
 	printf("---Pointer---\n");
 	int buf[10] = {150, 255, 12, 16, 21, 42};

@@ -29,11 +29,11 @@ void	parse_length(t_fmt **args, char **fmt)
 	{
 		if (**fmt == 'h')
 			(*args)->length = LEN_MOD_H;
-		if (**fmt == 'l')
+		else if (**fmt == 'l')
 			(*args)->length = LEN_MOD_L;
-		if (**fmt == 'j')
+		else if (**fmt == 'j')
 			(*args)->length = LEN_MOD_J;
-		else
+		else if (**fmt == 'z')
 			(*args)->length = LEN_MOD_Z;
 		(*fmt)++;
 	}

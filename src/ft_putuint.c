@@ -50,7 +50,9 @@ int		ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base)
 	prepend = ft_strnew(1);
 	prepend[0] = ((*args)->prepend_zeros && !(*args)->pos_val &&
 			!(*args)->min_width) ? '0' : ' ';
-	nstr = ft_itoa_base(nbr, base, (*args)->is_upper);
+	nstr = ft_strdup(ft_itoa_base((uintmax_t)nbr, base, (*args)->is_upper));
+	while(*nstr == '0')
+		nstr++;
 	size = ft_strlen(nstr);
 	while ((*args)->min_width > size)
 	{
@@ -70,6 +72,7 @@ int		ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base)
 	}
 	ft_putstr(nstr);
 	ft_strdel(&prepend);
-	ft_strdel(&nstr);
+	// if (nstr && *nstr)
+	// 	ft_strdel(&nstr);
 	return (size);
 }

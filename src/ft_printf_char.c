@@ -17,16 +17,21 @@ int			ft_printf_char(va_list *ap, t_fmt **args)
 	unsigned char		ch;
 	int			size;
 
-	size = 1;
-	ch = (unsigned char)va_arg(*ap, int);
-	if ((*args)->left_just)
-		ft_putchar(ch);
-	while  ((*args)->width > size)
+	if ((*args)->length == LEN_MOD_L)
+		size = ft_printf_wchar(ap, args);
+	else
 	{
-		ft_putchar(' ');
-		size++;
+		size = 1;
+		ch = (unsigned char)va_arg(*ap, int);
+		if ((*args)->left_just)
+			ft_putchar(ch);
+		while  ((*args)->width > size)
+		{
+			ft_putchar(' ');
+			size++;
+		}
+		if (!(*args)->left_just)
+			ft_putchar(ch);
 	}
-	if (!(*args)->left_just)
-		ft_putchar(ch);
 	return (size);
 }

@@ -49,6 +49,7 @@ int				ft_printf_uint(va_list *ap, t_fmt **args);
 int				ft_printf_hex(va_list *ap, t_fmt **args);
 int				ft_printf_oct(va_list *ap, t_fmt **args);
 int				ft_printf_char(va_list *ap, t_fmt **args);
+int				ft_printf_wchar(va_list *ap, t_fmt **args);
 int				ft_printf_string(va_list *ap, t_fmt **args);
 int				ft_printf_ptr(va_list *ap, t_fmt **args);
 int				ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base);

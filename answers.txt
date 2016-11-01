@@ -289,10 +289,17 @@ Return size: 25
 
                     -20c
 Return size: 26
+---Wide Character---
+Ω lc
+Return size: 6
+a lc
+Return size: 5
+¥ lc
+Return size: 6
 ---Pointer---
-0x7fff59798b00 p
+0x7fff54cb0b00 p
 Return size: 17
-0x106469eea p
+0x10af51ed4 p
 Return size: 14
-0x7fff59798ae4 p
+0x7fff54cb0ad4 p
 Return size: 17
