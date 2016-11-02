@@ -32,7 +32,9 @@ SRC_BASE =	ft_printf.c \
 			ft_printf_oct.c \
 			ft_printf_ptr.c \
 			ft_printf_string.c \
+			ft_printf_wstring.c \
 			ft_printf_uint.c \
+			ft_get_wide_char.c \
 			ft_putuint.c \
 			main.c
 

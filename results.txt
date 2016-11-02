@@ -1,4 +1,5 @@
----Decimal Integer---+12345               -+20+d
+---Decimal Integer "d"---
++12345               -+20+d
 Return size: 28
                12345 <space>20d
 Return size: 32
@@ -105,6 +106,115 @@ Return size: 26
     +0000012345  +15.10d
 Return size: 25
     +0000012345 +015.10d
+Return size: 25
+---Decimal Integer "i"---
++12345               -+20+i
+Return size: 28
+               12345 <space>20i
+Return size: 32
+              -12345 <space>20i
+Return size: 32
+              +12345 +20i
+Return size: 26
+              -12345 +20i
+Return size: 26
+00000000000000012345 020i
+Return size: 26
++123                 -+20+hhi
+Return size: 30
+                 123 <space>20hhi
+Return size: 34
+                -123 <space>20hhi
+Return size: 34
+                +123 +20hhi
+Return size: 28
+                -123 +20hhi
+Return size: 28
+00000000000000000123 020hhi
+Return size: 28
++12345               -+20+hi
+Return size: 29
+               12345 <space>20hi
+Return size: 33
+              -12345 <space>20hi
+Return size: 33
+              +12345 +20hi
+Return size: 27
+              -12345 +20hi
+Return size: 27
+00000000000000012345 020hi
+Return size: 27
++12345               -+20+li
+Return size: 29
+               12345 <space>20li
+Return size: 33
+              -12345 <space>20li
+Return size: 33
+              +12345 +20li
+Return size: 27
+              -12345 +20li
+Return size: 27
+00000000000000012345 020li
+Return size: 27
++12345               -+20+lli
+Return size: 30
+               12345 <space>20lli
+Return size: 34
+              -12345 <space>20lli
+Return size: 34
+              +12345 +20lli
+Return size: 28
+              -12345 +20lli
+Return size: 28
+00000000000000012345 020lli
+Return size: 28
++12345               -+20+ji
+Return size: 29
+               12345 <space>20ji
+Return size: 33
+              -12345 <space>20ji
+Return size: 33
+              +12345 +20ji
+Return size: 27
+              -12345 +20ji
+Return size: 27
+00000000000000012345 020ji
+Return size: 27
++12345               -+20+zi
+Return size: 29
+               12345 <space>20zi
+Return size: 33
+              -12345 <space>20zi
+Return size: 33
+              +12345 +20zi
+Return size: 27
+              -12345 +20zi
+Return size: 27
+00000000000000012345 020zi
+Return size: 27
++0000012345 +.10i
+Return size: 18
+12345678 -5i
+Return size: 13
+123456789 .5i
+Return size: 14
+0000012345 .10i
+Return size: 16
++123456789 +.5i
+Return size: 16
+ 0000012345  .10i
+Return size: 18
+0000012345       -15.10i
+Return size: 25
+     0000012345  15.10i
+Return size: 24
+     0000012345  015.10i
+Return size: 25
++0000012345      -+15.10i
+Return size: 26
+    +0000012345  +15.10i
+Return size: 25
+    +0000012345 +015.10i
 Return size: 25
 ---Unsigned Int---
 00000000000000012345 020u
@@ -292,14 +402,68 @@ Return size: 26
 ---Wide Character---
 Ω lc
 Return size: 6
-a lc
+a                    -20lc
+Return size: 27
+◴ lc
+Return size: 7
+Ԙ C
 Return size: 5
-¥ lc
-Return size: 6
+        Ԅ 10C
+Return size: 15
+   Њ 5C
+Return size: 9
+Ѭ         -10C
+Return size: 16
+Ѽ    -5C
+Return size: 10
+Ӻ                   -20C
+Return size: 26
+   ϰ 5C
+Return size: 9
+✌        -10C
+Return size: 16
+            ☫ 15C
+Return size: 20
+☬   -5C
+Return size: 10
+¥              -15C
+Return size: 21
+            ▓ 15C
+Return size: 20
+---Wide String---
+Ωa¥ ls
+Return size: 9
+Приве́т नमस्ते שָׁלוֹם S
+Return size: 51
+🐨 ☺ mЖu丽oϟϿ_ԧ ☠ ✊ ∞ S
+Return size: 39
+ϟϿनमसpop🐨 ls
+Return size: 24
+Hello World ls
+Return size: 15
+     Ωa¥ 10ls
+Return size: 16
+☞☭☶☻♕♧♬ -10ls
+Return size: 28
+                 ♨ 20.5ls
+Return size: 28
+♲                  -20.5ls
+Return size: 29
+∰ _ ≝ ⊈⇟ ii 5.20ls
+Return size: 27
+Å ≖ ℌ ∐ ℕ  -5.20ls
+Return size: 29
+∀§ -.5ls
+Return size: 12
+∀§§ ↗𝔑↖ 𝒯ⅈ𝓉𝓉ΐξƧ  👅⩐  👉👌 -35ls
+Return size: 66
 ---Pointer---
-Ox7fff570ceaf0 p
+Ox7fff5835caf0 p
 Return size: 17
-Ox108b35ed3 p
+Ox1078a8b7a p
 Return size: 14
-Ox7fff570ceac4 p
+Ox7fff5835caac p
 Return size: 17
+---Percent Sign(edge case)---
+% percent % percent %
+Return size: 22

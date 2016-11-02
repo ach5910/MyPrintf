@@ -18,7 +18,7 @@
 int main(void)
 {
 	int size;
-	printf("---Decimal Integer---");
+	printf("---Decimal Integer \"d\"---\n");
 	size = printf("%-+20d -+20+d\n", 12345);
 	printf("Return size: %d\n", size);
 	size = printf("% 20d <space>20d\n", 12345);
@@ -137,6 +137,127 @@ int main(void)
 	size = printf("%+015.10d +015.10d\n", 12345);
 	printf("Return size: %d\n", size);
 //	prinft("%+.00010d +.00010d\n", 12345);
+
+	printf("---Decimal Integer \"i\"---\n");
+/*  printf("This is a umber %+i\n, this is another number % i\nthis number has min wiith of 10 %.10i\nthis number has min wiith of 10 with + flag %+.10i\n...this is the last number %i\n 10 wiith left just, 5 per %-10.5i\n 10 wiith right just, 5 per %10.5i\n10 wiith, lf, 0 prep, 5per %010.5i\n10 w, rj, 0 prep, 5 per%-010.5i\nENi", 42, 24, 46, 67, -16, 35, 35, 35, 35);*/
+//  printf("This is a number %i, this is another number %i..\nENi", 42, 24);
+    size = printf("%-+20i -+20+i\n", 12345);
+    printf("Return size: %i\n", size);
+    size = printf("% 20i <space>20i\n", 12345);
+    printf("Return size: %i\n", size);
+    size = printf("% 20i <space>20i\n", -12345);
+    printf("Return size: %i\n", size);
+    size = printf("%+20i +20i\n", 12345);
+    printf("Return size: %i\n", size);
+    size = printf("%+20i +20i\n", -12345);
+    printf("Return size: %i\n", size);
+    size = printf("%020i 020i\n", 12345);
+    printf("Return size: %i\n", size);
+
+    size = printf("%-+20hhi -+20+hhi\n", (char)123);
+    printf("Return size: %i\n", size);
+    size = printf("% 20hhi <space>20hhi\n", (char)123);
+    printf("Return size: %i\n", size);
+    size = printf("% 20hhi <space>20hhi\n", (char)-123);
+    printf("Return size: %i\n", size);
+    size = printf("%+20hhi +20hhi\n", (char)123);
+    printf("Return size: %i\n", size);
+    size = printf("%+20hhi +20hhi\n", (char)-123);
+    printf("Return size: %i\n", size);
+    size = printf("%020hhi 020hhi\n", (char)123);
+    printf("Return size: %i\n", size);
+
+    size = printf("%-+20hi -+20+hi\n", (short)12345);
+    printf("Return size: %i\n", size);
+    size = printf("% 20hi <space>20hi\n", (short)12345);
+    printf("Return size: %i\n", size);
+    size = printf("% 20hi <space>20hi\n", (short)-12345);
+    printf("Return size: %i\n", size);
+    size = printf("%+20hi +20hi\n", (short)12345);
+    printf("Return size: %i\n", size);
+    size = printf("%+20hi +20hi\n", (short)-12345);
+    printf("Return size: %i\n", size);
+    size = printf("%020hi 020hi\n", (short)12345);
+    printf("Return size: %i\n", size);
+
+    size = printf("%-+20li -+20+li\n", (long)12345);
+    printf("Return size: %i\n", size);
+    size = printf("% 20li <space>20li\n", (long)12345);
+    printf("Return size: %i\n", size);
+    size = printf("% 20li <space>20li\n", (long)-12345);
+    printf("Return size: %i\n", size);
+    size = printf("%+20li +20li\n", (long)12345);
+    printf("Return size: %i\n", size);
+    size = printf("%+20li +20li\n", (long)-12345);
+    printf("Return size: %i\n", size);
+    size = printf("%020li 020li\n", (long)12345);
+    printf("Return size: %i\n", size);
+
+    size = printf("%-+20lli -+20+lli\n", (long long)12345);
+    printf("Return size: %i\n", size);
+    size = printf("% 20lli <space>20lli\n", (long long)12345);
+    printf("Return size: %i\n", size);
+    size = printf("% 20lli <space>20lli\n", (long long)-12345);
+    printf("Return size: %i\n", size);
+    size = printf("%+20lli +20lli\n", (long long)12345);
+    printf("Return size: %i\n", size);
+    size = printf("%+20lli +20lli\n", (long long)-12345);
+    printf("Return size: %i\n", size);
+    size = printf("%020lli 020lli\n", (long long)12345);
+    printf("Return size: %i\n", size);
+
+    size = printf("%-+20ji -+20+ji\n", (intmax_t)12345);
+    printf("Return size: %i\n", size);
+    size = printf("% 20ji <space>20ji\n", (intmax_t)12345);
+    printf("Return size: %i\n", size);
+    size = printf("% 20ji <space>20ji\n", (intmax_t)-12345);
+    printf("Return size: %i\n", size);
+    size = printf("%+20ji +20ji\n", (intmax_t)12345);
+    printf("Return size: %i\n", size);
+    size = printf("%+20ji +20ji\n", (intmax_t)-12345);
+    printf("Return size: %i\n", size);
+    size = printf("%020ji 020ji\n", (intmax_t)12345);
+    printf("Return size: %i\n", size);
+
+    size = printf("%-+20zi -+20+zi\n", (ssize_t)12345);
+    printf("Return size: %i\n", size);
+    size = printf("% 20zi <space>20zi\n", (ssize_t)12345);
+    printf("Return size: %i\n", size);
+    size = printf("% 20zi <space>20zi\n", (ssize_t)-12345);
+    printf("Return size: %i\n", size);
+    size = printf("%+20zi +20zi\n", (ssize_t)12345);
+    printf("Return size: %i\n", size);
+    size = printf("%+20zi +20zi\n", (ssize_t)-12345);
+    printf("Return size: %i\n", size);
+    size = printf("%020zi 020zi\n", (ssize_t)12345);
+    printf("Return size: %i\n", size);
+    size = printf("%+.10i +.10i\n", 12345);
+    printf("Return size: %i\n", size);
+    size = printf("%-5i -5i\n", 12345678);
+    printf("Return size: %i\n", size);
+    size = printf("%.5i .5i\n", 123456789);
+    printf("Return size: %i\n", size);
+    size = printf("%.10i .10i\n", 12345);
+    printf("Return size: %i\n", size);
+    size = printf("%+.5i +.5i\n", 123456789);
+    printf("Return size: %i\n", size);
+    size = printf("% .10i  .10i\n", 12345);
+    printf("Return size: %i\n", size);
+    size = printf("%-15.10i  -15.10i\n", 12345);
+    printf("Return size: %i\n", size);
+    size = printf("%15.10i  15.10i\n", 12345);
+    printf("Return size: %i\n", size);
+    //  printf("%-015.10i  -015.10i\n", 12345);
+    size = printf("%015.10i  015.10i\n",  12345);
+    printf("Return size: %i\n", size);
+    size = printf("%-+15.10i  -+15.10i\n", 12345);
+    printf("Return size: %i\n", size);
+    size = printf("%+15.10i  +15.10i\n", 12345);
+    printf("Return size: %i\n", size);
+    //  printf("%-+015.10i -+015.10i\n", 12345);
+    size = printf("%+015.10i +015.10i\n", 12345);
+    printf("Return size: %i\n", size);
+    //  prinft("%+.00010i +.00010i\n", 12345);
 
 
 	printf("---Unsigned Int---\n");
@@ -392,12 +513,69 @@ int main(void)
 	wchar_t c = L'Ω';
 	wchar_t d = L'a';
 	wchar_t f = L'¥';
+	wchar_t t = L'▓';
 
     size = printf("%lc lc\n", c);
     printf("Return size: %d\n", size);
-    size = printf("%lc lc\n", d);
+    size = printf("%-20lc -20lc\n", d);
     printf("Return size: %d\n", size);
-    size = printf("%lc lc\n", f);
+    size = printf("%lc lc\n", L'◴');
+    printf("Return size: %d\n", size);
+    size = printf("%C C\n", L'Ԙ');
+    printf("Return size: %d\n", size);
+    size = printf("%10C 10C\n", L'Ԅ');
+    printf("Return size: %d\n", size);
+    size = printf("%5C 5C\n", L'Њ');
+    printf("Return size: %d\n", size);
+    size = printf("%-10C -10C\n", L'Ѭ');
+    printf("Return size: %d\n", size);
+    size = printf("%-5C -5C\n", L'Ѽ');
+    printf("Return size: %d\n", size);
+    size = printf("%-20C -20C\n", L'Ӻ');
+    printf("Return size: %d\n", size);
+    size = printf("%5C 5C\n", L'ϰ');
+    printf("Return size: %d\n", size);
+    size = printf("%-10C -10C\n", L'✌');
+    printf("Return size: %d\n", size);
+    size = printf("%15C 15C\n", L'☫');
+    printf("Return size: %d\n", size);
+    size = printf("%-5C -5C\n", L'☬');
+    printf("Return size: %d\n", size);
+    size = printf("%-15C -15C\n", f);
+    printf("Return size: %d\n", size);
+    size = printf("%15C 15C\n", t);
+    printf("Return size: %d\n", size);
+
+    printf("---Wide String---\n");
+    wchar_t *wstr = L"Ωa¥";
+    wchar_t *wsrc = L"Приве́т नमस्ते שָׁלוֹם";
+    wchar_t *wbuf = L"🐨 ☺ mЖu丽oϟϿ_ԧ ☠ ✊ ∞";
+    size = printf("%ls ls\n", wstr);
+    printf("Return size: %d\n", size);
+    size = printf("%S S\n", wsrc);
+    printf("Return size: %d\n", size);
+    size = printf("%S S\n", wbuf);
+    printf("Return size: %d\n", size);
+
+    size = printf("%ls ls\n", L"ϟϿनमसpop🐨");
+    printf("Return size: %d\n", size);
+    size = printf("%ls ls\n", L"Hello World");
+    printf("Return size: %d\n", size);
+    size = printf("%10ls 10ls\n", wstr);
+    printf("Return size: %d\n", size);
+    size = printf("%-10ls -10ls\n", L"☞☭☶☻♕♧♬");
+    printf("Return size: %d\n", size);
+    size = printf("%20.5ls 20.5ls\n", L"♨");
+    printf("Return size: %d\n", size);
+    size = printf("%-20.5ls -20.5ls\n", L"♲♾⚔⚗⚰⛄⛳");
+    printf("Return size: %d\n", size);
+    size = printf("%5.20ls 5.20ls\n", L"∰ _ ≝ ⊈⇟ iiℋ ");
+    printf("Return size: %d\n", size);
+    size = printf("%-5.20ls -5.20ls\n", L"Å ≖ ℌ ∐ ℕ ₮ ");
+    printf("Return size: %d\n", size);
+    size = printf("%-.5ls -.5ls\n", L"∀§§ ↗𝔑↖ 𝒯ⅈ𝓉𝓉ΐξƧ  👅⩐  👉👌");
+    printf("Return size: %d\n", size);
+    size = printf("%-35ls -35ls\n", L"∀§§ ↗𝔑↖ 𝒯ⅈ𝓉𝓉ΐξƧ  👅⩐  👉👌");
     printf("Return size: %d\n", size);
 
 	printf("---Pointer---\n");
@@ -411,6 +589,10 @@ int main(void)
 	size = printf("%p p\n", str);
 	printf("Return size: %d\n", size);
 	size = printf("%p p\n", &a);
+	printf("Return size: %d\n", size);
+
+	printf("---Percent Sign(edge case)---\n");
+	size = printf("%% percent %% percent %%\n");
 	printf("Return size: %d\n", size);
 
 	return (0);

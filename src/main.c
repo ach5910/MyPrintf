@@ -15,7 +15,7 @@
 int main(void)
 {
  	int size;
-    ft_printf("---Decimal Integer---");
+    ft_printf("---Decimal Integer \"d\"---\n");
 /*  ft_printf("This is a umber %+d\n, this is another number % d\nthis number has min width of 10 %.10d\nthis number has min width of 10 with + flag %+.10d\n...this is the last number %d\n 10 width left just, 5 per %-10.5d\n 10 width right just, 5 per %10.5d\n10 width, lf, 0 prep, 5per %010.5d\n10 w, rj, 0 prep, 5 per%-010.5d\nEND", 42, 24, 46, 67, -16, 35, 35, 35, 35);*/
 //	ft_printf("This is a number %d, this is another number %d..\nEND", 42, 24);
     size = ft_printf("%-+20d -+20+d\n", 12345);
@@ -135,6 +135,127 @@ int main(void)
     size = ft_printf("%+015.10d +015.10d\n", 12345);
     ft_printf("Return size: %d\n", size);
     //	prinft("%+.00010d +.00010d\n", 12345);
+
+    ft_printf("---Decimal Integer \"i\"---\n");
+/*  ft_printf("This is a umber %+i\n, this is another number % i\nthis number has min wiith of 10 %.10i\nthis number has min wiith of 10 with + flag %+.10i\n...this is the last number %i\n 10 wiith left just, 5 per %-10.5i\n 10 wiith right just, 5 per %10.5i\n10 wiith, lf, 0 prep, 5per %010.5i\n10 w, rj, 0 prep, 5 per%-010.5i\nENi", 42, 24, 46, 67, -16, 35, 35, 35, 35);*/
+//  ft_printf("This is a number %i, this is another number %i..\nENi", 42, 24);
+    size = ft_printf("%-+20i -+20+i\n", 12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("% 20i <space>20i\n", 12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("% 20i <space>20i\n", -12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("%+20i +20i\n", 12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("%+20i +20i\n", -12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("%020i 020i\n", 12345);
+    ft_printf("Return size: %i\n", size);
+
+    size = ft_printf("%-+20hhi -+20+hhi\n", (char)123);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("% 20hhi <space>20hhi\n", (char)123);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("% 20hhi <space>20hhi\n", (char)-123);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("%+20hhi +20hhi\n", (char)123);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("%+20hhi +20hhi\n", (char)-123);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("%020hhi 020hhi\n", (char)123);
+    ft_printf("Return size: %i\n", size);
+
+    size = ft_printf("%-+20hi -+20+hi\n", (short)12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("% 20hi <space>20hi\n", (short)12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("% 20hi <space>20hi\n", (short)-12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("%+20hi +20hi\n", (short)12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("%+20hi +20hi\n", (short)-12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("%020hi 020hi\n", (short)12345);
+    ft_printf("Return size: %i\n", size);
+
+    size = ft_printf("%-+20li -+20+li\n", (long)12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("% 20li <space>20li\n", (long)12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("% 20li <space>20li\n", (long)-12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("%+20li +20li\n", (long)12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("%+20li +20li\n", (long)-12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("%020li 020li\n", (long)12345);
+    ft_printf("Return size: %i\n", size);
+
+    size = ft_printf("%-+20lli -+20+lli\n", (long long)12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("% 20lli <space>20lli\n", (long long)12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("% 20lli <space>20lli\n", (long long)-12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("%+20lli +20lli\n", (long long)12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("%+20lli +20lli\n", (long long)-12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("%020lli 020lli\n", (long long)12345);
+    ft_printf("Return size: %i\n", size);
+
+    size = ft_printf("%-+20ji -+20+ji\n", (intmax_t)12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("% 20ji <space>20ji\n", (intmax_t)12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("% 20ji <space>20ji\n", (intmax_t)-12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("%+20ji +20ji\n", (intmax_t)12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("%+20ji +20ji\n", (intmax_t)-12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("%020ji 020ji\n", (intmax_t)12345);
+    ft_printf("Return size: %i\n", size);
+
+    size = ft_printf("%-+20zi -+20+zi\n", (ssize_t)12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("% 20zi <space>20zi\n", (ssize_t)12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("% 20zi <space>20zi\n", (ssize_t)-12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("%+20zi +20zi\n", (ssize_t)12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("%+20zi +20zi\n", (ssize_t)-12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("%020zi 020zi\n", (ssize_t)12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("%+.10i +.10i\n", 12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("%-5i -5i\n", 12345678);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("%.5i .5i\n", 123456789);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("%.10i .10i\n", 12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("%+.5i +.5i\n", 123456789);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("% .10i  .10i\n", 12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("%-15.10i  -15.10i\n", 12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("%15.10i  15.10i\n", 12345);
+    ft_printf("Return size: %i\n", size);
+    //  ft_printf("%-015.10i  -015.10i\n", 12345);
+    size = ft_printf("%015.10i  015.10i\n",  12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("%-+15.10i  -+15.10i\n", 12345);
+    ft_printf("Return size: %i\n", size);
+    size = ft_printf("%+15.10i  +15.10i\n", 12345);
+    ft_printf("Return size: %i\n", size);
+    //  ft_printf("%-+015.10i -+015.10i\n", 12345);
+    size = ft_printf("%+015.10i +015.10i\n", 12345);
+    ft_printf("Return size: %i\n", size);
+    //  prinft("%+.00010i +.00010i\n", 12345);
 
     ft_printf("---Unsigned Int---\n");
     // size = ft_printf("%-+20u -+20+u\n", 12345);
@@ -389,11 +510,71 @@ int main(void)
     wchar_t c = L'Ω';
     wchar_t d = L'a';
     wchar_t f = L'¥';
+    wchar_t t = L'▓';
+
     size = ft_printf("%lc lc\n", c);
     ft_printf("Return size: %d\n", size);
-    size = ft_printf("%lc lc\n", d);
+    size = ft_printf("%-20lc -20lc\n", d);
     ft_printf("Return size: %d\n", size);
-    size = ft_printf("%lc lc\n", f);
+    size = ft_printf("%lc lc\n", L'◴');
+    ft_printf("Return size: %d\n", size);
+    size = ft_printf("%C C\n", L'Ԙ');
+    ft_printf("Return size: %d\n", size);
+    size = ft_printf("%10C 10C\n", L'Ԅ');
+    ft_printf("Return size: %d\n", size);
+    size = ft_printf("%5C 5C\n", L'Њ');
+    ft_printf("Return size: %d\n", size);
+    size = ft_printf("%-10C -10C\n", L'Ѭ');
+    ft_printf("Return size: %d\n", size);
+    size = ft_printf("%-5C -5C\n", L'Ѽ');
+    ft_printf("Return size: %d\n", size);
+    size = ft_printf("%-20C -20C\n", L'Ӻ');
+    ft_printf("Return size: %d\n", size);
+    size = ft_printf("%5C 5C\n", L'ϰ');
+    ft_printf("Return size: %d\n", size);
+    size = ft_printf("%-10C -10C\n", L'✌');
+    ft_printf("Return size: %d\n", size);
+    size = ft_printf("%15C 15C\n", L'☫');
+    ft_printf("Return size: %d\n", size);
+    size = ft_printf("%-5C -5C\n", L'☬');
+    ft_printf("Return size: %d\n", size);
+    size = ft_printf("%-15C -15C\n", f);
+    ft_printf("Return size: %d\n", size);
+    size = ft_printf("%15C 15C\n", t);
+    ft_printf("Return size: %d\n", size);
+
+
+    ft_printf("---Wide String---\n");
+    wchar_t *wstr = L"Ωa¥";
+    wchar_t *wsrc = L"Приве́т नमस्ते שָׁלוֹם";
+    wchar_t *wbuf = L"🐨 ☺ mЖu丽oϟϿ_ԧ ☠ ✊ ∞";
+
+    size = ft_printf("%ls ls\n", wstr);
+    ft_printf("Return size: %d\n", size);
+    size = ft_printf("%S S\n", wsrc);
+    ft_printf("Return size: %d\n", size);
+    size = ft_printf("%S S\n", wbuf);
+    ft_printf("Return size: %d\n", size);
+
+    size = ft_printf("%ls ls\n", L"ϟϿनमसpop🐨");
+    ft_printf("Return size: %d\n", size);
+    size = ft_printf("%ls ls\n", L"Hello World");
+    ft_printf("Return size: %d\n", size);
+    size = ft_printf("%10ls 10ls\n", wstr);
+    ft_printf("Return size: %d\n", size);
+    size = ft_printf("%-10ls -10ls\n", L"☞☭☶☻♕♧♬");
+    ft_printf("Return size: %d\n", size);
+    size = ft_printf("%20.5ls 20.5ls\n", L"♨");
+    ft_printf("Return size: %d\n", size);
+    size = ft_printf("%-20.5ls -20.5ls\n", L"♲♾⚔⚗⚰⛄⛳");
+    ft_printf("Return size: %d\n", size);
+    size = ft_printf("%5.20ls 5.20ls\n", L"∰ _ ≝ ⊈⇟ iiℋ ");
+    ft_printf("Return size: %d\n", size);
+    size = ft_printf("%-5.20ls -5.20ls\n", L"Å ≖ ℌ ∐ ℕ ₮ ");
+    ft_printf("Return size: %d\n", size);
+    size = ft_printf("%-.5ls -.5ls\n", L"∀§§ ↗𝔑↖ 𝒯ⅈ𝓉𝓉ΐξƧ  👅⩐  👉👌");
+    ft_printf("Return size: %d\n", size);
+    size = ft_printf("%-35ls -35ls\n", L"∀§§ ↗𝔑↖ 𝒯ⅈ𝓉𝓉ΐξƧ  👅⩐  👉👌");
     ft_printf("Return size: %d\n", size);
 
 	ft_printf("---Pointer---\n");
@@ -408,6 +589,10 @@ int main(void)
 	ft_printf("Return size: %d\n", size);
 	size = ft_printf("%p p\n", &a);
 	ft_printf("Return size: %d\n", size);
+
+    ft_printf("---Percent Sign(edge case)---\n");
+    size = ft_printf("%% percent %% percent %%\n");
+    ft_printf("Return size: %d\n", size);
 
 	return (0);
 }

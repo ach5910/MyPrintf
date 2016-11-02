@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+ /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   libftprintf.h                                      :+:      :+:    :+:   */
@@ -12,10 +12,13 @@
 
 #ifndef LIBFTPRINTF_H
 # define LIBFTPRINTF_H
+
 # include "libft.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <stdarg.h>
+# include <wchar.h>
+
 # define LEN_MOD_HH 1
 # define LEN_MOD_H  2
 # define LEN_MOD_L	3
@@ -51,8 +54,11 @@ int				ft_printf_oct(va_list *ap, t_fmt **args);
 int				ft_printf_char(va_list *ap, t_fmt **args);
 int				ft_printf_wchar(va_list *ap, t_fmt **args);
 int				ft_printf_string(va_list *ap, t_fmt **args);
+int				ft_printf_wstring(va_list *ap, t_fmt **args);
 int				ft_printf_ptr(va_list *ap, t_fmt **args);
 int				ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base);
+unsigned char   *ft_get_wc(wchar_t c);
+int				ft_get_bytes_wc(wchar_t c);
 intmax_t	ft_get_int_length(va_list *ap, t_fmt **args);
 uintmax_t	ft_get_uint_length(va_list *ap, t_fmt **args);
 char			*ft_itoa_base(uintmax_t value, int base, int is_uppper);

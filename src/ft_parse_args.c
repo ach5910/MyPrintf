@@ -100,9 +100,9 @@ int	parse_conv_spec(va_list *ap, t_fmt **args, char **fmt)
 		size += ft_printf_oct(ap, args);
 	else if (**fmt == 'u' || **fmt == 'U')
 		size += ft_printf_uint(ap, args);
-	else if (**fmt == 's')
+	else if (**fmt == 's' || **fmt == 'S')
 		size += ft_printf_string(ap, args);
-	else if (**fmt == 'c')
+	else if (**fmt == 'c' || **fmt == 'C')
 		size += ft_printf_char(ap, args);
 	else if (**fmt == 'p')
 		size += ft_printf_ptr(ap, args);

@@ -50,7 +50,7 @@ int		ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base)
 	prepend = ft_strnew(1);
 	prepend[0] = ((*args)->prepend_zeros && !(*args)->pos_val &&
 			!(*args)->min_width) ? '0' : ' ';
-	nstr = ft_strdup(ft_itoa_base((uintmax_t)nbr, base, (*args)->is_upper));
+	nstr = ft_itoa_base((uintmax_t)nbr, base, (*args)->is_upper);
 	while(*nstr == '0')
 		nstr++;
 	size = ft_strlen(nstr);

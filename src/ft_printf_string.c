@@ -17,17 +17,22 @@ int			ft_printf_string(va_list *ap, t_fmt **args)
 	char		*str;
 	int			size;
 
-	str = ft_strdup(va_arg(*ap, char*));
-	if ((*args)->min_width)
-		str[(*args)->min_width] = '\0';
-	size = ft_strlen(str);
-	while  ((*args)->width > size)
+	if ((*args)->length == LEN_MOD_L)
+		size = ft_printf_wstring(ap, args);
+	else
 	{
-		str = (*args)->left_just ? ft_strjoin(str, " ") : ft_strjoin(
-				" ", str);
-		size++;
+		str = ft_strdup(va_arg(*ap, char*));
+		if ((*args)->min_width && (size_t)(*args)->min_width < ft_strlen(str))
+			str[(*args)->min_width] = '\0';
+		size = ft_strlen(str);
+		while  ((*args)->width > size)
+		{
+			str = (*args)->left_just ? ft_strjoin(str, " ") : ft_strjoin(
+					" ", str);
+			size++;
+		}
+		ft_putstr(str);
+		ft_strdel(&str);
 	}
-	ft_putstr(str);
-	ft_strdel(&str);
 	return (size);
 }
