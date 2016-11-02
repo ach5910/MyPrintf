@@ -106,6 +106,11 @@ int	parse_conv_spec(va_list *ap, t_fmt **args, char **fmt)
 		size += ft_printf_char(ap, args);
 	else if (**fmt == 'p')
 		size += ft_printf_ptr(ap, args);
+	else if (**fmt == 'T')
+	{
+		size += ft_print_color(ap, args);
+		(*fmt) += 10;
+	}
 	return (size);
 }
 

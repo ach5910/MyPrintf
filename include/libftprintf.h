@@ -26,6 +26,24 @@
 # define LEN_MOD_J	5
 # define LEN_MOD_Z	6
 
+#define RESET		0
+#define BOLD		1
+#define DIM			2
+#define ITALIC		3
+#define UNDERLINE 	4
+#define BLINK		5
+#define REVERSE		7
+#define HIDDEN		8
+
+#define BLACK 		0
+#define RED		    1
+#define GREEN		2
+#define YELLOW		3
+#define BLUE		4
+#define MAGENTA		5
+#define CYAN		6
+#define	WHITE		7
+
 typedef struct	s_fmt
 {
 	int			hash;
@@ -59,9 +77,11 @@ int				ft_printf_ptr(va_list *ap, t_fmt **args);
 int				ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base);
 unsigned char   *ft_get_wc(wchar_t c);
 int				ft_get_bytes_wc(wchar_t c);
-intmax_t	ft_get_int_length(va_list *ap, t_fmt **args);
-uintmax_t	ft_get_uint_length(va_list *ap, t_fmt **args);
+intmax_t		ft_get_int_length(va_list *ap, t_fmt **args);
+uintmax_t		ft_get_uint_length(va_list *ap, t_fmt **args);
 char			*ft_itoa_base(uintmax_t value, int base, int is_uppper);
-uintmax_t ft_pow(int base, int i);
+uintmax_t		ft_pow(int base, int i);
+int				ft_print_color(va_list *ap, t_fmt **args);
+void			ft_setcolor(va_list *ap);
 
 #endif

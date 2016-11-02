@@ -18,6 +18,8 @@ int main(void)
     ft_printf("---Decimal Integer \"d\"---\n");
 /*  ft_printf("This is a umber %+d\n, this is another number % d\nthis number has min width of 10 %.10d\nthis number has min width of 10 with + flag %+.10d\n...this is the last number %d\n 10 width left just, 5 per %-10.5d\n 10 width right just, 5 per %10.5d\n10 width, lf, 0 prep, 5per %010.5d\n10 w, rj, 0 prep, 5 per%-010.5d\nEND", 42, 24, 46, 67, -16, 35, 35, 35, 35);*/
 //	ft_printf("This is a number %d, this is another number %d..\nEND", 42, 24);
+    size = ft_printf("%d d\n", 0);
+    ft_printf("Return size: %d\n", size);
     size = ft_printf("%-+20d -+20+d\n", 12345);
 	ft_printf("Return size: %d\n", size);
     size = ft_printf("% 20d <space>20d\n", 12345);
@@ -31,6 +33,8 @@ int main(void)
     size = ft_printf("%020d 020d\n", 12345);
 	ft_printf("Return size: %d\n", size);
 
+    size = ft_printf("%hhd hhd\n", (char)0);
+    ft_printf("Return size: %d\n", size);
     size = ft_printf("%-+20hhd -+20+hhd\n", (char)123);
     ft_printf("Return size: %d\n", size);
     size = ft_printf("% 20hhd <space>20hhd\n", (char)123);
@@ -44,6 +48,8 @@ int main(void)
     size = ft_printf("%020hhd 020hhd\n", (char)123);
     ft_printf("Return size: %d\n", size);
 
+    size = ft_printf("%hd hd\n", (short)0);
+    ft_printf("Return size: %d\n", size);
     size = ft_printf("%-+20hd -+20+hd\n", (short)12345);
     ft_printf("Return size: %d\n", size);
     size = ft_printf("% 20hd <space>20hd\n", (short)12345);
@@ -57,6 +63,8 @@ int main(void)
     size = ft_printf("%020hd 020hd\n", (short)12345);
     ft_printf("Return size: %d\n", size);
 
+    size = ft_printf("%ld ld\n", (long)0);
+    ft_printf("Return size: %d\n", size);
     size = ft_printf("%-+20ld -+20+ld\n", (long)12345);
     ft_printf("Return size: %d\n", size);
     size = ft_printf("% 20ld <space>20ld\n", (long)12345);
@@ -70,6 +78,8 @@ int main(void)
     size = ft_printf("%020ld 020ld\n", (long)12345);
     ft_printf("Return size: %d\n", size);
 
+    size = ft_printf("%lld lld\n", (long long)0);
+    ft_printf("Return size: %d\n", size);
     size = ft_printf("%-+20lld -+20+lld\n", (long long)12345);
     ft_printf("Return size: %d\n", size);
     size = ft_printf("% 20lld <space>20lld\n", (long long)12345);
@@ -83,6 +93,8 @@ int main(void)
     size = ft_printf("%020lld 020lld\n", (long long)12345);
     ft_printf("Return size: %d\n", size);
 
+    size = ft_printf("%jd jd\n", (intmax_t)0);
+    ft_printf("Return size: %d\n", size);
     size = ft_printf("%-+20jd -+20+jd\n", (intmax_t)12345);
     ft_printf("Return size: %d\n", size);
     size = ft_printf("% 20jd <space>20jd\n", (intmax_t)12345);
@@ -96,6 +108,8 @@ int main(void)
     size = ft_printf("%020jd 020jd\n", (intmax_t)12345);
     ft_printf("Return size: %d\n", size);
 
+    size = ft_printf("%zd zd\n", (ssize_t)0);
+    ft_printf("Return size: %d\n", size);
     size = ft_printf("%-+20zd -+20+zd\n", (ssize_t)12345);
     ft_printf("Return size: %d\n", size);
     size = ft_printf("% 20zd <space>20zd\n", (ssize_t)12345);
@@ -264,6 +278,8 @@ int main(void)
     // ft_printf("Return size: %d\n", size);
     // size = ft_printf("%+20u +20u\n", 12345);
     // ft_printf("Return size: %d\n", size);
+    size = ft_printf("%u u\n", 0);
+    ft_printf("Return size: %d\n", size);
     size = ft_printf("%020u 020u\n", 12345);
     ft_printf("Return size: %d\n", size);
     size = ft_printf("%-20u -20u\n", 12345);
@@ -304,6 +320,8 @@ int main(void)
     // ft_printf("Return size: %d\n", size);
     // size = ft_printf("% 20hhu <space>20hhu\n", (unsigned char)123);
     // ft_printf("Return size: %d\n", size);
+    size = ft_printf("%hhu hhu\n", (unsigned char)0);
+    ft_printf("Return size: %d\n", size);
     size = ft_printf("%20.5hhu <space>20hhu\n", (unsigned char)-123);
     ft_printf("Return size: %d\n", size);
     size = ft_printf("%20hhu 20hhu\n", (unsigned char)123);
@@ -317,6 +335,8 @@ int main(void)
     // ft_printf("Return size: %d\n", size);
     // size = ft_printf("% 20hu <space>20hu\n", (unsigned short)12345);
     // ft_printf("Return size: %d\n", size);
+    size = ft_printf("%hu hu\n", (unsigned short)0);
+    ft_printf("Return size: %d\n", size);
     size = ft_printf("%20.5hu 20.5hu\n", (unsigned short)-12345);
     ft_printf("Return size: %d\n", size);
     size = ft_printf("%20hu 20hu\n", (unsigned short)12345);
@@ -330,6 +350,8 @@ int main(void)
     // ft_printf("Return size: %d\n", size);
     // size = ft_printf("% 20lu <space>20lu\n", (unsigned long)12345);
     // ft_printf("Return size: %d\n", size);
+    size = ft_printf("%lu lu\n", (unsigned long)0);
+    ft_printf("Return size: %d\n", size);
     size = ft_printf("%20.5lu 20.5lu\n", (unsigned long)-12345);
     ft_printf("Return size: %d\n", size);
     size = ft_printf("%20lu 20lu\n", (unsigned long)12345);
@@ -343,6 +365,8 @@ int main(void)
     // ft_printf("Return size: %d\n", size);
     // size = ft_printf("% 20llu <space>20llu\n", (unsigned long long)12345);
     // ft_printf("Return size: %d\n", size);
+    size = ft_printf("%llu llu\n", (unsigned long long)0);
+    ft_printf("Return size: %d\n", size);
     size = ft_printf("%2.50llu 20.5llu\n", (unsigned long long)-12345);
     ft_printf("Return size: %d\n", size);
     size = ft_printf("%20llu 20llu\n", (unsigned long long)12345);
@@ -356,6 +380,8 @@ int main(void)
     // ft_printf("Return size: %d\n", size);
     // size = ft_printf("% 20ju <space>20ju\n", (uintmax_t)12345);
     // ft_printf("Return size: %d\n", size);
+    size = ft_printf("%ju ju\n", (uintmax_t)0);
+    ft_printf("Return size: %d\n", size);
     size = ft_printf("%20.5ju 20.5ju\n", (uintmax_t)-12345);
     ft_printf("Return size: %d\n", size);
     size = ft_printf("%20ju 20ju\n", (uintmax_t)12345);
@@ -369,6 +395,8 @@ int main(void)
     // ft_printf("Return size: %d\n", size);
     // size = ft_printf("% 20zu <space>20zu\n", (size_t)12345);
     // ft_printf("Return size: %d\n", size);
+    size = ft_printf("%zu zu\n", (size_t)0);
+    ft_printf("Return size: %d\n", size);
     size = ft_printf("%20.5zu 20.5zu\n", (size_t)-12345);
     ft_printf("Return size: %d\n", size);
     size = ft_printf("%20zu 20zu\n", (size_t)12345);
@@ -379,6 +407,8 @@ int main(void)
     ft_printf("Return size: %d\n", size);
 
 	ft_printf("---Hexadecimal--\n");
+    size = ft_printf("%#x #x\n", 0);
+    ft_printf("Return size: %d\n", size);
 	size = ft_printf("%#x #x\n", 45);
 	ft_printf("Return size: %d\n", size);
 	size = ft_printf("%#x #x\n", 128);
@@ -408,6 +438,8 @@ int main(void)
 	size = ft_printf("%#-20.10X #-20.10X\n", 45);
 
 	ft_printf("---Octal---\n");
+    size = ft_printf("%#o #o\n", 0);
+    ft_printf("Return size: %d\n", size);
 	size = ft_printf("%#o #o\n", 45);
 	ft_printf("Return size: %d\n", size);
 	size = ft_printf("%#o #o\n", 128);
@@ -436,6 +468,8 @@ int main(void)
 	size = ft_printf("%#-20.10O #-20.10O\n", 45);
 
 	ft_printf("---String---\n");
+    size = ft_printf("%s s\n", "");
+    ft_printf("Return size: %d\n", size);
 	size = ft_printf("%s s\n", "Hello World");
 	ft_printf("Return size: %d\n", size);
 	size = ft_printf("%.10s .10s\n", "Hello World");
@@ -452,6 +486,8 @@ int main(void)
 	ft_printf("Return size: %d\n", size);
 
 	ft_printf("---Character---\n");
+    size = ft_printf("%c c\n", 0);
+    ft_printf("Return size: %d\n", size);
 	size = ft_printf("%c c\n", 'a');
 	ft_printf("Return size: %d\n", size);
 	size = ft_printf("%10c 10c\n", 'a');
@@ -572,9 +608,11 @@ int main(void)
     ft_printf("Return size: %d\n", size);
     size = ft_printf("%-5.20ls -5.20ls\n", L"Å ≖ ℌ ∐ ℕ ₮ ");
     ft_printf("Return size: %d\n", size);
+    size = ft_printf("%-10.20ls -10.20ls\n", L"Å ≖ ℌ ∐ ℕ ₮ ");
+    ft_printf("Return size: %d\n", size);
     size = ft_printf("%-.5ls -.5ls\n", L"∀§§ ↗𝔑↖ 𝒯ⅈ𝓉𝓉ΐξƧ  👅⩐  👉👌");
     ft_printf("Return size: %d\n", size);
-    size = ft_printf("%-35ls -35ls\n", L"∀§§ ↗𝔑↖ 𝒯ⅈ𝓉𝓉ΐξƧ  👅⩐  👉👌");
+    size = ft_printf("%-35ls -35ls\n", L"↖ ∀§§ ⅋ 𝒯 ⅈ𝓉𝓉ΐξƧ ↗ ⩐👅  👉👌");
     ft_printf("Return size: %d\n", size);
 
 	ft_printf("---Pointer---\n");
@@ -592,6 +630,43 @@ int main(void)
 
     ft_printf("---Percent Sign(edge case)---\n");
     size = ft_printf("%% percent %% percent %%\n");
+    ft_printf("Return size: %d\n", size);
+
+    ft_printf("---Color(Bonus)---\n");
+    size = ft_printf("%T%d%d%d%d%s T\n",BOLD, RED, BLACK, 1, "BRIGHT, RED, BLACK");
+    ft_printf("Return size: %d\n", size);
+
+    size = ft_printf("%T%d%d%d%d%s T\n",DIM, BLUE, YELLOW, 1, "DIM, BLUE, YELLOW");
+    ft_printf("Return size: %d\n", size);
+
+    size = ft_printf("%T%d%d%d%d%s T\n",UNDERLINE, GREEN, MAGENTA, 1, "UNDERLINE, GREEN, MAGENTA");
+    ft_printf("Return size: %d\n", size);
+
+    size = ft_printf("%T%d%d%d%d%s T\n",ITALIC, CYAN, WHITE, 1, "ITALIC, CYAN, WHITE");
+    ft_printf("Return size: %d\n", size);
+
+    size = ft_printf("%T%d%d%d%d%s T\n",BLINK, BLACK, GREEN, 1, "BLINK, BLACK, GREEN");
+    ft_printf("Return size: %d\n", size);
+
+    size = ft_printf("%T%d%d%d%d%s T\n",REVERSE, WHITE, RED, 1,  "REVERSE, WHITE, RED");
+    ft_printf("Return size: %d\n", size);
+
+    size = ft_printf("%T%d%d%d%d%s T\n",HIDDEN, YELLOW, BLACK, 1, "HIDDEN, YELLOW, BLACK");
+    ft_printf("Return size: %d\n", size);
+
+    size = ft_printf("%20T%d%d%d%d%s 20T\n",BOLD, RED, BLACK, 1, "BRIGHT, RED, BLACK");
+    ft_printf("Return size: %d\n", size);
+
+    size = ft_printf("%-20T%d%d%d%d%s -20T\n",BOLD, RED, BLACK, 1, "BRIGHT, RED, BLACK");
+    ft_printf("Return size: %d\n", size);
+
+    size = ft_printf("%-20.10T%d%d%d%d%s -20.10T\n",BOLD, RED, BLACK, 1, "BRIGHT, RED, BLACK");
+    ft_printf("Return size: %d\n", size);
+
+    size = ft_printf("%20.10T%d%d%d%d%s 20.10T\n",BOLD, RED, BLACK, 1, "BRIGHT, RED, BLACK");
+    ft_printf("Return size: %d\n", size);
+
+    size = ft_printf("%.5T%d%d%d%d%s .5T\n",BOLD, RED, BLACK, 1, "BRIGHT, RED, BLACK");
     ft_printf("Return size: %d\n", size);
 
 	return (0);

@@ -33,48 +33,37 @@
 void textcolor(int attr, int fg, int bg);
 int main(void)
 {
-  textcolor(BOLD, RED, BLACK);
-  printf("BRIGHT, RED, BLACK");
-  textcolor(RESET, WHITE, BLACK);
+  textcolor(BOLD, RED, BLACK, 1, "BRIGHT, RED, BLACK");
   printf("\n");
 
-  textcolor(DIM, BLUE, YELLOW);
-  printf("DIM, BLUE, YELLOW");
-  textcolor(RESET, WHITE, BLACK);
+  textcolor(DIM, BLUE, YELLOW, 1, "DIM, BLUE, YELLOW");
   printf("\n");
 
-  textcolor(UNDERLINE, GREEN, MAGENTA);
-  printf("UNDERLINE, GREEN, MAGENTA");
-  textcolor(RESET, WHITE, BLACK);
+  textcolor(UNDERLINE, GREEN, MAGENTA, 1, "UNDERLINE, GREEN, MAGENTA");
   printf("\n");
 
-  textcolor(ITALIC, CYAN, WHITE);
-  printf("ITALIC, CYAN, WHITE");
-  textcolor(RESET, WHITE, BLACK);
+  textcolor(ITALIC, CYAN, WHITE, 1, "ITALIC, CYAN, WHITE");
   printf("\n");
 
-  textcolor(BLINK, BLACK, GREEN);
-  printf("BLINK, BLACK, GREEN");
-  textcolor(RESET, WHITE, BLACK);
+  textcolor(BLINK, BLACK, GREEN, 1, "BLINK, BLACK, GREEN");
   printf("\n");
 
-  textcolor(REVERSE, WHITE, RED);
-  printf("REVERSE, WHITE, RED");
-  textcolor(RESET, WHITE, BLACK);
+  textcolor(REVERSE, WHITE, RED, 1,  "REVERSE, WHITE, RED");
   printf("\n");
 
-  textcolor(HIDDEN, YELLOW, BLACK);
-  printf("HIDDEN, YELLOW, BLACK");
-  textcolor(RESET, WHITE, BLACK);
+  textcolor(HIDDEN, YELLOW, BLACK, 1, "HIDDEN, YELLOW, BLACK");
   printf("\n");
   return (0);
 }
 
-void textcolor(int attr, int fg, int bg)
+int ft_textcolor(int attr, int fg, int bg, int auto_reset, char *str)
 {
-  char  command[13];
+  int size;
 
-  //sprintf(command, "%c[%d;%d;%dm", 0x1B, attr, fg + 30, bg + 40);
-  sprintf(command, "\033[%d;%d;%dm", attr, fg + 30, bg + 40);
-  printf("%s", command);
+  size = printf("\x1B[%d;%d;%dm", attr, fg + 30, bg + 40);
+  if (str && *str)
+    size += printf("%s\n", str);
+  if (auto_reset)
+    size += printf("\x1B[%d;%d;%dm", RESET, WHITE + 30, BLACK + 40);
+  return (size);
 }
