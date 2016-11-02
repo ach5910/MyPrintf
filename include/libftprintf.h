@@ -57,31 +57,32 @@ typedef struct	s_fmt
 	int			is_upper;
 }				t_fmt;
 
-int				ft_printf(const char *format, ...);
+size_t				ft_printf(const char *format, ...);
 t_fmt			*new_format(void);
-int				parse_format(va_list *ap, const char *fmt);
-int				parse_args(va_list *ap, t_fmt **args, char **fmt);
-int				parse_conv_spec(va_list *ap, t_fmt **args, char **fmt);
+size_t				parse_format(va_list *ap, const char *fmt);
+size_t				parse_args(va_list *ap, t_fmt **args, char **fmt);
+size_t				parse_conv_spec(va_list *ap, t_fmt **args, char **fmt);
 void			parse_flags(t_fmt **args, char **fmt);
 void			parse_num(t_fmt **args, char **fmt, int is_width);
 void			parse_length(t_fmt **args, char **fmt);
-int				ft_printf_int(va_list *ap, t_fmt **args);
-int				ft_printf_uint(va_list *ap, t_fmt **args);
-int				ft_printf_hex(va_list *ap, t_fmt **args);
-int				ft_printf_oct(va_list *ap, t_fmt **args);
-int				ft_printf_char(va_list *ap, t_fmt **args);
-int				ft_printf_wchar(va_list *ap, t_fmt **args);
-int				ft_printf_string(va_list *ap, t_fmt **args);
-int				ft_printf_wstring(va_list *ap, t_fmt **args);
-int				ft_printf_ptr(va_list *ap, t_fmt **args);
-int				ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base);
+size_t				ft_printf_int(va_list *ap, t_fmt **args);
+size_t				ft_printf_uint(va_list *ap, t_fmt **args);
+size_t				ft_printf_hex(va_list *ap, t_fmt **args);
+size_t				ft_printf_oct(va_list *ap, t_fmt **args);
+size_t				ft_printf_char(va_list *ap, t_fmt **args);
+size_t				ft_printf_wchar(va_list *ap, t_fmt **args);
+size_t				ft_printf_string(va_list *ap, t_fmt **args);
+size_t				ft_printf_wstring(va_list *ap, t_fmt **args);
+size_t				ft_printf_ptr(va_list *ap, t_fmt **args);
+size_t				ft_printf_binary(va_list *ap, t_fmt **args);
+size_t				ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base);
 unsigned char   *ft_get_wc(wchar_t c);
-int				ft_get_bytes_wc(wchar_t c);
+size_t				ft_get_bytes_wc(wchar_t c);
 intmax_t		ft_get_int_length(va_list *ap, t_fmt **args);
 uintmax_t		ft_get_uint_length(va_list *ap, t_fmt **args);
 char			*ft_itoa_base(uintmax_t value, int base, int is_uppper);
 uintmax_t		ft_pow(int base, int i);
-int				ft_print_color(va_list *ap, t_fmt **args);
+size_t				ft_print_color(va_list *ap, t_fmt **args);
 void			ft_setcolor(va_list *ap);
 
 #endif

@@ -13,11 +13,11 @@
 #include "libftprintf.h"
 #include <wchar.h>
 
-int	ft_printf_wstring(va_list *ap, t_fmt **args)
+size_t	ft_printf_wstring(va_list *ap, t_fmt **args)
 {
 	unsigned char	*dest;
 	wchar_t *src;
-	int		size;
+	size_t		size;
 	int		chcnt;
 	int		i;
 	int		has_percision;
@@ -44,7 +44,7 @@ int	ft_printf_wstring(va_list *ap, t_fmt **args)
 		ft_strdel((char **)&dest);
 		i++;
 	}
-	while  ((*args)->width > size)
+	while  ((size_t)(*args)->width > size)
  	{
 		ft_putchar(' ');
 		size++;

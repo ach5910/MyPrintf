@@ -14,9 +14,9 @@
 #include "libftprintf.h"
 #include <wchar.h>
 
-int	ft_printf_wchar(va_list *ap, t_fmt **args)
+size_t	ft_printf_wchar(va_list *ap, t_fmt **args)
 {
-	int size;
+	size_t size;
 	unsigned char *dest;
 	wchar_t	ch;
 
@@ -25,7 +25,7 @@ int	ft_printf_wchar(va_list *ap, t_fmt **args)
 	size = ft_strlen((const char *)dest);
 	if ((*args)->left_just)
 		ft_putstr((const char *)dest);
-	while  ((*args)->width > size)
+	while  ((size_t)(*args)->width > size)
  	{
 		ft_putchar(' ');
 		size++;

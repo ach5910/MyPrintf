@@ -12,10 +12,10 @@
 
 #include "libftprintf.h"
 
-int			ft_printf_char(va_list *ap, t_fmt **args)
+size_t			ft_printf_char(va_list *ap, t_fmt **args)
 {
 	unsigned char		ch;
-	int			size;
+	size_t			size;
 
 	if ((*args)->length == LEN_MOD_L)
 		size = ft_printf_wchar(ap, args);
@@ -25,7 +25,7 @@ int			ft_printf_char(va_list *ap, t_fmt **args)
 		ch = (unsigned char)va_arg(*ap, int);
 		if ((*args)->left_just)
 			ft_putchar(ch);
-		while  ((*args)->width > size)
+		while  ((size_t)(*args)->width > size)
 		{
 			ft_putchar(' ');
 			size++;

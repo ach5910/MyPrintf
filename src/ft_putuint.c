@@ -41,11 +41,11 @@ char	*ft_itoa_base(uintmax_t value, int base, int is_upper)
 	return (nbr);
 }
 
-int		ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base)
+size_t		ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base)
 {
 	char	*nstr;
 	char	*prepend;
-	int		size;
+	size_t		size;
 
 	prepend = ft_strnew(1);
 	prepend[0] = ((*args)->prepend_zeros && !(*args)->pos_val &&
@@ -54,7 +54,7 @@ int		ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base)
 	while(*nstr == '0' && nstr[1] != '\0')
 		nstr++;
 	size = ft_strlen(nstr);
-	while ((*args)->min_width > size)
+	while ((size_t)(*args)->min_width > size)
 	{
 		nstr = ft_strjoin("0", nstr);
 		size++;
@@ -66,7 +66,7 @@ int		ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base)
 	else if (prefix[0] != '\0' && base != 8 && base != 16)
 		nstr = ft_strjoin(prefix, nstr);
 	size = ft_strlen(nstr);
-	while  ((*args)->width > size)
+	while  ((size_t)(*args)->width > size)
 	{
 		nstr = (*args)->left_just ? ft_strjoin(nstr, prepend) : ft_strjoin(
 				prepend, nstr);

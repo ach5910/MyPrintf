@@ -82,9 +82,9 @@ void parse_flags(t_fmt **args, char **fmt)
 	}
 }
 
-int	parse_conv_spec(va_list *ap, t_fmt **args, char **fmt)
+size_t	parse_conv_spec(va_list *ap, t_fmt **args, char **fmt)
 {
-	int size = 0;
+	size_t size = 0;
 	if (**fmt == 'S' || **fmt == 'O' || **fmt == 'D' || **fmt == 'U' ||
 			**fmt == 'C')
 	{
@@ -106,6 +106,8 @@ int	parse_conv_spec(va_list *ap, t_fmt **args, char **fmt)
 		size += ft_printf_char(ap, args);
 	else if (**fmt == 'p')
 		size += ft_printf_ptr(ap, args);
+	else if (**fmt == 'b')
+		size += ft_printf_binary(ap, args);
 	else if (**fmt == 'T')
 	{
 		size += ft_print_color(ap, args);
@@ -114,9 +116,9 @@ int	parse_conv_spec(va_list *ap, t_fmt **args, char **fmt)
 	return (size);
 }
 
-int	parse_args(va_list *ap,t_fmt **args, char **fmt)
+size_t	parse_args(va_list *ap,t_fmt **args, char **fmt)
 {
-	int size;
+	size_t size;
 
 	size = 0;
 	(*fmt)++;

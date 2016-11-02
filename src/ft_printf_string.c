@@ -12,10 +12,10 @@
 
 #include "libftprintf.h"
 
-int			ft_printf_string(va_list *ap, t_fmt **args)
+size_t			ft_printf_string(va_list *ap, t_fmt **args)
 {
 	char		*str;
-	int			size;
+	size_t			size;
 
 	if ((*args)->length == LEN_MOD_L)
 		size = ft_printf_wstring(ap, args);
@@ -25,7 +25,7 @@ int			ft_printf_string(va_list *ap, t_fmt **args)
 		if ((*args)->min_width && (size_t)(*args)->min_width < ft_strlen(str))
 			str[(*args)->min_width] = '\0';
 		size = ft_strlen(str);
-		while  ((*args)->width > size)
+		while  ((size_t)(*args)->width > size)
 		{
 			str = (*args)->left_just ? ft_strjoin(str, " ") : ft_strjoin(
 					" ", str);

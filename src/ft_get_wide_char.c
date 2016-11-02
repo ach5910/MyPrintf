@@ -51,7 +51,7 @@ unsigned char   *ft_get_wc(wchar_t c)
     return (buf);
 }
 
-int	ft_get_bytes_wc(wchar_t c)
+size_t	ft_get_bytes_wc(wchar_t c)
 {
 	if (c == 0x0000)
 		return (0);

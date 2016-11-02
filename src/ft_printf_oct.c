@@ -12,11 +12,11 @@
 
 #include "libftprintf.h"
 
-int			ft_printf_oct(va_list *ap, t_fmt **args)
+size_t			ft_printf_oct(va_list *ap, t_fmt **args)
 {
 	uintmax_t		nbr;
 	char		*prefix;
-	int			size;
+	size_t			size;
 
 	nbr = ft_get_uint_length(ap, args);
 	prefix = ft_strnew(1);

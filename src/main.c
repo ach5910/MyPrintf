@@ -467,6 +467,18 @@ int main(void)
 	ft_printf("Return size: %d\n", size);
 	size = ft_printf("%#-20.10O #-20.10O\n", 45);
 
+    ft_printf("---Binary(Bonus)---\n");
+    size = ft_printf("%b b\n", 45);
+    ft_printf("Return size: %d\n", size);
+    size = ft_printf("%20b 20b\n", 45);
+    ft_printf("Return size: %d\n", size);
+    size = ft_printf("%-20b -20b\n", 45);
+    ft_printf("Return size: %d\n", size);
+    size = ft_printf("%b b\n", 128);
+    ft_printf("Return size: %d\n", size);
+    size = ft_printf("%b b\n", 255);
+    ft_printf("Return size: %d\n", size);
+
 	ft_printf("---String---\n");
     size = ft_printf("%s s\n", "");
     ft_printf("Return size: %d\n", size);

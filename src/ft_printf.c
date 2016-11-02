@@ -31,9 +31,9 @@ t_fmt	*new_format(void)
 	return (temp);
 }
 
-int	parse_format(va_list *ap, const char *fmt)
+size_t	parse_format(va_list *ap, const char *fmt)
 {
-	int size;
+	size_t size;
 	char *iter;
 	char *cursor;
 	t_fmt *args;
@@ -60,9 +60,9 @@ int	parse_format(va_list *ap, const char *fmt)
 	return (size);
 }
 
-int	ft_printf(const char *format, ...)
+size_t	ft_printf(const char *format, ...)
 {
-	int size;
+	size_t size;
 	va_list ap;
 
 	va_start(ap, format);
