@@ -44,7 +44,6 @@ int	ft_printf_wstring(va_list *ap, t_fmt **args)
 		ft_strdel((char **)&dest);
 		i++;
 	}
-	i = 0;
 	while  ((*args)->width > size)
  	{
 		ft_putchar(' ');
