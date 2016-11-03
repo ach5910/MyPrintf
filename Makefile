@@ -10,7 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ft_printf
+PRF = libprintf.a
+NAME = libftprintf.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
@@ -33,19 +34,26 @@ SRC_BASE =	ft_printf.c \
 			ft_printf_ptr.c \
 			ft_printf_string.c \
 			ft_printf_wstring.c \
+			ft_printf_mod.c \
 			ft_printf_uint.c \
 			ft_printf_binary.c \
 			ft_get_wide_char.c \
 			ft_textcolor.c \
 			ft_putuint.c \
-			main.c
+
+SRC = $(addprefix $(SRC_DIR)/, $(SRC_BASE))
+
+AR = ar rcs
+
+RLIB = ranlib
+
+RM = rm -rf
 
 OBJ_DIR = ./obj
 
+OBJS = $(SRC_BASE:.c=.o)
 
-OBJS = $(addprefix $(OBJ_DIR)/, $(SRC_BASE:.c=.o))
-
-all: obj $(LIB) $(NAME)
+all: obj $(LIB) $(PRF) $(NAME)
 
 obj:
 	mkdir -p $(OBJ_DIR)
@@ -56,15 +64,24 @@ $(OBJ_DIR)/%.o:$(SRC_DIR)/%.c
 $(LIB):
 	make -C $(LIB_PATH)
 
-$(NAME): $(OBJS)
-	$(CC) $(LIB_LINK) -o $@ $^
+$(FT_PRINTFT)
+
+$(PRF):
+	$(CC) $(CFLAGS) -I$(LIB_PATH) $(INCS) -c $(SRC)
+	$(AR) $(PRF) $(OBJS)
+	$(RLIB) $(PRF)
+
+$(NAME):
+	libtool -static -o libftprintf.a libprintf.a ./libft/libft.a
+	$(RM) $(PRF)
 
 clean:
-	rm -rf $(OBJ_DIR)
+	$(RM) $(OBJ_DIR)
+	$(RM) $(OBJS)
 	make -C $(LIB_PATH) clean
 
-fclean:
-	rm -rf $(NAME)
+fclean: clean
+	$(RM) $(NAME)
 	make -C $(LIB_PATH) fclean
 
 re: fclean all

@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wstring.c                                          :+:      :+:    :+:   */
+/*   ft_printf_mod.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahunt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/01 00:30:57 by ahunt             #+#    #+#             */
-/*   Updated: 2016/11/01 00:36:19 by ahunt            ###   ########.fr       */
+/*   Created: 2016/11/03 09:51:05 by ahunt             #+#    #+#             */
+/*   Updated: 2016/11/03 09:51:09 by ahunt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <locale.h>
-#include <wchar.h>
-#include <stdlib.h>
-#include <string.h>
+#include "libftprintf.h"
 
-int	main(void)
+size_t			ft_printf_mod(va_list *ap, t_fmt **args)
 {
-	setlocale(LC_ALL, "");
-	wchar_t *str = L"a¥Ωa¥";
-	while (str)
-	{
-		printf("%zd zd\n", strlen((const char *)str));
-		str += 4;
+	size_t			size;
+
+	(void)*ap;
+	size = 1;
+	if ((*args)->min_width == 0)
+	{	
+		ft_putchar('%');
+		return (size);
 	}
-	return(0);
+	if ((*args)->left_just)
+		ft_putchar('%');
+	ft_putnbr((*args)->width);
+	while  ((size_t)(*args)->width > size)
+	{
+		ft_putchar(' ');
+		size++;
+	}
+	if (!(*args)->left_just)
+		ft_putchar('%');
+	return (size);
 }

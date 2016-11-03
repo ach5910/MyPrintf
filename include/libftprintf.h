@@ -67,6 +67,7 @@ void			parse_num(t_fmt **args, char **fmt, int is_width);
 void			parse_length(t_fmt **args, char **fmt);
 void			ft_prepend_prefix(char **nstr, char *prefix, int base, uintmax_t nbr);
 size_t				ft_printf_int(va_list *ap, t_fmt **args);
+size_t				ft_printf_mod(va_list *ap, t_fmt **args);
 size_t				ft_printf_uint(va_list *ap, t_fmt **args);
 size_t				ft_printf_hex(va_list *ap, t_fmt **args);
 size_t				ft_printf_oct(va_list *ap, t_fmt **args);

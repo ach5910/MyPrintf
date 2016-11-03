@@ -117,6 +117,8 @@ size_t	ft_print_conv(va_list *ap, t_fmt **args, char **fmt)
 		size = ft_printf_ptr(ap, args);
 	else if (**fmt == 'b')
 		size = ft_printf_binary(ap, args);
+	else if (**fmt == '%')
+		size = ft_printf_mod(ap, args);
 	else if (**fmt == 'T')
 	{
 		size = ft_print_color(ap, args);
