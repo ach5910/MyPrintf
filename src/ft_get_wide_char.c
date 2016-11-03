@@ -16,37 +16,29 @@
 unsigned char   *ft_get_wc(wchar_t c)
 {
     unsigned char *buf;
+    int i;
 
+    i = 0;
     buf = (unsigned char *)ft_strnew(4);
     if (c <= 0x007F)
+        buf[i++] = (unsigned char)c;
+    else if (c <= 0x07FF)
     {
-        buf[0] = (unsigned char)c;
-        buf[1] = '\0';
-        return (buf);
+        buf[i++] = (unsigned char)((c >> 6) | 0xC0);
+        buf[i] = (unsigned char)((c & 0x3F) | 0x80);
     }
-    if (c <= 0x07FF)
+    else if (c <= 0xFFFF)
     {
-        buf[0] = (unsigned char)((c >> 6) | 0xC0);
-        buf[1] = (unsigned char)((c & 0x3F) | 0x80);
-        buf[3] = '\0';
-        return (buf);
+        buf[i++] = (unsigned char)((c >> 12) | 0xE0);
+        buf[i++] = (unsigned char)(((c >> 6) & 0x3F) | 0x80);
+        buf[i] = (unsigned char)((c & 0x3F) | 0x80);
     }
-    if (c <= 0xFFFF)
+    else if (c <= 0x10FFFF)
     {
-        buf[0] = (unsigned char)((c >> 12) | 0xE0);
-        buf[1] = (unsigned char)(((c >> 6) & 0x3F) | 0x80);
-        buf[2] = (unsigned char)((c & 0x3F) | 0x80);
-        buf[3] = '\0';
-        return (buf);
-    }
-    if (c <= 0x10FFFF)
-    {
-        buf[0] = (unsigned char)((c >> 18) | 0xF0);
-        buf[1] = (unsigned char)(((c >> 12) & 0x3F) | 0x80);
-        buf[2] = (unsigned char)(((c >> 6) & 0x3F) | 0x80);
-        buf[3] = (unsigned char)((c & 0x3F) | 0x80);
-        buf[4] = '\0';
-        return (buf);
+        buf[i++] = (unsigned char)((c >> 18) | 0xF0);
+        buf[i++] = (unsigned char)(((c >> 12) & 0x3F) | 0x80);
+        buf[i++] = (unsigned char)(((c >> 6) & 0x3F) | 0x80);
+        buf[i] = (unsigned char)((c & 0x3F) | 0x80);
     }
     return (buf);
 }

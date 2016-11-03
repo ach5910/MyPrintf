@@ -92,26 +92,35 @@ size_t	parse_conv_spec(va_list *ap, t_fmt **args, char **fmt)
 	}
 	if (**fmt == 'O' || **fmt == 'X')
 		(*args)->is_upper = 1;
+	size = ft_print_conv(ap, args, fmt);
+	return (size);
+}
+
+size_t	ft_print_conv(va_list *ap, t_fmt **args, char **fmt)
+{
+	size_t size;
+
+	size = 0;
 	if (**fmt == 'x' || **fmt == 'X')
-		size += ft_printf_hex(ap, args);
+		size = ft_printf_hex(ap, args);
 	else if (**fmt == 'd' || **fmt == 'i')
-		size += ft_printf_int(ap, args);
+		size = ft_printf_int(ap, args);
 	else if (**fmt == 'o' || **fmt == 'O')
-		size += ft_printf_oct(ap, args);
+		size = ft_printf_oct(ap, args);
 	else if (**fmt == 'u' || **fmt == 'U')
-		size += ft_printf_uint(ap, args);
+		size = ft_printf_uint(ap, args);
 	else if (**fmt == 's' || **fmt == 'S')
-		size += ft_printf_string(ap, args);
+		size = ft_printf_string(ap, args);
 	else if (**fmt == 'c' || **fmt == 'C')
-		size += ft_printf_char(ap, args);
+		size = ft_printf_char(ap, args);
 	else if (**fmt == 'p')
-		size += ft_printf_ptr(ap, args);
+		size = ft_printf_ptr(ap, args);
 	else if (**fmt == 'b')
-		size += ft_printf_binary(ap, args);
+		size = ft_printf_binary(ap, args);
 	else if (**fmt == 'T')
 	{
-		size += ft_print_color(ap, args);
-		(*fmt) += 10;
+		size = ft_print_color(ap, args);
+		(*fmt) += 8;
 	}
 	return (size);
 }

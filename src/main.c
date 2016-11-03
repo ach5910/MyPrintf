@@ -6,12 +6,13 @@
 /*   By: ahunt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/24 20:42:09 by ahunt             #+#    #+#             */
-/*   Updated: 2016/10/25 13:43:56 by ahunt            ###   ########.fr       */
+/*   Updated: 2016/11/02 15:05:52 by ahunt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <locale.h>
+
 int main(void)
 {
  	int size;
@@ -645,40 +646,43 @@ int main(void)
     ft_printf("Return size: %d\n", size);
 
     ft_printf("---Color(Bonus)---\n");
-    size = ft_printf("%T%d%d%d%d%s T\n",BOLD, RED, BLACK, 1, "BRIGHT, RED, BLACK");
+    size = ft_printf("%T%d%d%d%s T\n",BOLD, RED, BLACK, "BOLD, RED, BLACK");
     ft_printf("Return size: %d\n", size);
 
-    size = ft_printf("%T%d%d%d%d%s T\n",DIM, BLUE, YELLOW, 1, "DIM, BLUE, YELLOW");
+    size = ft_printf("%T%d%d%d%s T\n",DIM, BLUE, YELLOW, "DIM, BLUE, YELLOW");
     ft_printf("Return size: %d\n", size);
 
-    size = ft_printf("%T%d%d%d%d%s T\n",UNDERLINE, GREEN, MAGENTA, 1, "UNDERLINE, GREEN, MAGENTA");
+    size = ft_printf("%T%d%d%d%s T\n",UNDERLINE, GREEN, MAGENTA, "UNDERLINE, GREEN, MAGENTA");
     ft_printf("Return size: %d\n", size);
 
-    size = ft_printf("%T%d%d%d%d%s T\n",ITALIC, CYAN, WHITE, 1, "ITALIC, CYAN, WHITE");
+    size = ft_printf("%T%d%d%d%s T\n",ITALIC, CYAN, WHITE, "ITALIC, CYAN, WHITE");
     ft_printf("Return size: %d\n", size);
 
-    size = ft_printf("%T%d%d%d%d%s T\n",BLINK, BLACK, GREEN, 1, "BLINK, BLACK, GREEN");
+    size = ft_printf("%T%d%d%d%s T\n",BLINK, BLACK, GREEN, "BLINK, BLACK, GREEN");
     ft_printf("Return size: %d\n", size);
 
-    size = ft_printf("%T%d%d%d%d%s T\n",REVERSE, WHITE, RED, 1,  "REVERSE, WHITE, RED");
+    size = ft_printf("%T%d%d%d%s T\n",REVERSE, WHITE, RED, "REVERSE, WHITE, RED");
     ft_printf("Return size: %d\n", size);
 
-    size = ft_printf("%T%d%d%d%d%s T\n",HIDDEN, YELLOW, BLACK, 1, "HIDDEN, YELLOW, BLACK");
+    size = ft_printf("%T%d%d%d%s T\n",HIDDEN, YELLOW, BLACK, "HIDDEN, YELLOW, BLACK");
     ft_printf("Return size: %d\n", size);
 
-    size = ft_printf("%20T%d%d%d%d%s 20T\n",BOLD, RED, BLACK, 1, "BRIGHT, RED, BLACK");
+    size = ft_printf("%20T%d%d%d%s 20T\n",BOLD, RED, BLACK, "BOLD, RED, BLACK");
     ft_printf("Return size: %d\n", size);
 
-    size = ft_printf("%-20T%d%d%d%d%s -20T\n",BOLD, RED, BLACK, 1, "BRIGHT, RED, BLACK");
+    size = ft_printf("%-20T%d%d%d%s -20T\n",BOLD, RED, BLACK, "BOLD, RED, BLACK");
     ft_printf("Return size: %d\n", size);
 
-    size = ft_printf("%-20.10T%d%d%d%d%s -20.10T\n",BOLD, RED, BLACK, 1, "BRIGHT, RED, BLACK");
+    size = ft_printf("%-20.10T%d%d%d%s -20.10T\n",BOLD, RED, BLACK, "BOLD, RED, BLACK");
     ft_printf("Return size: %d\n", size);
 
-    size = ft_printf("%20.10T%d%d%d%d%s 20.10T\n",BOLD, RED, BLACK, 1, "BRIGHT, RED, BLACK");
+    size = ft_printf("%20.10T%d%d%d%s 20.10T\n",BOLD, RED, BLACK, "BOLD, RED, BLACK");
     ft_printf("Return size: %d\n", size);
 
-    size = ft_printf("%.5T%d%d%d%d%s .5T\n",BOLD, RED, BLACK, 1, "BRIGHT, RED, BLACK");
+    size = ft_printf("%.5T%d%d%d%s .5T\n",BOLD, RED, BLACK, "BOLD, RED, BLACK");
+    ft_printf("Return size: %d\n", size);
+
+    size = ft_printf("%010x \n", 542);
     ft_printf("Return size: %d\n", size);
 
 	return (0);

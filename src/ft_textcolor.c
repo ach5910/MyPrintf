@@ -15,17 +15,12 @@
 size_t ft_print_color(va_list *ap, t_fmt **args)
 {
 	size_t size;
-	int auto_reset;
 
 	ft_setcolor(ap);
 	size = 10;
-	auto_reset = va_arg(*ap, int);
 	size += ft_printf_string(ap, args);
-	if (auto_reset)
-	{
-		ft_printf("\033[%d;%d;%dm", RESET, WHITE + 30, BLACK + 40);
-		size += 10;
-	}
+	ft_printf("\033[%d;%d;%dm", RESET, WHITE + 30, BLACK + 40);
+	size += 10;
 	return (size);
 }
 

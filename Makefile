@@ -42,6 +42,7 @@ SRC_BASE =	ft_printf.c \
 
 OBJ_DIR = ./obj
 
+
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRC_BASE:.c=.o))
 
 all: obj $(LIB) $(NAME)

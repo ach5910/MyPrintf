@@ -15,20 +15,16 @@
 
 size_t	ft_printf_wstring(va_list *ap, t_fmt **args)
 {
-	unsigned char	*dest;
 	wchar_t *src;
 	size_t		size;
 	int		chcnt;
-	int		i;
 	int		has_percision;
+	int		i;
 
 	src = va_arg(*ap, wchar_t*);
 	chcnt = 0;
-	i = 0;
 	size = 0;
-	has_percision = 0;
-	if ((*args)->min_width)
-		has_percision = 1;
+	has_percision = (*args)->min_width ? 1 : 0;
 	while ((i = ft_get_bytes_wc(src[chcnt])) != 0)
 	{
 		if (has_percision && ((*args)->min_width -= i) < 0)
@@ -36,27 +32,33 @@ size_t	ft_printf_wstring(va_list *ap, t_fmt **args)
 		size += i;
 		chcnt++;
 	}
+	size = ft_put_wstr(args, src, chcnt, size);
+	//ft_memdel((void **)&src);
+	return (size);
+}
+
+size_t	ft_put_wstr(t_fmt **args, wchar_t *src, int chcnt, size_t size)
+{
+	unsigned char *dest;
+	int i;
+
 	i = 0;
-	while ((*args)->left_just && chcnt > i)
-	{
-		dest = ft_get_wc(src[i]);
-		ft_putstr((const char *)dest);
-		ft_strdel((char **)&dest);
-		i++;
-	}
-	while  ((size_t)(*args)->width > size)
+	while (!(*args)->left_just && (size_t)(*args)->width > size)
  	{
 		ft_putchar(' ');
 		size++;
 	}
-	i = 0;
-	while (!(*args)->left_just && chcnt > i)
+	while (chcnt > i)
 	{
 		dest = ft_get_wc(src[i]);
 		ft_putstr((const char *)dest);
 		ft_strdel((char **)&dest);
 		i++;
 	}
-	//ft_memdel((void **)&src);
+	while ((*args)->left_just && (size_t)(*args)->width > size)
+ 	{
+		ft_putchar(' ');
+		size++;
+	}
 	return (size);
 }

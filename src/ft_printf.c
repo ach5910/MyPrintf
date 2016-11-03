@@ -55,8 +55,6 @@ size_t	parse_format(va_list *ap, const char *fmt)
 		size += ft_strlen(cursor);
 		ft_putstr(cursor);
 	}
-	// if (cursor && *cursor)
-	// 	ft_strdel(&cursor);
 	return (size);
 }
 
