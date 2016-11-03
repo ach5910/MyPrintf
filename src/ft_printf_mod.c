@@ -18,14 +18,13 @@ size_t			ft_printf_mod(va_list *ap, t_fmt **args)
 
 	(void)*ap;
 	size = 1;
-	if ((*args)->min_width == 0)
+	if (((*args)->has_percision) && (*args)->min_width == 0)
 	{	
 		ft_putchar('%');
 		return (size);
 	}
 	if ((*args)->left_just)
 		ft_putchar('%');
-	ft_putnbr((*args)->width);
 	while  ((size_t)(*args)->width > size)
 	{
 		ft_putchar(' ');

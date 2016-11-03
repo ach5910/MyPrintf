@@ -20,6 +20,7 @@ t_fmt	*new_format(void)
 
 	temp = (t_fmt *)ft_memalloc(sizeof(t_fmt));
 	temp->hash = 0;
+	temp->has_percision = 0;
 	temp->left_just = 0;
 	temp->pos_val = 0;
 	temp->prepend_sp = 0;

@@ -11,8 +11,13 @@
 # **************************************************************************** #
 
 PRF = libprintf.a
+
 NAME = libftprintf.a
+
+FT_PRINTF = ft_printf
+
 CC = gcc
+
 CFLAGS = -Wall -Wextra -Werror
 
 LIB_PATH = ./libft
@@ -40,6 +45,7 @@ SRC_BASE =	ft_printf.c \
 			ft_get_wide_char.c \
 			ft_textcolor.c \
 			ft_putuint.c \
+			main.c \
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRC_BASE))
 
@@ -53,7 +59,7 @@ OBJ_DIR = ./obj
 
 OBJS = $(SRC_BASE:.c=.o)
 
-all: obj $(LIB) $(PRF) $(NAME)
+all: obj $(LIB) $(PRF) $(NAME) $(FT_PRINTF)
 
 obj:
 	mkdir -p $(OBJ_DIR)
@@ -64,7 +70,8 @@ $(OBJ_DIR)/%.o:$(SRC_DIR)/%.c
 $(LIB):
 	make -C $(LIB_PATH)
 
-$(FT_PRINTFT)
+$(FT_PRINTF): $(OBJS)
+	$(CC) $(LIB_LINK) -o $@ $^
 
 $(PRF):
 	$(CC) $(CFLAGS) -I$(LIB_PATH) $(INCS) -c $(SRC)

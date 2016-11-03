@@ -133,11 +133,6 @@ size_t	parse_args(va_list *ap,t_fmt **args, char **fmt)
 
 	size = 0;
 	(*fmt)++;
-	if (**fmt == '%')
-	{
-		ft_putchar('%');
-		return (1);
-	}
 	parse_flags(args, fmt);
 	parse_num(args, fmt, 1);
 	if(**fmt  == '.')

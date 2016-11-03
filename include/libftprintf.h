@@ -47,6 +47,7 @@
 typedef struct	s_fmt
 {
 	int			hash;
+	int			has_percision;
 	int			left_just;
 	int			pos_val;
 	int			prepend_sp;
@@ -65,7 +66,7 @@ size_t				parse_conv_spec(va_list *ap, t_fmt **args, char **fmt);
 void			parse_flags(t_fmt **args, char **fmt);
 void			parse_num(t_fmt **args, char **fmt, int is_width);
 void			parse_length(t_fmt **args, char **fmt);
-void			ft_prepend_prefix(char **nstr, char *prefix, int base, uintmax_t nbr);
+void			ft_prfx(char **nstr, char *prfx, int b, char pre, int left_just);
 size_t				ft_printf_int(va_list *ap, t_fmt **args);
 size_t				ft_printf_mod(va_list *ap, t_fmt **args);
 size_t				ft_printf_uint(va_list *ap, t_fmt **args);
@@ -79,8 +80,8 @@ size_t				ft_put_wstr(t_fmt **args, wchar_t *src, int chcnt, size_t size);
 size_t				ft_printf_ptr(va_list *ap, t_fmt **args);
 size_t				ft_printf_binary(va_list *ap, t_fmt **args);
 size_t			ft_print_conv(va_list *ap, t_fmt **args, char **fmt);
-size_t			ft_justify(t_fmt **args, char **nstr);
-size_t				ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base);
+void			ft_just(t_fmt **args, char **nstr, char pre);
+size_t				ft_putuint(t_fmt **args, char *prfx, uintmax_t n, int b);
 unsigned char   *ft_get_wc(wchar_t c);
 size_t				ft_get_bytes_wc(wchar_t c);
 intmax_t		ft_get_int_length(va_list *ap, t_fmt **args);

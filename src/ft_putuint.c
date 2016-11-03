@@ -41,41 +41,51 @@ char	*ft_itoa_base(uintmax_t value, int base, int is_upper)
 	return (nbr);
 }
 
-void	ft_prepend_prefix(char **nstr, char *prefix, int base, uintmax_t nbr)
+void	ft_prfx(char **nstr, char *prfx, int b, char pre, int left_just)
 {
-	if (prefix[0] != '\0' && base == 8 && prefix[0] != *nstr[0])
-		*nstr = ft_strjoin(prefix, *nstr);
-	else if (prefix[0] != '\0' && base == 16 && nbr != 0)
-		*nstr = ft_strjoin(prefix, *nstr);
-	else if (prefix[0] != '\0' && base != 8 && base != 16)
-		*nstr = ft_strjoin(prefix, *nstr);
-}
-
-size_t	ft_justify(t_fmt **args, char **nstr)
-{
-	char	*prepend;
-	size_t	size;
-
-	prepend = ft_strnew(1);
-	prepend[0] = ((*args)->prepend_zeros && !(*args)->pos_val &&
-			!(*args)->min_width) ? '0' : ' ';
-	size = ft_strlen(*nstr);
-	while  ((size_t)(*args)->width > size)
+	if (prfx[0] != '\0' && (left_just || !(left_just && pre != '0')))
 	{
-		*nstr = (*args)->left_just ? ft_strjoin(*nstr, prepend) : ft_strjoin(
-			prepend, *nstr);
-		size++;
+		if (b == 8 && prfx[0] != *nstr[0])
+			*nstr = ft_strjoin(prfx, *nstr);
+		else if (b != 8)
+			*nstr = ft_strjoin(prfx, *nstr);
 	}
-	ft_strdel(&prepend);
-	return (size);
+	else if (prfx[0] != '\0')
+	{
+		if (b == 16)
+			*nstr[1] = prfx[1];
+		else
+			*nstr[0] = prfx[0];
+	}
 }
 
-size_t		ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base)
+void	ft_just(t_fmt **args, char **nstr, char pre)
+{
+	size_t	size;
+	char	*pad;
+
+	if ((size_t)(*args)->width - ft_strlen(*nstr) > 0)
+	{
+		size = (size_t)(*args)->width - ft_strlen(*nstr);
+		pad = ft_strnew(size);
+		pad = (char *)ft_memset(pad, (int)pre, size);
+		*nstr = (*args)->left_just ? ft_strjoin(*nstr, " ") : ft_strjoin(
+			pad, *nstr);
+		
+	}
+	ft_strdel(&pad);
+}
+
+size_t		ft_putuint(t_fmt **args, char *prfx, uintmax_t n, int b)
 {
 	char	*nstr;
 	size_t		size;
+	char pre;
 
-	nstr = ft_itoa_base((uintmax_t)nbr, base, (*args)->is_upper);
+
+	pre = ((*args)->prepend_zeros && !(*args)->pos_val &&
+			!(*args)->min_width) ? '0' : ' ';
+	nstr = ft_itoa_base((uintmax_t)n, b, (*args)->is_upper);
 	while (*nstr == '0' && nstr[1] != '\0')
 		nstr++;
 	size = ft_strlen(nstr);
@@ -84,8 +94,11 @@ size_t		ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base)
 		nstr = ft_strjoin("0", nstr);
 		size++;
 	}
-	ft_prepend_prefix(&nstr, prefix, base, nbr);
-	size = ft_justify(args, &nstr);
+	(*args)->left_just ? ft_prfx(&nstr, prfx, b, pre, 1) 
+		: ft_just(args, &nstr, pre);
+	!(*args)->left_just ? ft_prfx(&nstr, prfx, b, pre, 0) 
+		: ft_just(args, &nstr, pre);
+	size = ft_strlen(nstr);
 	ft_putstr(nstr);
 	// if (nstr && *nstr)
 	// 	ft_strdel(&nstr);
