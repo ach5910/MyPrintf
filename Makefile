@@ -43,9 +43,25 @@ SRC_BASE =	ft_printf.c \
 			ft_textcolor.c \
 			ft_putuint.c \
 
+LIBFT_FUNC = ft_isdigit \
+			ft_memalloc \
+			ft_memdel \
+			ft_putchar \
+			ft_putstr \
+			ft_strchr \
+			ft_strdel \
+			ft_strdup \
+			ft_strlen \
+			ft_strjoin \
+			ft_strnew \
+			ft_bzero \
+			ft_strcpy \
+			ft_strncpy \
+
 SRC = $(addprefix src/, $(SRC_BASE))
 
 OBJS = $(addprefix obj/, $(SRC_BASE:.c=.o))
+OBJS += $(foreach fun, $(LIBFT_FUNC), obj/libft/$(fun).o)
 
 all: $(LIBFT) $(NAME)
 
@@ -56,16 +72,20 @@ $(OBJS): | obj
 
 obj:
 	mkdir -p $@
+	mkdir -p $@/libft
 
 obj/%.o: src/%.c
 	$(CC) $(CFLAGS) -o $@ -c $<
 
+obj/libft/%.o: libft/%.c
+	$(CC) $(CFLAGS) -o $@ -c $<
+
 $(NAME): $(OBJS)
-	$(AR) -rcs $@ $^
+	$(AR) -rcs $@ $^ $(LIBFT)
 	$(RLIB) $@
 
 test: $(NAME)
-	$(CC) $(CFLAGS) -o $@ src/main.c -L. -lftprintf $(LIBFT)
+	$(CC) $(CFLAGS) -o $@ src/main.c -L. -lftprintf $(LIBFT_LINK)
 
 clean:
 	rm -f $(OBJS)
