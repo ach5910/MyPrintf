@@ -51,30 +51,31 @@ void	ft_prepend_prefix(char **nstr, char *prefix, int base, uintmax_t nbr)
 		*nstr = ft_strjoin(prefix, *nstr);
 }
 
-size_t	ft_justify(t_fmt **args, char **nstr)
+void	ft_justify(t_fmt **args, char **nstr, size_t offset)
 {
 	char	*prepend;
 	size_t	size;
 
 	prepend = ft_strnew(1);
-	prepend[0] = ((*args)->prepend_zeros && !(*args)->pos_val &&
-			!(*args)->min_width) ? '0' : ' ';
-	size = ft_strlen(*nstr);
+	prepend[0] = ((*args)->prepend_zeros && !(*args)->min_width) ? '0' : ' ';
+	size = ft_strlen(*nstr) + offset;
 	while  ((size_t)(*args)->width > size)
 	{
-		*nstr = (*args)->left_just ? ft_strjoin(*nstr, prepend) : ft_strjoin(
+		*nstr = (*args)->left_just ? ft_strjoin(*nstr, " ") : ft_strjoin(
 			prepend, *nstr);
 		size++;
 	}
 	ft_strdel(&prepend);
-	return (size);
 }
+
 
 size_t		ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base)
 {
 	char	*nstr;
 	size_t		size;
 
+	if ((*args)->has_percision && (*args)->min_width == 0 && nbr == 0)
+		return ((*args)->width);
 	nstr = ft_itoa_base((uintmax_t)nbr, base, (*args)->is_upper);
 	while (*nstr == '0' && nstr[1] != '\0')
 		nstr++;
@@ -84,8 +85,13 @@ size_t		ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base)
 		nstr = ft_strjoin("0", nstr);
 		size++;
 	}
+
+	if ((*args)->left_just || ((*args)->prepend_zeros && !(*args)->min_width))
+		ft_justify(args, &nstr, ft_strlen(prefix));
 	ft_prepend_prefix(&nstr, prefix, base, nbr);
-	size = ft_justify(args, &nstr);
+	if (!(*args)->left_just && !(*args)->prepend_zeros)
+		ft_justify(args, &nstr, 0);
+	size = ft_strlen(nstr);
 	ft_putstr(nstr);
 	// if (nstr && *nstr)
 	// 	ft_strdel(&nstr);

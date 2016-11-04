@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_oct.c                                    :+:      :+:    :+:   */
+/*   ft_printf_mod.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahunt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/28 04:12:11 by ahunt             #+#    #+#             */
-/*   Updated: 2016/10/28 04:12:14 by ahunt            ###   ########.fr       */
+/*   Created: 2016/11/04 03:19:28 by ahunt             #+#    #+#             */
+/*   Updated: 2016/11/04 03:19:32 by ahunt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-size_t			ft_printf_oct(va_list *ap, t_fmt **args)
+size_t	ft_printf_mod(va_list *ap, t_fmt **args)
 {
-	uintmax_t		nbr;
-	char		*prefix;
-	size_t			size;
+	size_t size;
 
-	nbr = ft_get_uint_length(ap, args);
-	prefix = ft_strnew(1);
-	if ((*args)->hash)
-		prefix[0] = '0';
-	else
-		prefix[0] = '\0';
-	size = ft_putuint(args, prefix, nbr, 8);
-	if (size == 0 && (*args)->hash)
-	// {
-	// 	ft_putchar(*prefix);
-	// 	size = 1;
-	// }
-	ft_strdel(&prefix);
+	size = 1;
+	if (1 == 2)
+		va_arg(*ap, int);
+	if ((*args)->left_just)
+		ft_putchar('%');
+	while  ((size_t)(*args)->width > size)
+	{
+		ft_putchar(' ');
+		size++;
+	}
+	if (!(*args)->left_just)
+		ft_putchar('%');
 	return (size);
 }

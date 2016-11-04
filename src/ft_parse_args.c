@@ -117,6 +117,8 @@ size_t	ft_print_conv(va_list *ap, t_fmt **args, char **fmt)
 		size = ft_printf_ptr(ap, args);
 	else if (**fmt == 'b')
 		size = ft_printf_binary(ap, args);
+	else if (**fmt == '%')
+		size = ft_printf_mod(ap, args);
 	else if (**fmt == 'T')
 	{
 		size = ft_print_color(ap, args);
@@ -131,16 +133,22 @@ size_t	parse_args(va_list *ap,t_fmt **args, char **fmt)
 
 	size = 0;
 	(*fmt)++;
-	if (**fmt == '%')
-	{
-		ft_putchar('%');
-		return (1);
-	}
 	parse_flags(args, fmt);
 	parse_num(args, fmt, 1);
 	if(**fmt  == '.')
+	{
+		(*args)->has_percision = 1;
 		parse_num(args, fmt, 0);
+	}
 	parse_length(args, fmt);
 	size = parse_conv_spec(ap, args, fmt);
+	if (size == 0 && **fmt != '\0')
+	{
+		if ((ft_strchr("xXdioOuUsScCpbT%", **fmt)) == NULL)
+		{
+			ft_putchar(**fmt);
+			size = 0;
+		}
+	}
 	return (size);
 }

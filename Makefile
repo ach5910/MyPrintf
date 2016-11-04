@@ -40,6 +40,7 @@ SRC_BASE =	ft_printf.c \
 			ft_printf_uint.c \
 			ft_printf_binary.c \
 			ft_get_wide_char.c \
+			ft_printf_mod.c \
 			ft_textcolor.c \
 			ft_putuint.c \
 

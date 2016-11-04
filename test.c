@@ -612,7 +612,7 @@ int main(void)
     printf("---Wide String---\n");
     wchar_t *wstr = L"Ωa¥";
     wchar_t *wsrc = L"Приве́т नमस्ते שָׁלוֹם";
-    wchar_t *wbuf = L"🐨 ☺ mЖu丽oϟϿ_ԧ ☠ ✊ ∞";
+    wchar_t *wbuf = L"🐨 ☺ mЖuvoϟϿ_ԧ ☠ ✊ ∞";
 
     size = printf("%ls ls\n", wstr);
     printf("Return size: %d\n", size);
@@ -721,6 +721,24 @@ int main(void)
 	size += printf("%.5s", "BOLD, RED, BLACK");
 	size += textcolor(RESET, WHITE, BLACK);
 	printf(" .5T\nReturn size: %d\n", size + 5);
+
+    size = printf("%010x \n", 542);
+    printf("Return size: %d\n", size);
+
+    size = printf("@moulitest: %#.o %#.0o", 0, 0);
+    printf("\nReturn size: %d\n", size);
+
+    size = printf("@moulitest: %#.x %#.0x", 0, 0);
+    printf("\nReturn size: %d\n", size);
+
+    size = printf("@moulitest: 丽");
+    printf("Return size: %d\n", size);
+
+    size = printf("@moulitest: Ԙ");
+    printf("Return size: %d\n", size);
+
+    size = printf("%20.5ls", L"Ԙ");
+    printf("Return size: %d\n", size);
 
 	return (0);
 }
