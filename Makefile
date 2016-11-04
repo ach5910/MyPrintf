@@ -10,18 +10,22 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ft_printf
+NAME = libftprintf.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 LIB_PATH = ./libft
-LIB = $(LIB_PATH)/libft.a
-LIB_LINK = -L$(LIB_PATH) -lft
+LIBFT = $(LIB_PATH)/libft.a
+LIBFT_LINK = -L$(LIB_PATH) -lft
 
-INC_DIR = ./include
-INCS = -I$(INC_DIR)
+INC_DIR +=  include/ libft/
+CFLAGS += $(foreach d, $(INC_DIR), -I$d)
 
-SRC_DIR = ./src
+AR = ar
+
+RLIB = ranlib
+
+SRC_DIR = src
 SRC_BASE =	ft_printf.c \
 			ft_get_length.c \
 			ft_parse_args.c \
@@ -38,34 +42,40 @@ SRC_BASE =	ft_printf.c \
 			ft_get_wide_char.c \
 			ft_textcolor.c \
 			ft_putuint.c \
-			main.c
 
-OBJ_DIR = ./obj
+SRC = $(addprefix src/, $(SRC_BASE))
 
+OBJS = $(addprefix obj/, $(SRC_BASE:.c=.o))
 
-OBJS = $(addprefix $(OBJ_DIR)/, $(SRC_BASE:.c=.o))
+all: $(LIBFT) $(NAME)
 
-all: obj $(LIB) $(NAME)
+$(LIBFT):
+	make -C libft
+
+$(OBJS): | obj
 
 obj:
-	mkdir -p $(OBJ_DIR)
+	mkdir -p $@
 
-$(OBJ_DIR)/%.o:$(SRC_DIR)/%.c
-	$(CC) $(CFLAGS) -I$(LIB_PATH) $(INCS) -o $@ -c $<
-
-$(LIB):
-	make -C $(LIB_PATH)
+obj/%.o: src/%.c
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 $(NAME): $(OBJS)
-	$(CC) $(LIB_LINK) -o $@ $^
+	$(AR) -rcs $@ $^
+	$(RLIB) $@
+
+test: $(NAME)
+	$(CC) $(CFLAGS) -o $@ src/main.c -L. -lftprintf $(LIBFT)
 
 clean:
-	rm -rf $(OBJ_DIR)
-	make -C $(LIB_PATH) clean
+	rm -f $(OBJS)
+	make -C ./libft clean
 
 fclean:
 	rm -rf $(NAME)
-	make -C $(LIB_PATH) fclean
+	rm -rf obj
+	rm -rf test
+	make -C ./libft fclean
 
 re: fclean all
 
