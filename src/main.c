@@ -720,5 +720,12 @@ int main(void)
 
     size = ft_printf("{%10R}");
     ft_printf("\nReturn size: %d\n", size);
+
+    size = ft_printf("%.p, %.0p", 0, 0);
+    ft_printf("\nReturn size: %d\n", size);
+
+    size = ft_printf("{%05.c}", 0);
+    ft_printf("\nReturn size: %d\n", size);
+
 	return (0);
 }

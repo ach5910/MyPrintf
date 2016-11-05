@@ -27,7 +27,7 @@ size_t			ft_printf_char(va_list *ap, t_fmt **args)
 			ft_putchar(ch);
 		while  ((size_t)(*args)->width > size)
 		{
-			ft_putchar(' ');
+			(*args)->prepend_zeros ? ft_putchar('0') : ft_putchar(' ');
 			size++;
 		}
 		if (!(*args)->left_just)

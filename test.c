@@ -761,5 +761,11 @@ int main(void)
     size = printf("{%10R}");
     printf("\nReturn size: %d\n", size);
 
+    size = printf("%.p, %.0p", 0, 0);
+    printf("\nReturn size: %d\n", size);
+
+    size = printf("{%05.c}", 0);
+    printf("\nReturn size: %d\n", size);
+    
 	return (0);
 }
