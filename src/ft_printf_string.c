@@ -25,7 +25,7 @@ size_t			ft_printf_string(va_list *ap, t_fmt **args)
 		if ((temp = va_arg(*ap, char*)) == NULL)
 		{
 			ft_putstr("(null)");
-			return (4);
+			return (6);
 		}
 		str = ft_strdup(temp);
 		if ((*args)->min_width && (size_t)(*args)->min_width < ft_strlen(str))

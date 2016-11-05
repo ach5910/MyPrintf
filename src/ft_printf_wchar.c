@@ -20,7 +20,11 @@ size_t	ft_printf_wchar(va_list *ap, t_fmt **args)
 	unsigned char *dest;
 	wchar_t	ch;
 
-	ch = (wchar_t)va_arg(*ap, wint_t);
+	if ((ch = (wchar_t)va_arg(*ap, wint_t)) == 0)
+	{
+		ft_putchar('\0');
+		return (1);
+	}
 	dest = ft_get_wc(ch);
 	size = ft_strlen((const char *)dest);
 	if ((*args)->left_just)

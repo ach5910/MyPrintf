@@ -23,8 +23,8 @@ size_t	ft_printf_wstring(va_list *ap, t_fmt **args)
 
 	if ((src = va_arg(*ap, wchar_t*)) == NULL)
 	{
-		ft_putstr("");
-		return (4);
+		ft_putstr("(null)");
+		return (6);
 	}
 	chcnt = 0;
 	size = 0;

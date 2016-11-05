@@ -703,6 +703,22 @@ int main(void)
     size = ft_printf("%s", NULL);
     ft_printf("\nReturn size: %d\n", size);
 
-    
+    size = ft_printf("{%S}", NULL);
+    ft_printf("\nReturn size: %d\n", size);
+
+    size = ft_printf("{%C}", 0);
+    ft_printf("\nReturn size: %d\n", size);
+
+    size = ft_printf("{%s}", 0);
+    ft_printf("\nReturn size: %d\n", size);
+
+    size = ft_printf("{%5p}", 0);
+    ft_printf("\nReturn size: %d\n", size);
+
+    size = ft_printf("{%-5p}", 0);
+    ft_printf("\nReturn size: %d\n", size);
+
+    size = ft_printf("{%10R}");
+    ft_printf("\nReturn size: %d\n", size);
 	return (0);
 }

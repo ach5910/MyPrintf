@@ -103,7 +103,7 @@ size_t	ft_print_conv(va_list *ap, t_fmt **args, char **fmt)
 	size = 0;
 	if (**fmt == 'x' || **fmt == 'X')
 		size = ft_printf_hex(ap, args);
-	else if (**fmt == 'd' || **fmt == 'i')
+	else if (**fmt == 'd' || **fmt == 'i' || **fmt == 'D')
 		size = ft_printf_int(ap, args);
 	else if (**fmt == 'o' || **fmt == 'O')
 		size = ft_printf_oct(ap, args);
@@ -144,10 +144,14 @@ size_t	parse_args(va_list *ap,t_fmt **args, char **fmt)
 	size = parse_conv_spec(ap, args, fmt);
 	if (size == 0 && **fmt != '\0')
 	{
-		if ((ft_strchr("xXdioOuUsScCpbT%", **fmt)) == NULL)
+		if ((ft_strchr("xXdDioOuUsScCpbT%", **fmt)) == NULL)
 		{
-			ft_putchar(**fmt);
-			size = 0;
+			if ((*args)->left_just)
+				ft_putchar(**fmt);
+			while ((size_t)(*args)->width > ++size)
+				ft_putchar(' ');
+			if (!(*args)->left_just)
+				ft_putchar(**fmt);
 		}
 	}
 	return (size);

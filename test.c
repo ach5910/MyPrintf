@@ -743,9 +743,23 @@ int main(void)
     size = printf("%s", NULL);
     printf("\nReturn size: %d\n", size);
 
-    size = printf("%ls", NULL);
+    size = printf("{%S}", NULL);
     printf("\nReturn size: %d\n", size);
 
+    size = printf("{%C}", 0);
+    printf("\nReturn size: %d\n", size);
+
+    size = printf("{%s}", 0);
+    printf("\nReturn size: %d\n", size);
+
+    size = printf("{%5p}", 0);
+    printf("\nReturn size: %d\n", size);
+
+    size = printf("{%-5p}", 0);
+    printf("\nReturn size: %d\n", size);
+
+    size = printf("{%10R}");
+    printf("\nReturn size: %d\n", size);
 
 	return (0);
 }

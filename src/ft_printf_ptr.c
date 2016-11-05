@@ -21,9 +21,14 @@ size_t ft_printf_ptr(va_list *ap, t_fmt **args)
 	(*args)->length = LEN_MOD_J;
 	nbr = ft_get_uint_length(ap, args);
 	nstr = ft_itoa_base(nbr, 16, (*args)->is_upper);
-	nstr = ft_strjoin("Ox", nstr);
+	nstr = ft_strjoin("0x", nstr);
 	size = ft_strlen(nstr);
+	while ((size_t)(*args)->width > size)
+	{
+		nstr = (*args)->left_just ? ft_strjoin(nstr, " ") : ft_strjoin(" ", nstr);
+		size++;
+	}
 	ft_putstr(nstr);
-	ft_strdel(&nstr);
+		//ft_strdel(&nstr);
 	return (size);
 }
