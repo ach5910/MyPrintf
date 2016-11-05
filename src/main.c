@@ -692,12 +692,17 @@ int main(void)
     ft_printf("\nReturn size: %d\n", size);
 
     size = ft_printf("@moulitest: 丽");
-    ft_printf("Return size: %d\n", size);
+    ft_printf("\nReturn size: %d\n", size);
 
     size = ft_printf("@moulitest: Ԙ");
-    ft_printf("Return size: %d\n", size);
+    ft_printf("\nReturn size: %d\n", size);
 
     size = ft_printf("%20.5ls", L"Ԙ");
-    ft_printf("Return size: %d\n", size);
+    ft_printf("\nReturn size: %d\n", size);
+
+    size = ft_printf("%s", NULL);
+    ft_printf("\nReturn size: %d\n", size);
+
+    
 	return (0);
 }

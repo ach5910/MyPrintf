@@ -21,7 +21,11 @@ size_t	ft_printf_wstring(va_list *ap, t_fmt **args)
 	int		has_percision;
 	int		i;
 
-	src = va_arg(*ap, wchar_t*);
+	if ((src = va_arg(*ap, wchar_t*)) == NULL)
+	{
+		ft_putstr("");
+		return (4);
+	}
 	chcnt = 0;
 	size = 0;
 	has_percision = (*args)->min_width ? 1 : 0;

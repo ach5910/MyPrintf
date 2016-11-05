@@ -15,13 +15,19 @@
 size_t			ft_printf_string(va_list *ap, t_fmt **args)
 {
 	char		*str;
+	char		*temp;
 	size_t			size;
 
 	if ((*args)->length == LEN_MOD_L)
 		size = ft_printf_wstring(ap, args);
 	else
 	{
-		str = ft_strdup(va_arg(*ap, char*));
+		if ((temp = va_arg(*ap, char*)) == NULL)
+		{
+			ft_putstr("(null)");
+			return (4);
+		}
+		str = ft_strdup(temp);
 		if ((*args)->min_width && (size_t)(*args)->min_width < ft_strlen(str))
 			str[(*args)->min_width] = '\0';
 		size = ft_strlen(str);

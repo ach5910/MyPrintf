@@ -740,5 +740,12 @@ int main(void)
     size = printf("%20.5ls", L"Ԙ");
     printf("Return size: %d\n", size);
 
+    size = printf("%s", NULL);
+    printf("\nReturn size: %d\n", size);
+
+    size = printf("%ls", NULL);
+    printf("\nReturn size: %d\n", size);
+
+
 	return (0);
 }
