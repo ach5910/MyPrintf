@@ -27,7 +27,7 @@ size_t		ft_printf_int(va_list *ap, t_fmt **args)
 	}
 	else if ((*args)->pos_val)
 		prefix[0] = '+';
-	else if ((*args)->prepend_sp && !(*args)->prepend_zeros)
+	else if ((*args)->prepend_sp) // && !(*args)->prepend_zeros)
 		prefix[0] = ' ';
 	else
 		prefix[0] = '\0';

@@ -21,13 +21,22 @@ size_t	ft_printf_wstring(va_list *ap, t_fmt **args)
 	int		has_percision;
 	int		i;
 
+	chcnt = 0;
+	size = 0;
 	if ((src = va_arg(*ap, wchar_t*)) == NULL)
 	{
 		ft_putstr("(null)");
 		return (6);
 	}
-	chcnt = 0;
-	size = 0;
+	if ((*args)->has_percision && (*args)->min_width == 0)
+	{
+		while((size_t)(*args)->width > size)
+		{
+			(*args)->prepend_zeros ? ft_putchar('0') : ft_putchar(' ');
+			size++;
+		}
+		return (size);
+	}
 	has_percision = (*args)->min_width ? 1 : 0;
 	while ((i = ft_get_bytes_wc(src[chcnt])) != 0)
 	{
@@ -45,11 +54,13 @@ size_t	ft_put_wstr(t_fmt **args, wchar_t *src, int chcnt, size_t size)
 {
 	unsigned char *dest;
 	int i;
+	char 	prepend;
 
 	i = 0;
+	prepend = ((*args)->prepend_zeros && !(*args)->min_width) ? '0' : ' ';
 	while (!(*args)->left_just && (size_t)(*args)->width > size)
  	{
-		ft_putchar(' ');
+		ft_putchar(prepend);
 		size++;
 	}
 	while (chcnt > i)
@@ -61,7 +72,7 @@ size_t	ft_put_wstr(t_fmt **args, wchar_t *src, int chcnt, size_t size)
 	}
 	while ((*args)->left_just && (size_t)(*args)->width > size)
  	{
-		ft_putchar(' ');
+		ft_putchar(prepend);
 		size++;
 	}
 	return (size);

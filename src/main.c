@@ -596,7 +596,7 @@ int main(void)
     ft_printf("---Wide String---\n");
     wchar_t *wstr = L"Ωa¥";
     wchar_t *wsrc = L"Приве́т नमस्ते שָׁלוֹם";
-    wchar_t *wbuf = L"🐨 ☺ mЖu丽oϟϿ_ԧ ☠ ✊ ∞";
+    wchar_t *wbuf = L"🐨 ☺ mЖuvoϟϿ_ԧ ☠ ✊ ∞";
 
     size = ft_printf("%ls ls\n", wstr);
     ft_printf("Return size: %d\n", size);
@@ -725,6 +725,51 @@ int main(void)
     ft_printf("\nReturn size: %d\n", size);
 
     size = ft_printf("{%05.c}", 0);
+    ft_printf("\nReturn size: %d\n", size);
+
+    size = ft_printf("{%05.s}", 0);
+    ft_printf("\nReturn size: %d\n", size);
+
+    size = ft_printf("{%05.%}", 0);
+    ft_printf("\nReturn size: %d\n", size);
+
+    size = ft_printf("{%05.Z}", 0);
+    ft_printf("\nReturn size: %d\n", size);
+
+    size = ft_printf("{%05.S}", L"42 c est cool");
+    ft_printf("\nReturn size: %d\n", size);
+
+    size = ft_printf("{%05s}", "abc");
+    ft_printf("\nReturn size: %d\n", size);
+
+    size = ft_printf("{%030S}", L"我是一只猫。");
+    ft_printf("\nReturn size: %d\n", size);
+
+    size = ft_printf("{%05p}", 0);
+    ft_printf("\nReturn size: %d\n", size);
+
+    size = ft_printf("%.5p", 0);
+    ft_printf("\nReturn size: %d\n", size);
+
+    size = ft_printf("%2.9p", 1234);
+    ft_printf("\nReturn size: %d\n", size);
+
+    size = ft_printf("%4.s", "42");
+    ft_printf("\nReturn size: %d\n", size);
+
+    size = ft_printf("%4.S", L"我是一只猫。");
+    ft_printf("\nReturn size: %d\n", size);
+
+    size = ft_printf("{% 03d}", 0);
+    ft_printf("\nReturn size: %d\n", size);
+
+    size = ft_printf("{%-05%}");
+    ft_printf("\nReturn size: %d\n", size);
+
+    size = ft_printf("%%   %", "test");
+    ft_printf("\nReturn size: %d\n", size);
+
+    size = ft_printf("%ll#x", 9223372036854775807);
     ft_printf("\nReturn size: %d\n", size);
 
 	return (0);

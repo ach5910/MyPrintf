@@ -732,13 +732,13 @@ int main(void)
     printf("\nReturn size: %d\n", size);
 
     size = printf("@moulitest: 丽");
-    printf("Return size: %d\n", size);
+    printf("\nReturn size: %d\n", size);
 
     size = printf("@moulitest: Ԙ");
-    printf("Return size: %d\n", size);
+    printf("\nReturn size: %d\n", size);
 
     size = printf("%20.5ls", L"Ԙ");
-    printf("Return size: %d\n", size);
+    printf("\nReturn size: %d\n", size);
 
     size = printf("%s", NULL);
     printf("\nReturn size: %d\n", size);
@@ -766,6 +766,54 @@ int main(void)
 
     size = printf("{%05.c}", 0);
     printf("\nReturn size: %d\n", size);
+
+    size = printf("{%05.s}", 0);
+    printf("\nReturn size: %d\n", size);
     
+    size = printf("{%05.%}", 0);
+    printf("\nReturn size: %d\n", size);
+
+    size = printf("{%05.Z}", 0);
+    printf("\nReturn size: %d\n", size);
+
+    size = printf("{%05.S}", L"42 c est cool");
+    printf("\nReturn size: %d\n", size);
+
+    size = printf("{%05s}", "abc");
+    printf("\nReturn size: %d\n", size);
+
+    size = printf("{%030S}", L"我是一只猫。");
+    printf("\nReturn size: %d\n", size);
+
+    size = printf("{%05p}", 0);
+    printf("\nReturn size: %d\n", size);
+
+    size = printf("%.5p", 0);
+    printf("\nReturn size: %d\n", size);
+
+    size = printf("%2.9p", 1234);
+    printf("\nReturn size: %d\n", size);
+
+    size = printf("%4.s", "42");
+    printf("\nReturn size: %d\n", size);
+
+    size = printf("%4.S", L"我是一只猫。");
+    printf("\nReturn size: %d\n", size);
+
+    size = printf("{% 03d}", 0);
+    printf("\nReturn size: %d\n", size);
+
+    size = printf("{% 05d}", 42);
+    printf("\nReturn size: %d\n", size);
+
+    size = printf("{%-05%}");
+    printf("\nReturn size: %d\n", size);
+
+    size = printf("%%   %", "test");
+    printf("\nReturn size: %d\n", size);
+
+    size = printf("%ll#x", 9223372036854775807);
+    printf("\nReturn size: %d\n", size);
+
 	return (0);
 }

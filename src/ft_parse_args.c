@@ -25,10 +25,10 @@ void	parse_length(t_fmt **args, char **fmt)
 		(*fmt) +=  2;
 		return ;
 	}
-	else if (**fmt == 'h' || **fmt == 'l' || **fmt == 'j' || **fmt == 'z')
+	while (**fmt == 'h' || **fmt == 'l' || **fmt == 'j' || **fmt == 'z')
 	{
 		if (**fmt == 'h')
-			(*args)->length = LEN_MOD_H;
+			if ((*args)->length == LEN_MOD_H)
 		else if (**fmt == 'l')
 			(*args)->length = LEN_MOD_L;
 		else if (**fmt == 'j')
@@ -132,7 +132,8 @@ size_t	parse_args(va_list *ap,t_fmt **args, char **fmt)
 	size_t size;
 
 	size = 0;
-	(*fmt)++;
+	if (++(*fmt) == '\0')
+		return (size);
 	parse_flags(args, fmt);
 	parse_num(args, fmt, 1);
 	if(**fmt  == '.')
@@ -141,6 +142,7 @@ size_t	parse_args(va_list *ap,t_fmt **args, char **fmt)
 		parse_num(args, fmt, 0);
 	}
 	parse_length(args, fmt);
+	parse_flags(args, fmt);
 	size = parse_conv_spec(ap, args, fmt);
 	if (size == 0 && **fmt != '\0')
 	{
@@ -149,7 +151,7 @@ size_t	parse_args(va_list *ap,t_fmt **args, char **fmt)
 			if ((*args)->left_just)
 				ft_putchar(**fmt);
 			while ((size_t)(*args)->width > ++size)
-				ft_putchar(' ');
+				(*args)->prepend_zeros ? ft_putchar('0') : ft_putchar(' ');
 			if (!(*args)->left_just)
 				ft_putchar(**fmt);
 		}

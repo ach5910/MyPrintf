@@ -85,8 +85,8 @@ $(NAME): $(OBJS)
 	$(AR) -rcs $@ $^ $(LIBFT)
 	$(RLIB) $@
 
-test: $(NAME)
-	$(CC) $(CFLAGS) -o $@ src/main.c -L. -lftprintf $(LIBFT_LINK)
+ptest: $(NAME) obj/main.o
+	$(CC) $(CFLAGS) -o $@ obj/main.o -L. -lftprintf $(LIBFT_LINK)
 
 clean:
 	rm -f $(OBJS)
