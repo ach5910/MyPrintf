@@ -465,6 +465,7 @@ int main(void)
 	size = printf("%#20.10X #20.10X\n", 45);
 	printf("Return size: %d\n", size);
 	size = printf("%#-20.10X #-20.10X\n", 45);
+    printf("Return size: %d\n", size);
 
 	printf("---Octal---\n");
     size = printf("%#o #o\n", 0);
@@ -482,6 +483,7 @@ int main(void)
 	size = printf("%#20.10o #20.10o\n", 45);
 	printf("Return size: %d\n", size);
 	size = printf("%#-20.10o #-20.10o\n", 45);
+    printf("Return size: %d\n", size);
 	size = printf("%#O #O\n", 45);
 	printf("Return size: %d\n", size);
 	size = printf("%#O #O\n", 128);
@@ -495,6 +497,7 @@ int main(void)
 	size = printf("%#20.10O #20.10O\n", 45);
 	printf("Return size: %d\n", size);
 	size = printf("%#-20.10O #-20.10O\n", 45);
+    printf("Return size: %d\n", size);
 
 	printf("---String---\n");
     size = printf("%s s\n", "");
@@ -813,6 +816,9 @@ int main(void)
     printf("\nReturn size: %d\n", size);
 
     size = printf("%ll#x", 9223372036854775807);
+    printf("\nReturn size: %d\n", size);
+
+    size = printf("@main_ftprintf: %####0000 33..1..#00d\n", 256);
     printf("\nReturn size: %d\n", size);
 
 	return (0);

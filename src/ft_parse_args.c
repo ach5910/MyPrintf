@@ -13,28 +13,38 @@
 
 void	parse_length(t_fmt **args, char **fmt)
 {
-	if (**fmt == 'h' && *(*fmt + 1) == 'h')
-	{
-	  (*args)->length = LEN_MOD_HH;
-	  (*fmt) +=  2;
-	  return ;
-	}
-	else if (**fmt == 'l' && *(*fmt + 1) == 'l')
-	{
-		(*args)->length = LEN_MOD_LL;
-		(*fmt) +=  2;
-		return ;
-	}
+	// if (**fmt == 'h' && *(*fmt + 1) == 'h')
+	// {
+	//   (*args)->length = LEN_MOD_HH;
+	//   (*fmt) +=  2;
+	//   return ;
+	// }
+	// else if (**fmt == 'l' && *(*fmt + 1) == 'l')
+	// {
+	// 	(*args)->length = LEN_MOD_LL;
+	// 	(*fmt) +=  2;
+	// 	return ;
+	// }
 	while (**fmt == 'h' || **fmt == 'l' || **fmt == 'j' || **fmt == 'z')
 	{
 		if (**fmt == 'h')
+		{
 			if ((*args)->length == LEN_MOD_H)
+				(*args)->length = LEN_MOD_HH;
+			else
+				(*args)->length = MAX((*args)->length, LEN_MOD_H);
+		}
 		else if (**fmt == 'l')
-			(*args)->length = LEN_MOD_L;
+		{
+			if ((*args)->length == LEN_MOD_L)
+				(*args)->length = LEN_MOD_LL;
+			else
+				(*args)->length = MAX((*args)->length, LEN_MOD_L);
+		}
 		else if (**fmt == 'j')
-			(*args)->length = LEN_MOD_J;
+			(*args)->length = MAX((*args)->length, LEN_MOD_J);
 		else if (**fmt == 'z')
-			(*args)->length = LEN_MOD_Z;
+			(*args)->length = MAX((*args)->length, LEN_MOD_Z);
 		(*fmt)++;
 	}
 }
@@ -136,7 +146,7 @@ size_t	parse_args(va_list *ap,t_fmt **args, char **fmt)
 		return (size);
 	parse_flags(args, fmt);
 	parse_num(args, fmt, 1);
-	if(**fmt  == '.')
+	while (**fmt  == '.')
 	{
 		(*args)->has_percision = 1;
 		parse_num(args, fmt, 0);

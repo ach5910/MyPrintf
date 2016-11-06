@@ -57,7 +57,7 @@ void	ft_justify(t_fmt **args, char **nstr, size_t offset)
 	size_t	size;
 
 	prepend = ft_strnew(1);
-	prepend[0] = ((*args)->prepend_zeros && !(*args)->min_width) ? '0' : ' ';
+	prepend[0] = ((*args)->prepend_zeros && !(*args)->has_percision) ? '0' : ' ';
 	size = ft_strlen(*nstr) + offset;
 	while  ((size_t)(*args)->width > size)
 	{
@@ -96,10 +96,10 @@ size_t		ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base)
 		size++;
 	}
 
-	if ((*args)->left_just || ((*args)->prepend_zeros && (*args)->min_width < (*args)->width))
+	if ((*args)->left_just || ((*args)->prepend_zeros && !(*args)->has_percision))
 		ft_justify(args, &nstr, ft_strlen(prefix));
 	ft_prepend_prefix(&nstr, prefix, base, nbr);
-	if (!(*args)->left_just && (!(*args)->prepend_zeros || (*args)->min_width >= (*args)->width))
+	if (!(*args)->left_just && (!(*args)->prepend_zeros || (*args)->has_percision))
 		ft_justify(args, &nstr, 0);
 	size = ft_strlen(nstr);
 	ft_putstr(nstr);

@@ -437,6 +437,7 @@ int main(void)
 	size = ft_printf("%#20.10X #20.10X\n", 45);
 	ft_printf("Return size: %d\n", size);
 	size = ft_printf("%#-20.10X #-20.10X\n", 45);
+    ft_printf("Return size: %d\n", size);
 
 	ft_printf("---Octal---\n");
     size = ft_printf("%#o #o\n", 0);
@@ -454,6 +455,7 @@ int main(void)
 	size = ft_printf("%#20.10o #20.10o\n", 45);
 	ft_printf("Return size: %d\n", size);
 	size = ft_printf("%#-20.10o #-20.10o\n", 45);
+    ft_printf("Return size: %d\n", size);
 	size = ft_printf("%#O #O\n", 45);
 	ft_printf("Return size: %d\n", size);
 	size = ft_printf("%#O #O\n", 128);
@@ -467,6 +469,7 @@ int main(void)
 	size = ft_printf("%#20.10O #20.10O\n", 45);
 	ft_printf("Return size: %d\n", size);
 	size = ft_printf("%#-20.10O #-20.10O\n", 45);
+    ft_printf("Return size: %d\n", size);
 
     ft_printf("---Binary(Bonus)---\n");
     size = ft_printf("%b b\n", 45);
@@ -763,6 +766,9 @@ int main(void)
     size = ft_printf("{% 03d}", 0);
     ft_printf("\nReturn size: %d\n", size);
 
+    size = ft_printf("{% 05d}", 42);
+    ft_printf("\nReturn size: %d\n", size);
+
     size = ft_printf("{%-05%}");
     ft_printf("\nReturn size: %d\n", size);
 
@@ -770,6 +776,9 @@ int main(void)
     ft_printf("\nReturn size: %d\n", size);
 
     size = ft_printf("%ll#x", 9223372036854775807);
+    ft_printf("\nReturn size: %d\n", size);
+
+    size = ft_printf("@main_ftprintf: %####0000 33..1..#00d\n", 256);
     ft_printf("\nReturn size: %d\n", size);
 
 	return (0);

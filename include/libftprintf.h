@@ -19,12 +19,17 @@
 # include <stdarg.h>
 # include <wchar.h>
 
-# define LEN_MOD_HH 1
-# define LEN_MOD_H  2
+# define LEN_MOD_H	1
+# define LEN_MOD_HH	2
 # define LEN_MOD_L	3
 # define LEN_MOD_LL	4
 # define LEN_MOD_J	5
 # define LEN_MOD_Z	6
+
+#define MAX(a,b) \
+   ({ __typeof__ (a) _a = (a); \
+      __typeof__ (b) _b = (b); \
+     _a > _b ? _a : _b; })
 
 #define RESET		0
 #define BOLD		1

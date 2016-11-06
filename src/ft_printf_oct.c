@@ -20,10 +20,11 @@ size_t			ft_printf_oct(va_list *ap, t_fmt **args)
 
 	nbr = ft_get_uint_length(ap, args);
 	prefix = ft_strnew(1);
-	if ((*args)->hash)
+	if ((*args)->hash && (!(*args)->left_just || !(*args)->has_percision))
 		prefix[0] = '0';
 	else
 		prefix[0] = '\0';
+
 	size = ft_putuint(args, prefix, nbr, 8);
 	if (size == 0 && (*args)->hash)
 	// {
