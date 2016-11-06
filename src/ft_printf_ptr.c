@@ -25,7 +25,6 @@ size_t ft_printf_ptr(va_list *ap, t_fmt **args)
 	(*args)->left_just = (*args)->prepend_zeros ? 1 : (*args)->left_just;
 	nbr = ft_get_uint_length(ap, args);
 	nstr = ft_itoa_base(nbr, 16, (*args)->is_upper);
-	//nstr = ft_strjoin("0x", nstr);
 	size = ft_strlen(nstr);
 	if ((*args)->has_percision && (*args)->min_width == 0)
 	{

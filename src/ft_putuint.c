@@ -68,6 +68,21 @@ void	ft_justify(t_fmt **args, char **nstr, size_t offset)
 	ft_strdel(&prepend);
 }
 
+size_t		ft_unassigned_precision(t_fmt **args, int base)
+{
+	int i;
+
+	if ((*args)->hash && base == 8)
+	{
+		ft_putchar('0');
+		return(1);
+	}
+	i = 0;
+	while (((*args)->width > i++))
+		ft_putchar(' ');
+	return ((*args)->width);
+}
+
 
 size_t		ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base)
 {
@@ -76,15 +91,8 @@ size_t		ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base)
 
 	if ((*args)->has_percision && (*args)->min_width == 0 && nbr == 0)
 	{
-		if ((*args)->hash && base == 8)
-		{
-			ft_putchar('0');
-			return(1);
-		}
-		int i = 0;
-		while (((*args)->width > i++))
-			ft_putchar(' ');
-		return ((*args)->width);
+		size = ft_unassigned_precision(args, base);
+		return (size);
 	}
 	nstr = ft_itoa_base((uintmax_t)nbr, base, (*args)->is_upper);
 	while (*nstr == '0' && nstr[1] != '\0')
@@ -95,7 +103,6 @@ size_t		ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base)
 		nstr = ft_strjoin("0", nstr);
 		size++;
 	}
-
 	if ((*args)->left_just || ((*args)->prepend_zeros && !(*args)->has_percision))
 		ft_justify(args, &nstr, ft_strlen(prefix));
 	ft_prepend_prefix(&nstr, prefix, base, nbr);
@@ -103,7 +110,5 @@ size_t		ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base)
 		ft_justify(args, &nstr, 0);
 	size = ft_strlen(nstr);
 	ft_putstr(nstr);
-	// if (nstr && *nstr)
-	// 	ft_strdel(&nstr);
 	return (size);
 }

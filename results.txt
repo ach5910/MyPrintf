@@ -13,6 +13,10 @@ Return size: 26
 Return size: 26
 00000000000000012345 020d
 Return size: 26
+{ 00}
+Return size: 5
+{ 0042}
+Return size: 7
 0 hhd
 Return size: 6
 +123                 -+20+hhd
@@ -342,6 +346,12 @@ Return size: 27
 Return size: 29
 0X000000002D         #-20.10X
 Return size: 30
+000000021e 
+Return size: 12
+@moulitest:  
+Return size: 13
+0x7fffffffffffffff
+Return size: 18
 ---Octal---
 0 #o
 Return size: 5
@@ -373,6 +383,8 @@ Return size: 27
 Return size: 29
 0000000055           #-20.10O
 Return size: 30
+@moulitest: 0 0
+Return size: 15
 ---Binary(Bonus)---
 101101 b
 Return size: 9
@@ -401,6 +413,14 @@ Hello Worl           -20.10s
 Return size: 29
 Hello World          -20.15s
 Return size: 29
+(null)
+Return size: 6
+{00000}
+Return size: 7
+{00abc}
+Return size: 7
+    
+Return size: 4
 ---Character---
   c
 Return size: 4
@@ -449,6 +469,10 @@ Return size: 25
 
                     -20c
 Return size: 26
+{ }
+Return size: 3
+{0000 }
+Return size: 7
 ---Wide Character---
 Ω lc
 Return size: 6
@@ -480,6 +504,8 @@ Return size: 10
 Return size: 21
             ▓ 15C
 Return size: 20
+{(null)}
+Return size: 8
 ---Wide String---
 Ωa¥ ls
 Return size: 9
@@ -509,16 +535,55 @@ Return size: 30
 Return size: 12
 ↖ ∀§§ ⅋ 𝒯 ⅈ𝓉𝓉ΐξƧ ↗ ⩐👅  👉👌 -35ls
 Return size: 67
----Pointer---
-0x7fff561f4b40 p
-Return size: 17
-0x109a127e9 p
+@moulitest: 丽
+Return size: 15
+@moulitest: Ԙ
 Return size: 14
-0x7fff561f4afc p
+                  Ԙ
+Return size: 20
+{00000}
+Return size: 7
+{000000000000我是一只猫。}
+Return size: 32
+    
+Return size: 4
+---Pointer---
+0x7fff539cbb30 p
 Return size: 17
+0x10c23c847 p
+Return size: 14
+0x7fff539cbaec p
+Return size: 17
+{(null)}
+Return size: 8
+{  0x0}
+Return size: 7
+{0x0  }
+Return size: 7
+0x, 0x
+Return size: 6
+{0x000}
+Return size: 7
+0x00000
+Return size: 7
+0x0000004d2
+Return size: 11
 ---Percent Sign(edge case)---
 % percent % percent %
 Return size: 22
+{0000%}
+Return size: 7
+{%    }
+Return size: 7
+%   
+Return size: 4
+{         R}
+Return size: 12
+{0000Z}
+Return size: 7
+@main_ftprintf:                               256
+
+Return size: 50
 ---Color(Bonus)---
 [1;31;40mBOLD, RED, BLACK[0;37;40m T
 Return size: 39
@@ -544,68 +609,3 @@ Return size: 49
 Return size: 48
 [1;31;40mBOLD,[0;37;40m .5T
 Return size: 30
-000000021e 
-Return size: 12
-@moulitest: 0 0
-Return size: 15
-@moulitest:  
-Return size: 13
-@moulitest: 丽
-Return size: 15
-@moulitest: Ԙ
-Return size: 14
-                  Ԙ
-Return size: 20
-(null)
-Return size: 6
-{(null)}
-Return size: 8
-{ }
-Return size: 3
-{(null)}
-Return size: 8
-{  0x0}
-Return size: 7
-{0x0  }
-Return size: 7
-{         R}
-Return size: 12
-0x, 0x
-Return size: 6
-{0000 }
-Return size: 7
-{00000}
-Return size: 7
-{0000%}
-Return size: 7
-{0000Z}
-Return size: 7
-{00000}
-Return size: 7
-{00abc}
-Return size: 7
-{000000000000我是一只猫。}
-Return size: 32
-{0x000}
-Return size: 7
-0x00000
-Return size: 7
-0x0000004d2
-Return size: 11
-    
-Return size: 4
-    
-Return size: 4
-{ 00}
-Return size: 5
-{ 0042}
-Return size: 7
-{%    }
-Return size: 7
-%   
-Return size: 4
-0x7fffffffffffffff
-Return size: 18
-@main_ftprintf:                               256
-
-Return size: 50

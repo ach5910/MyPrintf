@@ -20,48 +20,48 @@ size_t			ft_printf_string(va_list *ap, t_fmt **args)
 	char		*prepend;
 
 	if ((*args)->length == LEN_MOD_L)
-		size = ft_printf_wstring(ap, args);
-	else
 	{
-		size = 0;
-		if ((temp = va_arg(*ap, char*)) == NULL)
-		{
-			if ((*args)->width & (*args)->prepend_zeros)
-			{
-				while ((size_t)(*args)->width > size)
-				{
-					ft_putchar('0');
-					size++;
-				}
-				return (size);
-			}
-			ft_putstr("(null)");
-			return (6);
-		}
-		if ((*args)->has_percision && (*args)->min_width == 0)
+		size = ft_printf_wstring(ap, args);
+		return (size);
+	}
+	size = 0;
+	if ((temp = va_arg(*ap, char*)) == NULL)
+	{
+		if ((*args)->width & (*args)->prepend_zeros)
 		{
 			while ((size_t)(*args)->width > size)
 			{
-				ft_putchar(' ');
+				ft_putchar('0');
 				size++;
 			}
 			return (size);
 		}
-		prepend = ft_strnew(1);
-		prepend[0] = ((*args)->prepend_zeros && !(*args)->min_width) ? '0' : ' ';
-		str = ft_strdup(temp);
-		if ((*args)->min_width && (size_t)(*args)->min_width < ft_strlen(str))
-			str[(*args)->min_width] = '\0';
-		size = ft_strlen(str);
-		while  ((size_t)(*args)->width > size)
+		ft_putstr("(null)");
+		return (6);
+	}
+	if ((*args)->has_percision && (*args)->min_width == 0)
+	{
+		while ((size_t)(*args)->width > size)
 		{
-			str = (*args)->left_just ? ft_strjoin(str, " ") : ft_strjoin(
-					prepend, str);
+			ft_putchar(' ');
 			size++;
 		}
-		ft_putstr(str);
-		ft_strdel(&prepend);
-		ft_strdel(&str);
+		return (size);
 	}
+	prepend = ft_strnew(1);
+	prepend[0] = ((*args)->prepend_zeros && !(*args)->min_width) ? '0' : ' ';
+	str = ft_strdup(temp);
+	if ((*args)->min_width && (size_t)(*args)->min_width < ft_strlen(str))
+		str[(*args)->min_width] = '\0';
+	size = ft_strlen(str);
+	while  ((size_t)(*args)->width > size)
+	{
+		str = (*args)->left_just ? ft_strjoin(str, " ") : ft_strjoin(
+				prepend, str);
+		size++;
+	}
+	ft_putstr(str);
+	ft_strdel(&prepend);
+	ft_strdel(&str);
 	return (size);
 }

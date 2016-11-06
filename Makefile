@@ -93,9 +93,10 @@ clean:
 	make -C ./libft clean
 
 fclean:
+	rm -rf $(OBJS)
 	rm -rf $(NAME)
 	rm -rf obj
-	rm -rf test
+	rm -rf ptest
 	make -C ./libft fclean
 
 re: fclean all

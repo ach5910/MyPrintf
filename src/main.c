@@ -33,6 +33,10 @@ int main(void)
 	ft_printf("Return size: %d\n", size);
     size = ft_printf("%020d 020d\n", 12345);
 	ft_printf("Return size: %d\n", size);
+    size = ft_printf("{% 03d}", 0);
+    ft_printf("\nReturn size: %d\n", size);
+    size = ft_printf("{% 05d}", 42);
+    ft_printf("\nReturn size: %d\n", size);
 
     size = ft_printf("%hhd hhd\n", (char)0);
     ft_printf("Return size: %d\n", size);
@@ -438,6 +442,12 @@ int main(void)
 	ft_printf("Return size: %d\n", size);
 	size = ft_printf("%#-20.10X #-20.10X\n", 45);
     ft_printf("Return size: %d\n", size);
+    size = ft_printf("%010x \n", 542);
+    ft_printf("Return size: %d\n", size);
+    size = ft_printf("@moulitest: %#.x %#.0x", 0, 0);
+    ft_printf("\nReturn size: %d\n", size);
+    size = ft_printf("%ll#x", 9223372036854775807);
+    ft_printf("\nReturn size: %d\n", size);
 
 	ft_printf("---Octal---\n");
     size = ft_printf("%#o #o\n", 0);
@@ -470,6 +480,9 @@ int main(void)
 	ft_printf("Return size: %d\n", size);
 	size = ft_printf("%#-20.10O #-20.10O\n", 45);
     ft_printf("Return size: %d\n", size);
+    size = ft_printf("@moulitest: %#.o %#.0o", 0, 0);
+    ft_printf("\nReturn size: %d\n", size);
+
 
     ft_printf("---Binary(Bonus)---\n");
     size = ft_printf("%b b\n", 45);
@@ -500,6 +513,14 @@ int main(void)
 	ft_printf("Return size: %d\n", size);
 	size = ft_printf("%-20.15s -20.15s\n", "Hello World");
 	ft_printf("Return size: %d\n", size);
+    size = ft_printf("%s", NULL);
+    ft_printf("\nReturn size: %d\n", size);
+    size = ft_printf("{%05.s}", 0);
+    ft_printf("\nReturn size: %d\n", size);
+    size = ft_printf("{%05s}", "abc");
+    ft_printf("\nReturn size: %d\n", size);
+    size = ft_printf("%4.s", "42");
+    ft_printf("\nReturn size: %d\n", size);
 
 	ft_printf("---Character---\n");
     size = ft_printf("%c c\n", 0);
@@ -556,6 +577,10 @@ int main(void)
 	ft_printf("Return size: %d\n", size);
 	size = ft_printf("%-20c -20c\n", 10);
 	ft_printf("Return size: %d\n", size);
+    size = ft_printf("{%C}", 0);
+    ft_printf("\nReturn size: %d\n", size);
+    size = ft_printf("{%05.c}", 0);
+    ft_printf("\nReturn size: %d\n", size);
 
     ft_printf("---Wide Character---\n");
     setlocale(LC_ALL, "");
@@ -594,6 +619,8 @@ int main(void)
     ft_printf("Return size: %d\n", size);
     size = ft_printf("%15C 15C\n", t);
     ft_printf("Return size: %d\n", size);
+    size = ft_printf("{%S}", NULL);
+    ft_printf("\nReturn size: %d\n", size);
 
 
     ft_printf("---Wide String---\n");
@@ -630,6 +657,18 @@ int main(void)
     ft_printf("Return size: %d\n", size);
     size = ft_printf("%-35ls -35ls\n", L"↖ ∀§§ ⅋ 𝒯 ⅈ𝓉𝓉ΐξƧ ↗ ⩐👅  👉👌");
     ft_printf("Return size: %d\n", size);
+    size = ft_printf("@moulitest: 丽");
+    ft_printf("\nReturn size: %d\n", size);
+    size = ft_printf("@moulitest: Ԙ");
+    ft_printf("\nReturn size: %d\n", size);
+    size = ft_printf("%20.5ls", L"Ԙ");
+    ft_printf("\nReturn size: %d\n", size);
+    size = ft_printf("{%05.S}", L"42 c est cool");
+    ft_printf("\nReturn size: %d\n", size); 
+    size = ft_printf("{%030S}", L"我是一只猫。");
+    ft_printf("\nReturn size: %d\n", size);
+    size = ft_printf("%4.S", L"我是一只猫。");
+    ft_printf("\nReturn size: %d\n", size);
 
 	ft_printf("---Pointer---\n");
 	int buf[10] = {150, 255, 12, 16, 21, 42};
@@ -643,10 +682,36 @@ int main(void)
 	ft_printf("Return size: %d\n", size);
 	size = ft_printf("%p p\n", &a);
 	ft_printf("Return size: %d\n", size);
+    size = ft_printf("{%s}", 0);
+    ft_printf("\nReturn size: %d\n", size);
+    size = ft_printf("{%5p}", 0);
+    ft_printf("\nReturn size: %d\n", size);
+    size = ft_printf("{%-5p}", 0);
+    ft_printf("\nReturn size: %d\n", size);
+    size = ft_printf("%.p, %.0p", 0, 0);
+    ft_printf("\nReturn size: %d\n", size);
+    size = ft_printf("{%05p}", 0);
+    ft_printf("\nReturn size: %d\n", size);
+    size = ft_printf("%.5p", 0);
+    ft_printf("\nReturn size: %d\n", size);
+    size = ft_printf("%2.9p", 1234);
+    ft_printf("\nReturn size: %d\n", size);
 
     ft_printf("---Percent Sign(edge case)---\n");
     size = ft_printf("%% percent %% percent %%\n");
     ft_printf("Return size: %d\n", size);
+    size = ft_printf("{%05.%}", 0);
+    ft_printf("\nReturn size: %d\n", size);
+    size = ft_printf("{%-05%}");
+    ft_printf("\nReturn size: %d\n", size);
+    size = ft_printf("%%   %", "test");
+    ft_printf("\nReturn size: %d\n", size);
+    size = ft_printf("{%10R}");
+    ft_printf("\nReturn size: %d\n", size);
+    size = ft_printf("{%05.Z}", 0);
+    ft_printf("\nReturn size: %d\n", size);
+    size = ft_printf("@main_ftprintf: %####0000 33..1..#00d\n", 256);
+    ft_printf("\nReturn size: %d\n", size);
 
     ft_printf("---Color(Bonus)---\n");
     size = ft_printf("%T%d%d%d%s T\n",BOLD, RED, BLACK, "BOLD, RED, BLACK");
@@ -684,102 +749,6 @@ int main(void)
 
     size = ft_printf("%.5T%d%d%d%s .5T\n",BOLD, RED, BLACK, "BOLD, RED, BLACK");
     ft_printf("Return size: %d\n", size);
-
-    size = ft_printf("%010x \n", 542);
-    ft_printf("Return size: %d\n", size);
-
-    size = ft_printf("@moulitest: %#.o %#.0o", 0, 0);
-    ft_printf("\nReturn size: %d\n", size);
-
-    size = ft_printf("@moulitest: %#.x %#.0x", 0, 0);
-    ft_printf("\nReturn size: %d\n", size);
-
-    size = ft_printf("@moulitest: 丽");
-    ft_printf("\nReturn size: %d\n", size);
-
-    size = ft_printf("@moulitest: Ԙ");
-    ft_printf("\nReturn size: %d\n", size);
-
-    size = ft_printf("%20.5ls", L"Ԙ");
-    ft_printf("\nReturn size: %d\n", size);
-
-    size = ft_printf("%s", NULL);
-    ft_printf("\nReturn size: %d\n", size);
-
-    size = ft_printf("{%S}", NULL);
-    ft_printf("\nReturn size: %d\n", size);
-
-    size = ft_printf("{%C}", 0);
-    ft_printf("\nReturn size: %d\n", size);
-
-    size = ft_printf("{%s}", 0);
-    ft_printf("\nReturn size: %d\n", size);
-
-    size = ft_printf("{%5p}", 0);
-    ft_printf("\nReturn size: %d\n", size);
-
-    size = ft_printf("{%-5p}", 0);
-    ft_printf("\nReturn size: %d\n", size);
-
-    size = ft_printf("{%10R}");
-    ft_printf("\nReturn size: %d\n", size);
-
-    size = ft_printf("%.p, %.0p", 0, 0);
-    ft_printf("\nReturn size: %d\n", size);
-
-    size = ft_printf("{%05.c}", 0);
-    ft_printf("\nReturn size: %d\n", size);
-
-    size = ft_printf("{%05.s}", 0);
-    ft_printf("\nReturn size: %d\n", size);
-
-    size = ft_printf("{%05.%}", 0);
-    ft_printf("\nReturn size: %d\n", size);
-
-    size = ft_printf("{%05.Z}", 0);
-    ft_printf("\nReturn size: %d\n", size);
-
-    size = ft_printf("{%05.S}", L"42 c est cool");
-    ft_printf("\nReturn size: %d\n", size);
-
-    size = ft_printf("{%05s}", "abc");
-    ft_printf("\nReturn size: %d\n", size);
-
-    size = ft_printf("{%030S}", L"我是一只猫。");
-    ft_printf("\nReturn size: %d\n", size);
-
-    size = ft_printf("{%05p}", 0);
-    ft_printf("\nReturn size: %d\n", size);
-
-    size = ft_printf("%.5p", 0);
-    ft_printf("\nReturn size: %d\n", size);
-
-    size = ft_printf("%2.9p", 1234);
-    ft_printf("\nReturn size: %d\n", size);
-
-    size = ft_printf("%4.s", "42");
-    ft_printf("\nReturn size: %d\n", size);
-
-    size = ft_printf("%4.S", L"我是一只猫。");
-    ft_printf("\nReturn size: %d\n", size);
-
-    size = ft_printf("{% 03d}", 0);
-    ft_printf("\nReturn size: %d\n", size);
-
-    size = ft_printf("{% 05d}", 42);
-    ft_printf("\nReturn size: %d\n", size);
-
-    size = ft_printf("{%-05%}");
-    ft_printf("\nReturn size: %d\n", size);
-
-    size = ft_printf("%%   %", "test");
-    ft_printf("\nReturn size: %d\n", size);
-
-    size = ft_printf("%ll#x", 9223372036854775807);
-    ft_printf("\nReturn size: %d\n", size);
-
-    size = ft_printf("@main_ftprintf: %####0000 33..1..#00d\n", 256);
-    ft_printf("\nReturn size: %d\n", size);
 
 	return (0);
 }
