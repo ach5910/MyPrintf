@@ -28,11 +28,6 @@ size_t			ft_printf_char(va_list *ap, t_fmt **args)
 			ft_putchar(ch);
 		pad = (*args)->prepend_zeros ? '0' : ' ';
 		size = ft_putcharpad((size_t)(*args)->width, size, pad);
-		// while  ((size_t)(*args)->width > size)
-		// {
-			
-		// 	size++;
-		// }
 		if (!(*args)->left_just)
 			ft_putchar(ch);
 	}

@@ -25,11 +25,6 @@ size_t	ft_printf_mod(va_list *ap, t_fmt **args)
 		ft_putchar('%');
 	pad = (*args)->prepend_zeros ? '0' : ' ';
 	pad = (*args)->left_just ? ' ' : pad;
-	// while  ((size_t)(*args)->width > size)
-	// {
-	// 	ft_putchar(pad);
-	// 	size++;
-	// }
 	size = ft_putcharpad((size_t)(*args)->width, size, pad);
 	if (!(*args)->left_just)
 		ft_putchar('%');

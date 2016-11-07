@@ -17,37 +17,23 @@ size_t ft_printf_ptr(va_list *ap, t_fmt **args)
 	uintmax_t nbr;
 	size_t	size;
 	char *nstr;
-	char	*prepend;
+	char	*pad;
 
 	if ((*args)->has_percision && (*args)->min_width == 0)
-	{
-		ft_putstr("0x");
-		return(2);
-	}
+		return(ft_putstr("0x"));
 	(*args)->length = LEN_MOD_J;
-	prepend = ft_strnew(1);
-	prepend[0] = ((*args)->prepend_zeros && !(*args)->min_width) ? '0' : ' ';
 	(*args)->left_just = (*args)->prepend_zeros ? 1 : (*args)->left_just;
+	pad = ft_get_justified_pad((*args)->prepend_zeros, (*args)->has_percision,
+		(*args)->left_just, 1);
 	nbr = ft_get_uint_length(ap, args);
 	nstr = ft_itoa_base(nbr, 16, (*args)->is_upper);
 	size = ft_strlen(nstr);
-	// while ((size_t)(*args)->min_width > size)
-	// {
-	// 	nstr = ft_strpre("0", nstr);
-	// 	size++;
-	// }
 	size = ft_strpad((size_t)(*args)->min_width, size, &nstr, "0", 0);
 	nstr = ft_strpre("0x", nstr);
 	size += 2;
-	prepend[0] = (*args)->left_just ? prepend[0] : ' ';
-	size = ft_strpad((size_t)(*args)->width, size, &nstr, prepend, (*args)->left_just);
-	// while ((size_t)(*args)->width > size)
-	// {
-	// 	nstr = (*args)->left_just ? ft_strapp(nstr, prepend) : ft_strpre( " ", nstr);
-	// 	size++;
-	// }
+	size = ft_strpad((size_t)(*args)->width, size, &nstr, pad, (*args)->left_just);
 	ft_putstr(nstr);
-	ft_strdel(&prepend);
+	ft_strdel(&pad);
 	ft_strdel(&nstr);
 	return (size);
 }

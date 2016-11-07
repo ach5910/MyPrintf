@@ -30,7 +30,6 @@ static void	init_funct_ptr(t_conv_spec *conv_funct)
 	conv_funct['C'] = &ft_printf_wchar;
 	conv_funct['b'] = &ft_printf_binary;
 	conv_funct['%'] = &ft_printf_mod;
-	//conv_funct['T'] = &ft_print_color;
 }
 
 

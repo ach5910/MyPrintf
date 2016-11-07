@@ -183,7 +183,7 @@ int main(void)
     printf("Return size: %d\n", size);
     //  prinft("%+.00010d +.00010d\n", 12345);
 
-    printf("---Decimal Integer \"i\"---\n");
+    printf("\n\n\n---Decimal Integer \"i\"---\n");
 /*  printf("This is a umber %+i\n, this is another number % i\nthis number has min wiith of 10 %.10i\nthis number has min wiith of 10 with + flag %+.10i\n...this is the last number %i\n 10 wiith left just, 5 per %-10.5i\n 10 wiith right just, 5 per %10.5i\n10 wiith, lf, 0 prep, 5per %010.5i\n10 w, rj, 0 prep, 5 per%-010.5i\nENi", 42, 24, 46, 67, -16, 35, 35, 35, 35);*/
 //  printf("This is a number %i, this is another number %i..\nENi", 42, 24);
     size = printf("%-+20i -+20+i\n", 12345);
@@ -304,7 +304,7 @@ int main(void)
     printf("Return size: %i\n", size);
     //  prinft("%+.00010i +.00010i\n", 12345);
 
-    printf("---Unsigned Int---\n");
+    printf("\n\n\n---Unsigned Int---\n");
     // size = printf("%-+20u -+20+u\n", 12345);
     // printf("Return size: %d\n", size);
     // size = printf("% 20u <space>20u\n", 12345);
@@ -439,7 +439,7 @@ int main(void)
     size = printf("%020zu 020zu\n", (size_t)12345);
     printf("Return size: %d\n", size);
 
-    printf("---Hexadecimal--\n");
+    printf("\n\n\n---Hexadecimal--\n");
     size = printf("%#x #x\n", 0);
     printf("Return size: %d\n", size);
     size = printf("%#x #x\n", 45);
@@ -477,7 +477,7 @@ int main(void)
     size = printf("%ll#x", 9223372036854775807);
     printf("\nReturn size: %d\n", size);
 
-    printf("---Octal---\n");
+    printf("\n\n\n---Octal---\n");
     size = printf("%#o #o\n", 0);
     printf("Return size: %d\n", size);
     size = printf("%#o #o\n", 45);
@@ -511,7 +511,7 @@ int main(void)
     size = printf("@moulitest: %#.o %#.0o", 0, 0);
     printf("\nReturn size: %d\n", size);
 
-    printf("---String---\n");
+    printf("\n\n\n---String---\n");
     size = printf("%s s\n", "");
     printf("Return size: %d\n", size);
     size = printf("%s s\n", "Hello World");
@@ -537,7 +537,7 @@ int main(void)
     size = printf("%4.s", "42");
     printf("\nReturn size: %d\n", size);
 
-    printf("---Character---\n");
+    printf("\n\n\n---Character---\n");
     size = printf("%c c\n", 0);
     printf("Return size: %d\n", size);
     size = printf("%c c\n", 'a');
@@ -597,7 +597,7 @@ int main(void)
     size = printf("{%05.c}", 0);
     printf("\nReturn size: %d\n", size);
 
-    printf("---Wide Character---\n");
+    printf("\n\n\n---Wide Character---\n");
     setlocale(LC_ALL, "");
     wchar_t c = L'Ω';
     wchar_t d = L'a';
@@ -638,7 +638,7 @@ int main(void)
     printf("\nReturn size: %d\n", size);
 
 
-    printf("---Wide String---\n");
+    printf("\n\n\n---Wide String---\n");
     wchar_t *wstr = L"Ωa¥";
     wchar_t *wsrc = L"Приве́т नमस्ते שָׁלוֹם";
     wchar_t *wbuf = L"🐨 ☺ mЖuvoϟϿ_ԧ ☠ ✊ ∞";
@@ -685,7 +685,7 @@ int main(void)
     size = printf("%4.S", L"我是一只猫。");
     printf("\nReturn size: %d\n", size);
 
-    printf("---Pointer---\n");
+    printf("\n\n\n---Pointer---\n");
     int buf[10] = {150, 255, 12, 16, 21, 42};
     int *tab = buf;
     char *str = "Hello World";
@@ -712,7 +712,7 @@ int main(void)
     size = printf("%2.9p", 1234);
     printf("\nReturn size: %d\n", size);
 
-    printf("---Percent Sign(edge case)---\n");
+    printf("\n\n\n---Percent Sign(edge case)---\n");
     size = printf("%% percent %% percent %%\n");
     printf("Return size: %d\n", size);
     size = printf("{%05.%}", 0);

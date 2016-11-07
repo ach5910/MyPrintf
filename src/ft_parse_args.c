@@ -96,36 +96,36 @@ int	parse_conv_spec(t_fmt **args, char **fmt)
 	return (1);
 }
 
-size_t	ft_print_conv(va_list *ap, t_fmt **args, char **fmt)
-{
-	size_t size;
+// size_t	ft_print_conv(va_list *ap, t_fmt **args, char **fmt)
+// {
+// 	size_t size;
 
-	size = 0;
-	if (**fmt == 'x' || **fmt == 'X')
-		size = ft_printf_hex(ap, args);
-	else if (**fmt == 'd' || **fmt == 'i' || **fmt == 'D')
-		size = ft_printf_int(ap, args);
-	else if (**fmt == 'o' || **fmt == 'O')
-		size = ft_printf_oct(ap, args);
-	else if (**fmt == 'u' || **fmt == 'U')
-		size = ft_printf_uint(ap, args);
-	else if (**fmt == 's' || **fmt == 'S')
-		size = ft_printf_string(ap, args);
-	else if (**fmt == 'c' || **fmt == 'C')
-		size = ft_printf_char(ap, args);
-	else if (**fmt == 'p')
-		size = ft_printf_ptr(ap, args);
-	else if (**fmt == 'b')
-		size = ft_printf_binary(ap, args);
-	else if (**fmt == '%')
-		size = ft_printf_mod(ap, args);
-	// else if (**fmt == 'T')
-	// {
-	// 	size = ft_print_color(ap, args);
-	// 	(*fmt) += 8;
-	// }
-	return (size);
-}
+// 	size = 0;
+// 	if (**fmt == 'x' || **fmt == 'X')
+// 		size = ft_printf_hex(ap, args);
+// 	else if (**fmt == 'd' || **fmt == 'i' || **fmt == 'D')
+// 		size = ft_printf_int(ap, args);
+// 	else if (**fmt == 'o' || **fmt == 'O')
+// 		size = ft_printf_oct(ap, args);
+// 	else if (**fmt == 'u' || **fmt == 'U')
+// 		size = ft_printf_uint(ap, args);
+// 	else if (**fmt == 's' || **fmt == 'S')
+// 		size = ft_printf_string(ap, args);
+// 	else if (**fmt == 'c' || **fmt == 'C')
+// 		size = ft_printf_char(ap, args);
+// 	else if (**fmt == 'p')
+// 		size = ft_printf_ptr(ap, args);
+// 	else if (**fmt == 'b')
+// 		size = ft_printf_binary(ap, args);
+// 	else if (**fmt == '%')
+// 		size = ft_printf_mod(ap, args);
+// 	// else if (**fmt == 'T')
+// 	// {
+// 	// 	size = ft_print_color(ap, args);
+// 	// 	(*fmt) += 8;
+// 	// }
+// 	return (size);
+// }
 
 size_t	parse_args(va_list *ap,t_fmt **args, char **fmt)
 {
@@ -143,20 +143,6 @@ size_t	parse_args(va_list *ap,t_fmt **args, char **fmt)
 	}
 	parse_length(args, fmt);
 	parse_flags(args, fmt);
-	size = ft_put_conv_spec(ap, args, fmt);
-	// if (parse_conv_spec(args, fmt))
-	// {
-	// 	conv_spec = ft_get_conv_spec(**fmt);
-	// 	size = conv_spec(ap, args);
-	// }
-	// else if (**fmt != '\0')
-	// {
-	// 		if ((*args)->left_just)
-	// 			ft_putchar(**fmt);
-	// 		while ((size_t)(*args)->width > ++size)
-	// 			(*args)->prepend_zeros ? ft_putchar('0') : ft_putchar(' ');
-	// 		if (!(*args)->left_just)
-	// 			ft_putchar(**fmt);
-	// }	
+	size = ft_put_conv_spec(ap, args, fmt);	
 	return (size);
 }

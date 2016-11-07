@@ -29,11 +29,6 @@ size_t	ft_printf_wchar(va_list *ap, t_fmt **args)
 	size = ft_strlen((const char *)dest);
 	if ((*args)->left_just)
 		ft_putstr((const char *)dest);
-	// while  ((size_t)(*args)->width > size)
- // 	{
-	// 	ft_putchar(' ');
-	// 	size++;
-	// }
 	size = ft_putcharpad((size_t)(*args)->width, size, ' ');
 	if (!(*args)->left_just)
 		ft_putstr((const char *)dest);

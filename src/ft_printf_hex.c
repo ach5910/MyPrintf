@@ -19,7 +19,6 @@ size_t			ft_printf_hex(va_list *ap, t_fmt **args)
 	size_t			size;
 
 	nbr = ft_get_uint_length(ap, args);
-	// prefix = ft_strnew(2);
 	if ((*args)->hash && (*args)->is_upper)
 		prefix = ft_strdup("0X");
 	else if ((*args)->hash && !(*args)->is_upper)

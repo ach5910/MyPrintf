@@ -25,7 +25,7 @@ typedef struct		s_list
 
 void				ft_putchar(char c);
 void				ft_putnbr(int n);
-void				ft_putstr(const char *str);
+size_t				ft_putstr(const char *str);
 void				ft_putendl(const char *str);
 void				ft_putchar_fd(const char c, int fd);
 void				ft_putnbr_fd(int n, int fd);

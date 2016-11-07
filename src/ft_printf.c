@@ -45,8 +45,7 @@ size_t	parse_format(va_list *ap, const char *fmt)
 	while ((iter = ft_strchr(cursor, '%')) != NULL)
 	{
 		*iter = '\0';
-		size += ft_strlen(cursor);
-		ft_putstr(cursor);
+		size += ft_putstr(cursor);
 		size += parse_args(ap, &args, &iter);
 		ft_bzero(args, sizeof(t_fmt));
 		if (*iter == '\0')
@@ -55,10 +54,7 @@ size_t	parse_format(va_list *ap, const char *fmt)
 		cursor = ft_strdup(iter + 1);
 	}
 	if (*cursor != '\0')
-	{
-		size += ft_strlen(cursor);
-		ft_putstr(cursor);
-	}
+		size += ft_putstr(cursor);
 	ft_memdel((void **)&args);
 	ft_strdel(&cursor);
 	return (size);

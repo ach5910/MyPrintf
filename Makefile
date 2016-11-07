@@ -44,6 +44,7 @@ SRC_BASE =	ft_printf.c \
 			ft_printf_mod.c \
 			ft_padding.c \
 			ft_putuint.c \
+			ft_itoa_base.c \
 
 LIBFT_FUNC = ft_isdigit \
 			ft_memalloc \

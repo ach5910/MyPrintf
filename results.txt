@@ -125,6 +125,9 @@ Return size: 26
 Return size: 25
     +0000012345 +015.10d
 Return size: 25
+
+
+
 ---Decimal Integer "i"---
 +12345               -+20+i
 Return size: 28
@@ -234,6 +237,9 @@ Return size: 26
 Return size: 25
     +0000012345 +015.10i
 Return size: 25
+
+
+
 ---Unsigned Int---
 0 u
 Return size: 4
@@ -315,6 +321,9 @@ Return size: 26
 Return size: 26
 00000000000000012345 020zu
 Return size: 27
+
+
+
 ---Hexadecimal--
 0 #x
 Return size: 5
@@ -352,6 +361,9 @@ Return size: 12
 Return size: 13
 0x7fffffffffffffff
 Return size: 18
+
+
+
 ---Octal---
 0 #o
 Return size: 5
@@ -385,6 +397,9 @@ Return size: 29
 Return size: 30
 @moulitest: 0 0
 Return size: 15
+
+
+
 ---Binary(Bonus)---
 101101 b
 Return size: 9
@@ -396,6 +411,9 @@ Return size: 26
 Return size: 11
 11111111 b
 Return size: 11
+
+
+
 ---String---
  s
 Return size: 3
@@ -421,6 +439,9 @@ Return size: 7
 Return size: 7
     
 Return size: 4
+
+
+
 ---Character---
   c
 Return size: 4
@@ -473,6 +494,9 @@ Return size: 26
 Return size: 3
 {0000 }
 Return size: 7
+
+
+
 ---Wide Character---
 Ω lc
 Return size: 6
@@ -506,6 +530,9 @@ Return size: 21
 Return size: 20
 {(null)}
 Return size: 8
+
+
+
 ---Wide String---
 Ωa¥ ls
 Return size: 9
@@ -547,12 +574,15 @@ Return size: 7
 Return size: 32
     
 Return size: 4
+
+
+
 ---Pointer---
-0x7fff53dc5b40 p
+0x7fff5b646b40 p
 Return size: 17
-0x10be41967 p
+0x1045c0959 p
 Return size: 14
-0x7fff53dc5afc p
+0x7fff5b646afc p
 Return size: 17
 {(null)}
 Return size: 8
@@ -568,6 +598,9 @@ Return size: 7
 Return size: 7
 0x0000004d2
 Return size: 11
+
+
+
 ---Percent Sign(edge case)---
 % percent % percent %
 Return size: 22

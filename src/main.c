@@ -155,7 +155,7 @@ int main(void)
     ft_printf("Return size: %d\n", size);
     //	prinft("%+.00010d +.00010d\n", 12345);
 
-    ft_printf("---Decimal Integer \"i\"---\n");
+    ft_printf("\n\n\n---Decimal Integer \"i\"---\n");
 /*  ft_printf("This is a umber %+i\n, this is another number % i\nthis number has min wiith of 10 %.10i\nthis number has min wiith of 10 with + flag %+.10i\n...this is the last number %i\n 10 wiith left just, 5 per %-10.5i\n 10 wiith right just, 5 per %10.5i\n10 wiith, lf, 0 prep, 5per %010.5i\n10 w, rj, 0 prep, 5 per%-010.5i\nENi", 42, 24, 46, 67, -16, 35, 35, 35, 35);*/
 //  ft_printf("This is a number %i, this is another number %i..\nENi", 42, 24);
     size = ft_printf("%-+20i -+20+i\n", 12345);
@@ -276,7 +276,7 @@ int main(void)
     ft_printf("Return size: %i\n", size);
     //  prinft("%+.00010i +.00010i\n", 12345);
 
-    ft_printf("---Unsigned Int---\n");
+    ft_printf("\n\n\n---Unsigned Int---\n");
     // size = ft_printf("%-+20u -+20+u\n", 12345);
     // ft_printf("Return size: %d\n", size);
     // size = ft_printf("% 20u <space>20u\n", 12345);
@@ -411,7 +411,7 @@ int main(void)
     size = ft_printf("%020zu 020zu\n", (size_t)12345);
     ft_printf("Return size: %d\n", size);
 
-	ft_printf("---Hexadecimal--\n");
+	ft_printf("\n\n\n---Hexadecimal--\n");
     size = ft_printf("%#x #x\n", 0);
     ft_printf("Return size: %d\n", size);
 	size = ft_printf("%#x #x\n", 45);
@@ -449,7 +449,7 @@ int main(void)
     size = ft_printf("%ll#x", 9223372036854775807);
     ft_printf("\nReturn size: %d\n", size);
 
-	ft_printf("---Octal---\n");
+	ft_printf("\n\n\n---Octal---\n");
     size = ft_printf("%#o #o\n", 0);
     ft_printf("Return size: %d\n", size);
 	size = ft_printf("%#o #o\n", 45);
@@ -484,7 +484,7 @@ int main(void)
     ft_printf("\nReturn size: %d\n", size);
 
 
-    ft_printf("---Binary(Bonus)---\n");
+    ft_printf("\n\n\n---Binary(Bonus)---\n");
     size = ft_printf("%b b\n", 45);
     ft_printf("Return size: %d\n", size);
     size = ft_printf("%20b 20b\n", 45);
@@ -496,7 +496,7 @@ int main(void)
     size = ft_printf("%b b\n", 255);
     ft_printf("Return size: %d\n", size);
 
-	ft_printf("---String---\n");
+	ft_printf("\n\n\n---String---\n");
     size = ft_printf("%s s\n", "");
     ft_printf("Return size: %d\n", size);
 	size = ft_printf("%s s\n", "Hello World");
@@ -522,7 +522,7 @@ int main(void)
     size = ft_printf("%4.s", "42");
     ft_printf("\nReturn size: %d\n", size);
 
-	ft_printf("---Character---\n");
+	ft_printf("\n\n\n---Character---\n");
     size = ft_printf("%c c\n", 0);
     ft_printf("Return size: %d\n", size);
 	size = ft_printf("%c c\n", 'a');
@@ -582,7 +582,7 @@ int main(void)
     size = ft_printf("{%05.c}", 0);
     ft_printf("\nReturn size: %d\n", size);
 
-    ft_printf("---Wide Character---\n");
+    ft_printf("\n\n\n---Wide Character---\n");
     setlocale(LC_ALL, "");
     wchar_t c = L'Ω';
     wchar_t d = L'a';
@@ -623,7 +623,7 @@ int main(void)
     ft_printf("\nReturn size: %d\n", size);
 
 
-    ft_printf("---Wide String---\n");
+    ft_printf("\n\n\n---Wide String---\n");
     wchar_t *wstr = L"Ωa¥";
     wchar_t *wsrc = L"Приве́т नमस्ते שָׁלוֹם";
     wchar_t *wbuf = L"🐨 ☺ mЖuvoϟϿ_ԧ ☠ ✊ ∞";
@@ -670,7 +670,7 @@ int main(void)
     size = ft_printf("%4.S", L"我是一只猫。");
     ft_printf("\nReturn size: %d\n", size);
 
-	ft_printf("---Pointer---\n");
+	ft_printf("\n\n\n---Pointer---\n");
 	int buf[10] = {150, 255, 12, 16, 21, 42};
 	int *tab = buf;
 	char *str = "Hello World";
@@ -697,7 +697,7 @@ int main(void)
     size = ft_printf("%2.9p", 1234);
     ft_printf("\nReturn size: %d\n", size);
 
-    ft_printf("---Percent Sign(edge case)---\n");
+    ft_printf("\n\n\n---Percent Sign(edge case)---\n");
     size = ft_printf("%% percent %% percent %%\n");
     ft_printf("Return size: %d\n", size);
     size = ft_printf("{%05.%}", 0);
