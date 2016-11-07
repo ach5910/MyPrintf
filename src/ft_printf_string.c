@@ -56,7 +56,7 @@ size_t			ft_printf_string(va_list *ap, t_fmt **args)
 	size = ft_strlen(str);
 	while  ((size_t)(*args)->width > size)
 	{
-		str = (*args)->left_just ? ft_strapp(str, " ") : ft_strjoin(
+		str = (*args)->left_just ? ft_strapp(str, " ") : ft_strpre(
 				prepend, str);
 		size++;
 	}

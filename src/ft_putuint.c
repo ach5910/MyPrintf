@@ -44,11 +44,11 @@ char	*ft_itoa_base(uintmax_t value, int base, int is_upper)
 void	ft_prepend_prefix(char **nstr, char *prefix, int base, uintmax_t nbr)
 {
 	if (prefix[0] != '\0' && base == 8 && prefix[0] != *nstr[0])
-		*nstr = ft_strjoin(prefix, *nstr);
+		*nstr = ft_strpre(prefix, *nstr);
 	else if (prefix[0] != '\0' && base == 16 && nbr != 0)
-		*nstr = ft_strjoin(prefix, *nstr);
+		*nstr = ft_strpre(prefix, *nstr);
 	else if (prefix[0] != '\0' && base != 8 && base != 16)
-		*nstr = ft_strjoin(prefix, *nstr);
+		*nstr = ft_strpre(prefix, *nstr);
 }
 
 void	ft_justify(t_fmt **args, char **nstr, size_t offset)
@@ -61,7 +61,7 @@ void	ft_justify(t_fmt **args, char **nstr, size_t offset)
 	size = ft_strlen(*nstr) + offset;
 	while  ((size_t)(*args)->width > size)
 	{
-		*nstr = (*args)->left_just ? ft_strjoin(*nstr, " ") : ft_strjoin(
+		*nstr = (*args)->left_just ? ft_strapp(*nstr, " ") : ft_strpre(
 			prepend, *nstr);
 		size++;
 	}
@@ -87,6 +87,7 @@ size_t		ft_unassigned_precision(t_fmt **args, int base)
 size_t		ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base)
 {
 	char	*nstr;
+	char	*temp;
 	size_t		size;
 
 	if ((*args)->has_percision && (*args)->min_width == 0 && nbr == 0)
@@ -95,12 +96,15 @@ size_t		ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base)
 		return (size);
 	}
 	nstr = ft_itoa_base((uintmax_t)nbr, base, (*args)->is_upper);
-	while (*nstr == '0' && nstr[1] != '\0')
-		nstr++;
+	temp = nstr;
+	while (*temp == '0' && temp[1] != '\0')
+		temp++;
+	free(nstr);
+	nstr = ft_strdup(temp);
 	size = ft_strlen(nstr);
 	while ((size_t)(*args)->min_width > size)
 	{
-		nstr = ft_strjoin("0", nstr);
+		nstr = ft_strpre("0", nstr);
 		size++;
 	}
 	if ((*args)->left_just || ((*args)->prepend_zeros && !(*args)->has_percision))
@@ -110,5 +114,6 @@ size_t		ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base)
 		ft_justify(args, &nstr, 0);
 	size = ft_strlen(nstr);
 	ft_putstr(nstr);
+	ft_strdel(&nstr);
 	return (size);
 }
