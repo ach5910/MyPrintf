@@ -66,7 +66,7 @@ typedef struct	s_fmt
 
 typedef size_t	(*t_conv_spec)(va_list*, t_fmt**);
 
-t_conv_spec		ft_get_conv_spec(char ch);
+t_conv_spec		ft_get_conv_spec(int i);
 size_t				ft_printf(const char *format, ...);
 t_fmt			*new_format(void);
 size_t			ft_put_conv_spec(va_list *ap, t_fmt **args, char **fmt);

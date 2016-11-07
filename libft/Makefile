@@ -25,7 +25,7 @@ SRCS = ft_putchar.c ft_putstr.c ft_strcmp.c ft_strlen.c ft_strcpy.c \
 	ft_strsplit.c ft_putendl.c ft_putnbr.c ft_putchar_fd.c ft_itoa.c \
 	ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_strstr.c ft_strnstr.c \
 	ft_strncmp.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c \
-	ft_lstiter.c ft_lstmap.c ft_strapp.c ft_strpre.c
+	ft_lstiter.c ft_lstmap.c ft_strapp.c ft_strpre.c ft_str_index.c
 
 OBJ = ft_putchar.o ft_putstr.o ft_strcmp.o ft_strlen.o ft_strcpy.o \
 	ft_strncpy.o ft_strdup.o ft_strcat.o ft_strncat.o ft_strlcat.o \
@@ -38,7 +38,7 @@ OBJ = ft_putchar.o ft_putstr.o ft_strcmp.o ft_strlen.o ft_strcpy.o \
 	ft_strsplit.o ft_putendl.o ft_putnbr.o ft_putchar_fd.o ft_itoa.o \
 	ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_strstr.o ft_strnstr.o \
 	ft_strncmp.o ft_lstnew.o ft_lstdelone.o ft_lstdel.o ft_lstadd.o \
-	ft_lstiter.o ft_lstmap.o ft_strapp.o ft_strpre.o
+	ft_lstiter.o ft_lstmap.o ft_strapp.o ft_strpre.o ft_str_index.o
 
 AR = ar rc
 

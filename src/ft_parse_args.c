@@ -82,18 +82,42 @@ void parse_flags(t_fmt **args, char **fmt)
 
 int	parse_conv_spec(t_fmt **args, char **fmt)
 {
+	int i;
+
 	if (**fmt == '\0')
-		return (0);
-	if (**fmt == 'S' || **fmt == 'O' || **fmt == 'D' || **fmt == 'U' ||
-			**fmt == 'C')
-	{
-		(*args)->length = LEN_MOD_L;
-	}
-	if (**fmt == 'O' || **fmt == 'X')
+		return (-1);
+	// if ((i = ft_str_index("spdiouxcbXOSDUC%", **fmt)) == -1)
+	// 	return (-1);
+	i = ft_str_index("spdiouxcbXOSDUC%", **fmt);
+	if (i >= 9)
 		(*args)->is_upper = 1;
-	if ((ft_strchr("xXdDioOuUsScCpb%", **fmt)) == NULL)
-		return (0);
-	return (1);
+	if (i >= 10)
+		(*args)->length = LEN_MOD_L;
+	return (i);
+
+	// if (**fmt == 'S' || **fmt == 'O' || **fmt == 'D' || **fmt == 'U' ||
+	// 		**fmt == 'C')
+	// {
+	// 	(*args)->length = LEN_MOD_L;
+	// }
+	// if (**fmt == 'O' || **fmt == 'X')
+	// 	(*args)->is_upper = 1;
+	// 	conv_funct['s'] = &ft_printf_string;
+	// conv_funct['S'] = &ft_printf_wstring;
+	// conv_funct['p'] = &ft_printf_ptr;
+	// conv_funct['d'] = &ft_printf_int;
+	// conv_funct['D'] = &ft_printf_int;
+	// conv_funct['i'] = &ft_printf_int;
+	// conv_funct['o'] = &ft_printf_oct;
+	// conv_funct['O'] = &ft_printf_oct;
+	// conv_funct['u'] = &ft_printf_uint;
+	// conv_funct['U'] = &ft_printf_uint;
+	// conv_funct['x'] = &ft_printf_hex;
+	// conv_funct['X'] = &ft_printf_hex;
+	// conv_funct['c'] = &ft_printf_char;
+	// conv_funct['C'] = &ft_printf_wchar;
+	// conv_funct['b'] = &ft_printf_binary;
+	// conv_funct['%'] = &ft_printf_mod;
 }
 
 // size_t	ft_print_conv(va_list *ap, t_fmt **args, char **fmt)

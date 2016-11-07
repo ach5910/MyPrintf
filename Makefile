@@ -71,6 +71,7 @@ LIBFT_FUNC = ft_isdigit \
 			ft_strncpy \
 			ft_strapp \
 			ft_strpre \
+			ft_str_index \
 
 SRC = $(addprefix src/, $(SRC_BASE))
 
@@ -105,13 +106,21 @@ clean:
 	rm -f $(OBJS)
 	make -C ./libft clean
 
-fclean:
+pf_clean:
 	rm -rf $(OBJS)
+
+fclean: pf_clean
 	rm -rf $(NAME)
 	rm -rf obj
 	rm -rf ptest
 	make -C ./libft fclean
 
-re: fclean all
+pf_fclean: pf_clean
+	rm -rf $(NAME)
+	rm -rf obj
+	rm -rf ptest
+
+re: pf_fclean all
+	make -C ./libft re
 
 .PHONY: all clean fclean re
