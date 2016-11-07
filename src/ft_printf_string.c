@@ -34,8 +34,7 @@ size_t			ft_printf_string(va_list *ap, t_fmt **args)
 	str = ft_strdup(temp);
 	if ((*args)->min_width && (size_t)(*args)->min_width < ft_strlen(str))
 		str[(*args)->min_width] = '\0';
-	size = ft_strlen(str);
-	size = ft_strpad((size_t)(*args)->width, size, &str, pad, (*args)->left_just);
+	size = ft_strpad((size_t)(*args)->width, &str, pad, (*args)->left_just);
 	ft_putstr(str);
 	ft_strdel(&pad);
 	ft_strdel(&str);

@@ -10,12 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libftprintf.h"
 
 size_t	ft_putcharpad(size_t width, size_t size, char ch)
 {
-	while(width > size)
+	while (width > size)
 	{
 		ft_putchar(ch);
 		size++;
@@ -23,8 +22,11 @@ size_t	ft_putcharpad(size_t width, size_t size, char ch)
 	return (size);
 }
 
-size_t ft_strpad(size_t width, size_t size,char **nstr, char *pad, int left_just)
+size_t	ft_strpad(size_t width, char **nstr, char *pad, int left_just)
 {
+	size_t size;
+
+	size = ft_strlen(*nstr);
 	if (left_just)
 	{
 		while (width > size)
@@ -56,4 +58,3 @@ char	*ft_get_justified_pad(int prep_zeros, int has_percision, int left_just, int
 		pad[0] = left_just ? ' ' : pad[0];
 	return (pad);
 }
-

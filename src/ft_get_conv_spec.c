@@ -32,7 +32,6 @@ static void	init_funct_ptr(t_conv_spec *conv_funct)
 	conv_funct['%'] = &ft_printf_mod;
 }
 
-
 t_conv_spec	ft_get_conv_spec(char c)
 {
 	static t_conv_spec *conv_funct = NULL;
@@ -46,11 +45,11 @@ t_conv_spec	ft_get_conv_spec(char c)
 	return (conv_funct[(int)c]);
 }
 
-size_t	ft_put_conv_spec(va_list *ap, t_fmt **args, char **fmt)
+size_t		ft_put_conv_spec(va_list *ap, t_fmt **args, char **fmt)
 {
 	t_conv_spec conv_spec;
-	size_t size;
-	char	pad;
+	size_t		size;
+	char		pad;
 
 	size = 0;
 	if (parse_conv_spec(args, fmt))
@@ -60,13 +59,13 @@ size_t	ft_put_conv_spec(va_list *ap, t_fmt **args, char **fmt)
 	}
 	else if (**fmt != '\0')
 	{
-			if ((*args)->left_just)
-				ft_putchar(**fmt);
-			pad = (*args)->prepend_zeros ? '0' : ' ';
-			while ((size_t)(*args)->width > ++size)
-				ft_putchar(pad);
-			if (!(*args)->left_just)
-				ft_putchar(**fmt);
+		if ((*args)->left_just)
+			ft_putchar(**fmt);
+		pad = (*args)->prepend_zeros ? '0' : ' ';
+		while ((size_t)(*args)->width > ++size)
+			ft_putchar(pad);
+		if (!(*args)->left_just)
+			ft_putchar(**fmt);
 	}
 	return (size);
 }

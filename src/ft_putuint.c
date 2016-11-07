@@ -29,8 +29,7 @@ void	ft_justify(t_fmt **args, char **nstr, size_t offset)
 
 	pad = ft_get_justified_pad((*args)->prepend_zeros, (*args)->has_percision, 
 		(*args)->left_just, 0);
-	size = ft_strlen(*nstr) + offset;
-	size = ft_strpad((size_t)(*args)->width, size, nstr, pad, (*args)->left_just);
+	size = ft_strpad((size_t)(*args)->width - offset, nstr, pad, (*args)->left_just);
 	ft_strdel(&pad);
 }
 
@@ -64,8 +63,7 @@ size_t		ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base)
 		temp++;
 	free(nstr);
 	nstr = ft_strdup(temp);
-	size = ft_strlen(nstr);
-	size = ft_strpad((size_t)(*args)->min_width, size, &nstr, "0", 0);
+	size = ft_strpad((size_t)(*args)->min_width, &nstr, "0", 0);
 	if ((*args)->left_just || ((*args)->prepend_zeros && !(*args)->has_percision))
 		ft_justify(args, &nstr, ft_strlen(prefix));
 	ft_prepend_prefix(&nstr, prefix, base, nbr);

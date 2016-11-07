@@ -27,11 +27,9 @@ size_t ft_printf_ptr(va_list *ap, t_fmt **args)
 		(*args)->left_just, 1);
 	nbr = ft_get_uint_length(ap, args);
 	nstr = ft_itoa_base(nbr, 16, (*args)->is_upper);
-	size = ft_strlen(nstr);
-	size = ft_strpad((size_t)(*args)->min_width, size, &nstr, "0", 0);
+	size = ft_strpad((size_t)(*args)->min_width, &nstr, "0", 0);
 	nstr = ft_strpre("0x", nstr);
-	size += 2;
-	size = ft_strpad((size_t)(*args)->width, size, &nstr, pad, (*args)->left_just);
+	size = ft_strpad((size_t)(*args)->width, &nstr, pad, (*args)->left_just);
 	ft_putstr(nstr);
 	ft_strdel(&pad);
 	ft_strdel(&nstr);

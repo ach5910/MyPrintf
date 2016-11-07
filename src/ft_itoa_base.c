@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-uintmax_t	ft_pow(int  base, int i)
+uintmax_t	ft_pow(int base, int i)
 {
 	if (i == 0)
 		return (1);
@@ -20,11 +20,11 @@ uintmax_t	ft_pow(int  base, int i)
 		return (base * ft_pow(base, i - 1));
 }
 
-char	*ft_itoa_base(uintmax_t value, int base, int is_upper)
+char		*ft_itoa_base(uintmax_t value, int base, int is_upper)
 {
-	char *buf;
-	int size;
-	char *nbr;
+	char	*buf;
+	int		size;
+	char	*nbr;
 
 	buf = is_upper ? ft_strdup("0123456789ABCDEF") :
 		ft_strdup("0123456789abcdef");
