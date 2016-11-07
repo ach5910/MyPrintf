@@ -47,10 +47,8 @@ size_t	parse_format(va_list *ap, const char *fmt)
 		*iter = '\0';
 		size += ft_strlen(cursor);
 		ft_putstr(cursor);
-		//args = new_format();
 		size += parse_args(ap, &args, &iter);
 		ft_bzero(args, sizeof(t_fmt));
-		//ft_memdel((void **)&args);
 		if (*iter == '\0')
 			iter--;
 		free(cursor);

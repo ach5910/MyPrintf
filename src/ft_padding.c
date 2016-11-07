@@ -1,37 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_mod.c                                    :+:      :+:    :+:   */
+/*   ft_padding.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahunt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/04 03:19:28 by ahunt             #+#    #+#             */
-/*   Updated: 2016/11/04 03:19:32 by ahunt            ###   ########.fr       */
+/*   Created: 2016/11/07 03:58:29 by ahunt             #+#    #+#             */
+/*   Updated: 2016/11/07 03:58:33 by ahunt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "libftprintf.h"
 
-size_t	ft_printf_mod(va_list *ap, t_fmt **args)
+size_t	ft_putcharpad(size_t width, size_t size, char ch)
 {
-	size_t size;
-	char	pad;
+	while(width > size)
+	{
+		ft_putchar(ch);
+		size++;
+	}
+	return (size);
+}
 
-	size = 1;
-	if (1 == 2)
-		va_arg(*ap, int);
-
-	if ((*args)->left_just)
-		ft_putchar('%');
-	pad = (*args)->prepend_zeros ? '0' : ' ';
-	pad = (*args)->left_just ? ' ' : pad;
-	// while  ((size_t)(*args)->width > size)
-	// {
-	// 	ft_putchar(pad);
-	// 	size++;
-	// }
-	size = ft_putcharpad((size_t)(*args)->width, size, pad);
-	if (!(*args)->left_just)
-		ft_putchar('%');
+size_t ft_strpad(size_t width, size_t size,char **nstr, char *pad, int left_just)
+{
+	if (left_just)
+	{
+		while (width > size)
+		{
+			*nstr = ft_strapp(*nstr, pad);
+			size++;
+		}
+	}
+	else
+	{
+		while (width > size)
+		{
+			*nstr = ft_strpre(pad, *nstr);
+			size++;
+		}
+	}
 	return (size);
 }

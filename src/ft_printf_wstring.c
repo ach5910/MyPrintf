@@ -18,7 +18,7 @@ size_t	ft_printf_wstring(va_list *ap, t_fmt **args)
 	wchar_t *src;
 	size_t		size;
 	int		chcnt;
-	int		has_percision;
+	char	ch;
 	int		i;
 
 	chcnt = 0;
@@ -30,17 +30,18 @@ size_t	ft_printf_wstring(va_list *ap, t_fmt **args)
 	}
 	if ((*args)->has_percision && (*args)->min_width == 0)
 	{
-		while((size_t)(*args)->width > size)
-		{
-			(*args)->prepend_zeros ? ft_putchar('0') : ft_putchar(' ');
-			size++;
-		}
-		return (size);
+		// while((size_t)(*args)->width > size)
+		// {
+		// 	(*args)->prepend_zeros ? ft_putchar('0') : ft_putchar(' ');
+		// 	size++;
+		// }
+		ch = (*args)->prepend_zeros ? '0' : ' ';
+		return (ft_putcharpad((size_t)(*args)->width, size, ch));
 	}
-	has_percision = (*args)->min_width ? 1 : 0;
+	(*args)->has_percision = (*args)->min_width ? 1 : 0;
 	while ((i = ft_get_bytes_wc(src[chcnt])) != 0)
 	{
-		if (has_percision && ((*args)->min_width -= i) < 0)
+		if ((*args)->has_percision && ((*args)->min_width -= i) < 0)
 			break ;
 		size += i;
 		chcnt++;
@@ -54,15 +55,17 @@ size_t	ft_put_wstr(t_fmt **args, wchar_t *src, int chcnt, size_t size)
 {
 	unsigned char *dest;
 	int i;
-	char 	prepend;
+	char 	pad;
 
 	i = 0;
-	prepend = ((*args)->prepend_zeros && !(*args)->min_width) ? '0' : ' ';
-	while (!(*args)->left_just && (size_t)(*args)->width > size)
- 	{
-		ft_putchar(prepend);
-		size++;
-	}
+	pad = ((*args)->prepend_zeros && !(*args)->min_width) ? '0' : ' ';
+	// while (!(*args)->left_just && (size_t)(*args)->width > size)
+ // 	{
+	// 	ft_putchar(prepend);
+	// 	size++;
+	// }
+	if (!(*args)->left_just)
+		size = ft_putcharpad((size_t)(*args)->width, size, pad);
 	while (chcnt > i)
 	{
 		dest = ft_get_wc(src[i]);
@@ -70,10 +73,12 @@ size_t	ft_put_wstr(t_fmt **args, wchar_t *src, int chcnt, size_t size)
 		ft_strdel((char **)&dest);
 		i++;
 	}
-	while ((*args)->left_just && (size_t)(*args)->width > size)
- 	{
-		ft_putchar(prepend);
-		size++;
-	}
+	// while ((*args)->left_just && (size_t)(*args)->width > size)
+ // 	{
+	// 	ft_putchar(prepend);
+	// 	size++;
+	// }
+	if ((*args)->left_just)
+		size = ft_putcharpad((size_t)(*args)->width, size, pad);
 	return (size);
 }

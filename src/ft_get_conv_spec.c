@@ -51,6 +51,7 @@ size_t	ft_put_conv_spec(va_list *ap, t_fmt **args, char **fmt)
 {
 	t_conv_spec conv_spec;
 	size_t size;
+	char	pad;
 
 	size = 0;
 	if (parse_conv_spec(args, fmt))
@@ -62,8 +63,9 @@ size_t	ft_put_conv_spec(va_list *ap, t_fmt **args, char **fmt)
 	{
 			if ((*args)->left_just)
 				ft_putchar(**fmt);
+			pad = (*args)->prepend_zeros ? '0' : ' ';
 			while ((size_t)(*args)->width > ++size)
-				(*args)->prepend_zeros ? ft_putchar('0') : ft_putchar(' ');
+				ft_putchar(pad);
 			if (!(*args)->left_just)
 				ft_putchar(**fmt);
 	}

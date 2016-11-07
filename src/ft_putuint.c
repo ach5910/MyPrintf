@@ -58,13 +58,15 @@ void	ft_justify(t_fmt **args, char **nstr, size_t offset)
 
 	prepend = ft_strnew(1);
 	prepend[0] = ((*args)->prepend_zeros && !(*args)->has_percision) ? '0' : ' ';
+	prepend[0] = (*args)->left_just ? ' ' : prepend[0];
 	size = ft_strlen(*nstr) + offset;
-	while  ((size_t)(*args)->width > size)
-	{
-		*nstr = (*args)->left_just ? ft_strapp(*nstr, " ") : ft_strpre(
-			prepend, *nstr);
-		size++;
-	}
+	// while  ((size_t)(*args)->width > size)
+	// {
+	// 	*nstr = (*args)->left_just ? ft_strapp(*nstr, " ") : ft_strpre(
+	// 		prepend, *nstr);
+	// 	size++;
+	// }
+	size = ft_strpad((size_t)(*args)->width, size, nstr, prepend, (*args)->left_just);
 	ft_strdel(&prepend);
 }
 
@@ -102,11 +104,12 @@ size_t		ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base)
 	free(nstr);
 	nstr = ft_strdup(temp);
 	size = ft_strlen(nstr);
-	while ((size_t)(*args)->min_width > size)
-	{
-		nstr = ft_strpre("0", nstr);
-		size++;
-	}
+	// while ((size_t)(*args)->min_width > size)
+	// {
+	// 	nstr = ft_strpre("0", nstr);
+	// 	size++;
+	// }
+	size = ft_strpad((size_t)(*args)->min_width, size, &nstr, "0", 0);
 	if ((*args)->left_just || ((*args)->prepend_zeros && !(*args)->has_percision))
 		ft_justify(args, &nstr, ft_strlen(prefix));
 	ft_prepend_prefix(&nstr, prefix, base, nbr);

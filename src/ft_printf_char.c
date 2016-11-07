@@ -16,6 +16,7 @@ size_t			ft_printf_char(va_list *ap, t_fmt **args)
 {
 	unsigned char		ch;
 	size_t			size;
+	char			pad;
 
 	if ((*args)->length == LEN_MOD_L)
 		size = ft_printf_wchar(ap, args);
@@ -25,11 +26,13 @@ size_t			ft_printf_char(va_list *ap, t_fmt **args)
 		ch = (unsigned char)va_arg(*ap, int);
 		if ((*args)->left_just)
 			ft_putchar(ch);
-		while  ((size_t)(*args)->width > size)
-		{
-			(*args)->prepend_zeros ? ft_putchar('0') : ft_putchar(' ');
-			size++;
-		}
+		pad = (*args)->prepend_zeros ? '0' : ' ';
+		size = ft_putcharpad((size_t)(*args)->width, size, pad);
+		// while  ((size_t)(*args)->width > size)
+		// {
+			
+		// 	size++;
+		// }
 		if (!(*args)->left_just)
 			ft_putchar(ch);
 	}

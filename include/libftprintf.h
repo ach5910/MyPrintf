@@ -76,6 +76,8 @@ int				parse_conv_spec(t_fmt **args, char **fmt);
 void			parse_flags(t_fmt **args, char **fmt);
 void			parse_num(t_fmt **args, char **fmt, int is_width);
 void			parse_length(t_fmt **args, char **fmt);
+size_t 			ft_strpad(size_t width, size_t size, char **nstr, char *pad, int left_just);
+size_t			ft_putcharpad(size_t width, size_t size, char ch);
 void			ft_prepend_prefix(char **nstr, char *prefix, int base, uintmax_t nbr);
 size_t				ft_printf_int(va_list *ap, t_fmt **args);
 size_t				ft_printf_uint(va_list *ap, t_fmt **args);

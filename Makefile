@@ -42,6 +42,7 @@ SRC_BASE =	ft_printf.c \
 			ft_get_wide_char.c \
 			ft_get_conv_spec.c \
 			ft_printf_mod.c \
+			ft_padding.c \
 			ft_putuint.c \
 
 LIBFT_FUNC = ft_isdigit \

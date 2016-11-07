@@ -29,37 +29,39 @@ size_t			ft_printf_string(va_list *ap, t_fmt **args)
 	{
 		if ((*args)->width & (*args)->prepend_zeros)
 		{
-			while ((size_t)(*args)->width > size)
-			{
-				ft_putchar('0');
-				size++;
-			}
-			return (size);
+			// while ((size_t)(*args)->width > size)
+			// {
+			// 	ft_putchar('0');
+			// 	size++;
+			// }
+			return (ft_putcharpad((size_t)(*args)->width, size, '0'));
 		}
 		ft_putstr(NULL_STR);
 		return (6);
 	}
 	if ((*args)->has_percision && (*args)->min_width == 0)
 	{
-		while ((size_t)(*args)->width > size)
-		{
-			ft_putchar(' ');
-			size++;
-		}
-		return (size);
+		// while ((size_t)(*args)->width > size)
+		// {
+		// 	ft_putchar(' ');
+		// 	size++;
+		// }
+		return (ft_putcharpad((size_t)(*args)->width, size, ' '));
 	}
 	prepend = ft_strnew(1);
 	prepend[0] = ((*args)->prepend_zeros && !(*args)->min_width) ? '0' : ' ';
+	prepend[0] = (*args)->left_just ? ' ' : prepend[0];
 	str = ft_strdup(temp);
 	if ((*args)->min_width && (size_t)(*args)->min_width < ft_strlen(str))
 		str[(*args)->min_width] = '\0';
 	size = ft_strlen(str);
-	while  ((size_t)(*args)->width > size)
-	{
-		str = (*args)->left_just ? ft_strapp(str, " ") : ft_strpre(
-				prepend, str);
-		size++;
-	}
+	// while  (ç > size)
+	// {
+	// 	str = (*args)->left_just ? ft_strapp(str, " ") : ft_strpre(
+	// 			prepend, str);
+	// 	size++;
+	// }
+	size = ft_strpad((size_t)(*args)->width, size, &str, prepend, (*args)->left_just);
 	ft_putstr(str);
 	ft_strdel(&prepend);
 	ft_strdel(&str);
