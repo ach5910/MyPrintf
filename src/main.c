@@ -1,63 +1,8 @@
 #include "libftprintf.h"
+#include <locale.h>
 
 int	main(void)
 {
-<<<<<<< HEAD
-	int size;
-	size = ft_printf("%010x", 542);
-	ft_putnbr(size);
-	ft_printf("\nReturn size: \n");
-
-
-	size = ft_printf("%#x", 42);
-	ft_printf("\nReturn size: %d\n", size);
-
-	size = ft_printf("%#llx", 9223372036854775807);
-	ft_printf("\nReturn size: %d\n", size);
-
-	size = ft_printf("%#X", 42);
-	ft_printf("\nReturn size: %d\n", size);
-
-	size = ft_printf("%#08x", 42);
-	ft_printf("\nReturn size: %d\n", size);
-
-	size = ft_printf("%#-08x", 42);
-	ft_printf("\nReturn size: %d\n", size);
-
-	size = ft_printf("@moulitest: %#.x %#.0x", 0, 0);
-	ft_printf("\nReturn size: %d\n", size);
-
-	size = ft_printf("@moulitest: %.x %.0x", 0, 0);
-	ft_printf("\nReturn size: %d\n", size);
-
-	size = ft_printf("@moulitest: %5.x %5.0x", 0, 0);
-	ft_printf("\nReturn size: %d\n", size);
-
-	size = ft_printf("@moulitest: %s", NULL);
-	ft_printf("\nReturn size: %d\n", size);
-
-	size = ft_printf("@moulitest: %.o %.0o", 0, 0);
-	ft_printf("\nReturn size: %d\n", size);
-
-	size = ft_printf("@moulitest: %5.o %5.0o", 0, 0);
-	ft_printf("\nReturn size: %d\n", size);
-
-	// size = ft_printf("hhhß%0+5d", 42);
-	// ft_printf("\nReturn size:\n");
-
-	// size = ft_printf("%05d", -42);
-	// ft_printf("\nReturn size: \n");
-
-	// size = ft_printf("%0+5d", -42);
-	// ft_printf("\nReturn size: %d\n", size);
-	// size = ft_printf("%5%");
-	// ft_printf("\nReturn size: %d\n", size);
-	// size = ft_printf("%-5%");
-	// ft_printf("\nReturn size: \n");
-
-	// size = ft_printf("%#08x", 42);
-	// ft_printf("\nReturn size: \n");
-=======
  	int size;
     ft_printf("---Decimal Integer \"d\"---\n");
 /*  ft_printf("This is a umber %+d\n, this is another number % d\nthis number has min width of 10 %.10d\nthis number has min width of 10 with + flag %+.10d\n...this is the last number %d\n 10 width left just, 5 per %-10.5d\n 10 width right just, 5 per %10.5d\n10 width, lf, 0 prep, 5per %010.5d\n10 w, rj, 0 prep, 5 per%-010.5d\nEND", 42, 24, 46, 67, -16, 35, 35, 35, 35);*/
@@ -798,7 +743,6 @@ int	main(void)
 
     // size = ft_printf(RED" This is red "RESET);
     // ft_printf("\nResturn size: %d\n", size);
->>>>>>> 7c3e2c876a42c734a865a8f265a6ea0e47b9b2c8
 
 	// size = ft_printf("%#-08x", 42);
 	// ft_printf("\nReturn size: \n");

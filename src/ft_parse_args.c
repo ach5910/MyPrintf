@@ -100,34 +100,34 @@ int	parse_conv_spec(t_fmt **args, char **fmt)
 // {
 // 	size_t size;
 
-<<<<<<< HEAD
-	size = 0;
-	if (**fmt == 'x' || **fmt == 'X')
-		size = ft_printf_hex(ap, args);
-	else if (**fmt == 'd' || **fmt == 'i')
-		size = ft_printf_int(ap, args);
-	else if (**fmt == 'o' || **fmt == 'O')
-		size = ft_printf_oct(ap, args);
-	else if (**fmt == 'u' || **fmt == 'U')
-		size = ft_printf_uint(ap, args);
-	else if (**fmt == 's' || **fmt == 'S')
-		size = ft_printf_string(ap, args);
-	else if (**fmt == 'c' || **fmt == 'C')
-		size = ft_printf_char(ap, args);
-	else if (**fmt == 'p')
-		size = ft_printf_ptr(ap, args);
-	else if (**fmt == 'b')
-		size = ft_printf_binary(ap, args);
-	else if (**fmt == '%')
-		size = ft_printf_mod(ap, args);
-	else if (**fmt == 'T')
-	{
-		size = ft_print_color(ap, args);
-		(*fmt) += 8;
-	}
-	return (size);
-}
-=======
+// <<<<<<< HEAD
+// 	size = 0;
+// 	if (**fmt == 'x' || **fmt == 'X')
+// 		size = ft_printf_hex(ap, args);
+// 	else if (**fmt == 'd' || **fmt == 'i')
+// 		size = ft_printf_int(ap, args);
+// 	else if (**fmt == 'o' || **fmt == 'O')
+// 		size = ft_printf_oct(ap, args);
+// 	else if (**fmt == 'u' || **fmt == 'U')
+// 		size = ft_printf_uint(ap, args);
+// 	else if (**fmt == 's' || **fmt == 'S')
+// 		size = ft_printf_string(ap, args);
+// 	else if (**fmt == 'c' || **fmt == 'C')
+// 		size = ft_printf_char(ap, args);
+// 	else if (**fmt == 'p')
+// 		size = ft_printf_ptr(ap, args);
+// 	else if (**fmt == 'b')
+// 		size = ft_printf_binary(ap, args);
+// 	else if (**fmt == '%')
+// 		size = ft_printf_mod(ap, args);
+// 	else if (**fmt == 'T')
+// 	{
+// 		size = ft_print_color(ap, args);
+// 		(*fmt) += 8;
+// 	}
+// 	return (size);
+// }
+// =======
 // 	size = 0;
 // 	if (**fmt == 'x' || **fmt == 'X')
 // 		size = ft_printf_hex(ap, args);
@@ -154,7 +154,7 @@ int	parse_conv_spec(t_fmt **args, char **fmt)
 // 	// }
 // 	return (size);
 // }
->>>>>>> 7c3e2c876a42c734a865a8f265a6ea0e47b9b2c8
+
 
 size_t	parse_args(va_list *ap,t_fmt **args, char **fmt)
 {
