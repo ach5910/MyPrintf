@@ -10,24 +10,24 @@
 #                                                                              #
 # **************************************************************************** #
 
-PRF = libprintf.a
-
 NAME = libftprintf.a
-
-FT_PRINTF = ft_printf
 
 CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
 LIB_PATH = ./libft
-LIB = $(LIB_PATH)/libft.a
-LIB_LINK = -L$(LIB_PATH) -lft
+LIBFT = $(LIB_PATH)/libft.a
+LIBFT_LINK = -L$(LIB_PATH) -lft
 
-INC_DIR = ./include
-INCS = -I$(INC_DIR)
+INC_DIR +=  include/ libft/
+CFLAGS += $(foreach d, $(INC_DIR), -I$d)
 
-SRC_DIR = ./src
+AR = ar
+
+RLIB = ranlib
+
+SRC_DIR = src
 SRC_BASE =	ft_printf.c \
 			ft_get_length.c \
 			ft_parse_args.c \
@@ -43,53 +43,74 @@ SRC_BASE =	ft_printf.c \
 			ft_printf_uint.c \
 			ft_printf_binary.c \
 			ft_get_wide_char.c \
-			ft_textcolor.c \
+			ft_get_conv_spec.c \
+			ft_printf_mod.c \
+			ft_padding.c \
 			ft_putuint.c \
-			main.c \
-
-SRC = $(addprefix $(SRC_DIR)/, $(SRC_BASE))
+			ft_itoa_base.c \
 
 AR = ar rcs
 
 RLIB = ranlib
 
-RM = rm -rf
+RM = rm -rf	
 
-OBJ_DIR = ./obj
+LIBFT_FUNC = ft_isdigit \
+			ft_memalloc \
+			ft_memdel \
+			ft_putchar \
+			ft_putstr \
+			ft_strchr \
+			ft_strdel \
+			ft_strdup \
+			ft_strlen \
+			ft_strjoin \
+			ft_strnew \
+			ft_bzero \
+			ft_strcpy \
+			ft_strncpy \
+			ft_strapp \
+			ft_strpre \
 
-OBJS = $(SRC_BASE:.c=.o)
+SRC = $(addprefix src/, $(SRC_BASE))
 
-all: obj $(LIB) $(PRF) $(NAME) $(FT_PRINTF)
+OBJS = $(addprefix obj/, $(SRC_BASE:.c=.o))
+OBJS += $(foreach fun, $(LIBFT_FUNC), obj/libft/$(fun).o)
+
+all: $(LIBFT) $(NAME)
+
+$(LIBFT):
+	make -C libft
+
+$(OBJS): | obj
 
 obj:
-	mkdir -p $(OBJ_DIR)
+	mkdir -p $@
+	mkdir -p $@/libft
 
-$(OBJ_DIR)/%.o:$(SRC_DIR)/%.c
-	$(CC) $(CFLAGS) -I$(LIB_PATH) $(INCS) -o $@ -c $<
+obj/%.o: src/%.c
+	$(CC) $(CFLAGS) -o $@ -c $<
 
-$(LIB):
-	make -C $(LIB_PATH)
+obj/libft/%.o: libft/%.c
+	$(CC) $(CFLAGS) -o $@ -c $<
 
-$(FT_PRINTF): $(OBJS)
-	$(CC) $(LIB_LINK) -o $@ $^
+$(NAME): $(OBJS)
+	$(AR) -rcs $@ $^ $(LIBFT)
+	$(RLIB) $@
 
-$(PRF):
-	$(CC) $(CFLAGS) -I$(LIB_PATH) $(INCS) -c $(SRC)
-	$(AR) $(PRF) $(OBJS)
-	$(RLIB) $(PRF)
-
-$(NAME):
-	libtool -static -o libftprintf.a libprintf.a ./libft/libft.a
-	$(RM) $(PRF)
+ptest: $(NAME) obj/main.o
+	$(CC) $(CFLAGS) -o $@ obj/main.o -L. -lftprintf $(LIBFT_LINK)
 
 clean:
-	$(RM) $(OBJ_DIR)
-	$(RM) $(OBJS)
-	make -C $(LIB_PATH) clean
+	rm -f $(OBJS)
+	make -C ./libft clean
 
-fclean: clean
-	$(RM) $(NAME)
-	make -C $(LIB_PATH) fclean
+fclean:
+	rm -rf $(OBJS)
+	rm -rf $(NAME)
+	rm -rf obj
+	rm -rf ptest
+	make -C ./libft fclean
 
 re: fclean all
 

@@ -19,14 +19,13 @@ size_t			ft_printf_hex(va_list *ap, t_fmt **args)
 	size_t			size;
 
 	nbr = ft_get_uint_length(ap, args);
-	prefix = ft_strnew(2);
 	if ((*args)->hash && (*args)->is_upper)
-		prefix = "0X";
+		prefix = ft_strdup("0X");
 	else if ((*args)->hash && !(*args)->is_upper)
-		prefix = "0x";
+		prefix = ft_strdup("0x");
 	else
-		prefix[0] = '\0';
+		prefix = ft_strnew(0);
 	size = ft_putuint(args, prefix, nbr, 16);
-	//ft_strdel(&prefix);
+	ft_strdel(&prefix);
 	return (size);
 }

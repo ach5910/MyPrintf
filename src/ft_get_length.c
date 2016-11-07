@@ -53,5 +53,5 @@ intmax_t	ft_get_int_length(va_list *ap, t_fmt **args)
 		nbr = (ssize_t)nbr;
 	else
 		nbr = (int)nbr;
-	return(nbr);
+	return (nbr);
 }

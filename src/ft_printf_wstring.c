@@ -18,22 +18,26 @@ size_t	ft_printf_wstring(va_list *ap, t_fmt **args)
 	wchar_t *src;
 	size_t		size;
 	int		chcnt;
-	int		has_percision;
+	char	ch;
 	int		i;
 
-	src = va_arg(*ap, wchar_t*);
 	chcnt = 0;
 	size = 0;
-	has_percision = (*args)->min_width ? 1 : 0;
+	if ((src = va_arg(*ap, wchar_t*)) == NULL)
+		return (ft_putstr(NULL_STR));
+	if ((*args)->has_percision && (*args)->min_width == 0)
+	{
+		ch = (*args)->prepend_zeros ? '0' : ' ';
+		return (ft_putcharpad((size_t)(*args)->width, size, ch));
+	}
 	while ((i = ft_get_bytes_wc(src[chcnt])) != 0)
 	{
-		if (has_percision && ((*args)->min_width -= i) < 0)
+		if ((*args)->has_percision && ((*args)->min_width -= i) < 0)
 			break ;
 		size += i;
 		chcnt++;
 	}
 	size = ft_put_wstr(args, src, chcnt, size);
-	//ft_memdel((void **)&src);
 	return (size);
 }
 
@@ -41,13 +45,12 @@ size_t	ft_put_wstr(t_fmt **args, wchar_t *src, int chcnt, size_t size)
 {
 	unsigned char *dest;
 	int i;
+	char 	pad;
 
 	i = 0;
-	while (!(*args)->left_just && (size_t)(*args)->width > size)
- 	{
-		ft_putchar(' ');
-		size++;
-	}
+	pad = ((*args)->prepend_zeros && !(*args)->min_width) ? '0' : ' ';
+	if (!(*args)->left_just)
+		size = ft_putcharpad((size_t)(*args)->width, size, pad);
 	while (chcnt > i)
 	{
 		dest = ft_get_wc(src[i]);
@@ -55,10 +58,7 @@ size_t	ft_put_wstr(t_fmt **args, wchar_t *src, int chcnt, size_t size)
 		ft_strdel((char **)&dest);
 		i++;
 	}
-	while ((*args)->left_just && (size_t)(*args)->width > size)
- 	{
-		ft_putchar(' ');
-		size++;
-	}
+	if ((*args)->left_just)
+		size = ft_putcharpad((size_t)(*args)->width, size, pad);
 	return (size);
 }

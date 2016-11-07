@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strapp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahunt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/18 18:01:17 by ahunt             #+#    #+#             */
-/*   Updated: 2016/09/27 18:38:03 by ahunt            ###   ########.fr       */
+/*   Created: 2016/11/07 01:37:31 by ahunt             #+#    #+#             */
+/*   Updated: 2016/11/07 01:37:40 by ahunt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_putstr(const char *str)
+char	*ft_strapp(char const *s1, char const *s2)
 {
-	size_t length;
+	char *res;
+	size_t size1;
+	size_t size2;
 
-	length = 0;
-	if (str)
-	{
-		while (str[length])
-		{
-			ft_putchar(str[length]);
-			length++;
-		}
-	}
-	return (length);
+	size1 = ft_strlen(s1);
+	size2 = ft_strlen(s2);
+	if (!s1 || !s2)
+		return (NULL);
+	if (!(res = ft_strnew(size1 + size2 + 1)))
+		return (NULL);
+	ft_strncpy(res, s1, size1);
+	ft_strcpy(res + size1, s2);
+	free((void *)s1);
+	return (res);
 }

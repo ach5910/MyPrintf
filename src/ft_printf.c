@@ -26,6 +26,7 @@ t_fmt	*new_format(void)
 	temp->prepend_sp = 0;
 	temp->prepend_zeros = 0;
 	temp->width = 0;
+	temp->has_percision = 0;
 	temp->min_width = 0;
 	temp->length = 0;
 	temp->is_upper = 0;
@@ -41,21 +42,22 @@ size_t	parse_format(va_list *ap, const char *fmt)
 
 	size = 0;
 	cursor = ft_strdup(fmt);
+	args = new_format();
 	while ((iter = ft_strchr(cursor, '%')) != NULL)
 	{
 		*iter = '\0';
-		size += ft_strlen(cursor);
-		ft_putstr(cursor);
-		args = new_format();
+		size += ft_putstr(cursor);
 		size += parse_args(ap, &args, &iter);
-		ft_memdel((void **)&args);
-		cursor = iter + 1;
+		ft_bzero(args, sizeof(t_fmt));
+		if (*iter == '\0')
+			iter--;
+		free(cursor);
+		cursor = ft_strdup(iter + 1);
 	}
 	if (*cursor != '\0')
-	{
-		size += ft_strlen(cursor);
-		ft_putstr(cursor);
-	}
+		size += ft_putstr(cursor);
+	ft_memdel((void **)&args);
+	ft_strdel(&cursor);
 	return (size);
 }
 

@@ -13,28 +13,26 @@
 
 void	parse_length(t_fmt **args, char **fmt)
 {
-	if (**fmt == 'h' && *(*fmt + 1) == 'h')
-	{
-	  (*args)->length = LEN_MOD_HH;
-	  (*fmt) +=  2;
-	  return ;
-	}
-	else if (**fmt == 'l' && *(*fmt + 1) == 'l')
-	{
-		(*args)->length = LEN_MOD_LL;
-		(*fmt) +=  2;
-		return ;
-	}
-	else if (**fmt == 'h' || **fmt == 'l' || **fmt == 'j' || **fmt == 'z')
+	while (**fmt == 'h' || **fmt == 'l' || **fmt == 'j' || **fmt == 'z')
 	{
 		if (**fmt == 'h')
-			(*args)->length = LEN_MOD_H;
+		{
+			if ((*args)->length == LEN_MOD_H)
+				(*args)->length = LEN_MOD_HH;
+			else
+				(*args)->length = MAX((*args)->length, LEN_MOD_H);
+		}
 		else if (**fmt == 'l')
-			(*args)->length = LEN_MOD_L;
+		{
+			if ((*args)->length == LEN_MOD_L)
+				(*args)->length = LEN_MOD_LL;
+			else
+				(*args)->length = MAX((*args)->length, LEN_MOD_L);
+		}
 		else if (**fmt == 'j')
-			(*args)->length = LEN_MOD_J;
+			(*args)->length = MAX((*args)->length, LEN_MOD_J);
 		else if (**fmt == 'z')
-			(*args)->length = LEN_MOD_Z;
+			(*args)->length = MAX((*args)->length, LEN_MOD_Z);
 		(*fmt)++;
 	}
 }
@@ -82,9 +80,10 @@ void parse_flags(t_fmt **args, char **fmt)
 	}
 }
 
-size_t	parse_conv_spec(va_list *ap, t_fmt **args, char **fmt)
+int	parse_conv_spec(t_fmt **args, char **fmt)
 {
-	size_t size = 0;
+	if (**fmt == '\0')
+		return (0);
 	if (**fmt == 'S' || **fmt == 'O' || **fmt == 'D' || **fmt == 'U' ||
 			**fmt == 'C')
 	{
@@ -92,14 +91,16 @@ size_t	parse_conv_spec(va_list *ap, t_fmt **args, char **fmt)
 	}
 	if (**fmt == 'O' || **fmt == 'X')
 		(*args)->is_upper = 1;
-	size = ft_print_conv(ap, args, fmt);
-	return (size);
+	if ((ft_strchr("xXdDioOuUsScCpb%", **fmt)) == NULL)
+		return (0);
+	return (1);
 }
 
-size_t	ft_print_conv(va_list *ap, t_fmt **args, char **fmt)
-{
-	size_t size;
+// size_t	ft_print_conv(va_list *ap, t_fmt **args, char **fmt)
+// {
+// 	size_t size;
 
+<<<<<<< HEAD
 	size = 0;
 	if (**fmt == 'x' || **fmt == 'X')
 		size = ft_printf_hex(ap, args);
@@ -126,18 +127,51 @@ size_t	ft_print_conv(va_list *ap, t_fmt **args, char **fmt)
 	}
 	return (size);
 }
+=======
+// 	size = 0;
+// 	if (**fmt == 'x' || **fmt == 'X')
+// 		size = ft_printf_hex(ap, args);
+// 	else if (**fmt == 'd' || **fmt == 'i' || **fmt == 'D')
+// 		size = ft_printf_int(ap, args);
+// 	else if (**fmt == 'o' || **fmt == 'O')
+// 		size = ft_printf_oct(ap, args);
+// 	else if (**fmt == 'u' || **fmt == 'U')
+// 		size = ft_printf_uint(ap, args);
+// 	else if (**fmt == 's' || **fmt == 'S')
+// 		size = ft_printf_string(ap, args);
+// 	else if (**fmt == 'c' || **fmt == 'C')
+// 		size = ft_printf_char(ap, args);
+// 	else if (**fmt == 'p')
+// 		size = ft_printf_ptr(ap, args);
+// 	else if (**fmt == 'b')
+// 		size = ft_printf_binary(ap, args);
+// 	else if (**fmt == '%')
+// 		size = ft_printf_mod(ap, args);
+// 	// else if (**fmt == 'T')
+// 	// {
+// 	// 	size = ft_print_color(ap, args);
+// 	// 	(*fmt) += 8;
+// 	// }
+// 	return (size);
+// }
+>>>>>>> 7c3e2c876a42c734a865a8f265a6ea0e47b9b2c8
 
 size_t	parse_args(va_list *ap,t_fmt **args, char **fmt)
 {
 	size_t size;
 
-	size = 0;
+	if (*(*fmt + 1) == '\0')
+		return (0);
 	(*fmt)++;
 	parse_flags(args, fmt);
 	parse_num(args, fmt, 1);
-	if(**fmt  == '.')
+	while (**fmt  == '.')
+	{
+		(*args)->has_percision = 1;
 		parse_num(args, fmt, 0);
+	}
 	parse_length(args, fmt);
-	size = parse_conv_spec(ap, args, fmt);
+	parse_flags(args, fmt);
+	size = ft_put_conv_spec(ap, args, fmt);	
 	return (size);
 }
