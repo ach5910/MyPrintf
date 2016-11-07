@@ -26,8 +26,8 @@
 # define LEN_MOD_LL	4
 # define LEN_MOD_J	5
 # define LEN_MOD_Z	6
-
-#define MAX(a,b) \
+# define NULL_STR	"(null)"
+# define MAX(a,b) \
    ({ __typeof__ (a) _a = (a); \
       __typeof__ (b) _b = (b); \
      _a > _b ? _a : _b; })
@@ -69,6 +69,7 @@ typedef size_t	(*t_conv_spec)(va_list*, t_fmt**);
 t_conv_spec		ft_get_conv_spec(char ch);
 size_t				ft_printf(const char *format, ...);
 t_fmt			*new_format(void);
+size_t			ft_put_conv_spec(va_list *ap, t_fmt **args, char **fmt);
 size_t				parse_format(va_list *ap, const char *fmt);
 size_t				parse_args(va_list *ap, t_fmt **args, char **fmt);
 int				parse_conv_spec(t_fmt **args, char **fmt);

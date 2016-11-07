@@ -18,7 +18,7 @@
 # define RESET		"\033[0m"
 # define DIM		2
 # define BLINK		5
-# define REVERSE	7
+# define REVERSE	7 "\033[o;s;dm"
 # define HIDDEN		8
 
 # define BD_BLACK	"\033[1;30m"

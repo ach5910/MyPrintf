@@ -713,48 +713,48 @@ int main(void)
     size = ft_printf("@main_ftprintf: %####0000 33..1..#00d\n", 256);
     ft_printf("\nReturn size: %d\n", size);
 
-    size = ft_printf("%lhh", "2147483647");
-    ft_printf("\nReturn size: %d\n", size);
+    // size = ft_printf("%lhh", "2147483647");
+    // ft_printf("\nReturn size: %d\n", size);
 
-    ft_printf("---Color(Bonus)---\n");
-    // size = ft_printf("%T%d%d%d%s T\n",BOLD, RED, BLACK, "BOLD, RED, BLACK");
-    // ft_printf("Return size: %d\n", size);
+    // ft_printf("---Color(Bonus)---\n");
+    // // size = ft_printf("%T%d%d%d%s T\n",BOLD, RED, BLACK, "BOLD, RED, BLACK");
+    // // ft_printf("Return size: %d\n", size);
 
-    // size = ft_printf("%T%d%d%d%s T\n",DIM, BLUE, YELLOW, "DIM, BLUE, YELLOW");
-    // ft_printf("Return size: %d\n", size);
+    // // size = ft_printf("%T%d%d%d%s T\n",DIM, BLUE, YELLOW, "DIM, BLUE, YELLOW");
+    // // ft_printf("Return size: %d\n", size);
 
-    // size = ft_printf("%T%d%d%d%s T\n",UNDERLINE, GREEN, MAGENTA, "UNDERLINE, GREEN, MAGENTA");
-    // ft_printf("Return size: %d\n", size);
+    // // size = ft_printf("%T%d%d%d%s T\n",UNDERLINE, GREEN, MAGENTA, "UNDERLINE, GREEN, MAGENTA");
+    // // ft_printf("Return size: %d\n", size);
 
-    // size = ft_printf("%T%d%d%d%s T\n",ITALIC, CYAN, WHITE, "ITALIC, CYAN, WHITE");
-    // ft_printf("Return size: %d\n", size);
+    // // size = ft_printf("%T%d%d%d%s T\n",ITALIC, CYAN, WHITE, "ITALIC, CYAN, WHITE");
+    // // ft_printf("Return size: %d\n", size);
 
-    // size = ft_printf("%T%d%d%d%s T\n",BLINK, BLACK, GREEN, "BLINK, BLACK, GREEN");
-    // ft_printf("Return size: %d\n", size);
+    // // size = ft_printf("%T%d%d%d%s T\n",BLINK, BLACK, GREEN, "BLINK, BLACK, GREEN");
+    // // ft_printf("Return size: %d\n", size);
 
-    // size = ft_printf("%T%d%d%d%s T\n",REVERSE, WHITE, RED, "REVERSE, WHITE, RED");
-    // ft_printf("Return size: %d\n", size);
+    // // size = ft_printf("%T%d%d%d%s T\n",REVERSE, WHITE, RED, "REVERSE, WHITE, RED");
+    // // ft_printf("Return size: %d\n", size);
 
-    // size = ft_printf("%T%d%d%d%s T\n",HIDDEN, YELLOW, BLACK, "HIDDEN, YELLOW, BLACK");
-    // ft_printf("Return size: %d\n", size);
+    // // size = ft_printf("%T%d%d%d%s T\n",HIDDEN, YELLOW, BLACK, "HIDDEN, YELLOW, BLACK");
+    // // ft_printf("Return size: %d\n", size);
 
-    // size = ft_printf("%20T%d%d%d%s 20T\n",BOLD, RED, BLACK, "BOLD, RED, BLACK");
-    // ft_printf("Return size: %d\n", size);
+    // // size = ft_printf("%20T%d%d%d%s 20T\n",BOLD, RED, BLACK, "BOLD, RED, BLACK");
+    // // ft_printf("Return size: %d\n", size);
 
-    // size = ft_printf("%-20T%d%d%d%s -20T\n",BOLD, RED, BLACK, "BOLD, RED, BLACK");
-    // ft_printf("Return size: %d\n", size);
+    // // size = ft_printf("%-20T%d%d%d%s -20T\n",BOLD, RED, BLACK, "BOLD, RED, BLACK");
+    // // ft_printf("Return size: %d\n", size);
 
-    // size = ft_printf("%-20.10T%d%d%d%s -20.10T\n",BOLD, RED, BLACK, "BOLD, RED, BLACK");
-    // ft_printf("Return size: %d\n", size);
+    // // size = ft_printf("%-20.10T%d%d%d%s -20.10T\n",BOLD, RED, BLACK, "BOLD, RED, BLACK");
+    // // ft_printf("Return size: %d\n", size);
 
-    // size = ft_printf("%20.10T%d%d%d%s 20.10T\n",BOLD, RED, BLACK, "BOLD, RED, BLACK");
-    // ft_printf("Return size: %d\n", size);
+    // // size = ft_printf("%20.10T%d%d%d%s 20.10T\n",BOLD, RED, BLACK, "BOLD, RED, BLACK");
+    // // ft_printf("Return size: %d\n", size);
 
-    // size = ft_printf("%.5T%d%d%d%s .5T\n",BOLD, RED, BLACK, "BOLD, RED, BLACK");
-    // ft_printf("Return size: %d\n", size);
+    // // size = ft_printf("%.5T%d%d%d%s .5T\n",BOLD, RED, BLACK, "BOLD, RED, BLACK");
+    // // ft_printf("Return size: %d\n", size);
 
-    size = ft_printf(RED" This is red "RESET);
-    ft_printf("\nResturn size: %d\n", size);
+    // size = ft_printf(RED" This is red "RESET);
+    // ft_printf("\nResturn size: %d\n", size);
 
 	return (0);
 }

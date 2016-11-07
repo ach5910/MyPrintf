@@ -25,7 +25,7 @@ size_t	ft_printf_wstring(va_list *ap, t_fmt **args)
 	size = 0;
 	if ((src = va_arg(*ap, wchar_t*)) == NULL)
 	{
-		ft_putstr("(null)");
+		ft_putstr(NULL_STR);
 		return (6);
 	}
 	if ((*args)->has_percision && (*args)->min_width == 0)

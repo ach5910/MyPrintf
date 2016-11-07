@@ -24,7 +24,7 @@ size_t ft_printf_ptr(va_list *ap, t_fmt **args)
 	prepend[0] = ((*args)->prepend_zeros && !(*args)->min_width) ? '0' : ' ';
 	(*args)->left_just = (*args)->prepend_zeros ? 1 : (*args)->left_just;
 	nbr = ft_get_uint_length(ap, args);
-	nstr = ft_itoa_base(nbr, 16, (*args)->is_upper);
+	nstr = ft_strdup(ft_itoa_base(nbr, 16, (*args)->is_upper));
 	size = ft_strlen(nstr);
 	if ((*args)->has_percision && (*args)->min_width == 0)
 	{
@@ -44,6 +44,6 @@ size_t ft_printf_ptr(va_list *ap, t_fmt **args)
 		size++;
 	}
 	ft_putstr(nstr);
-		//ft_strdel(&nstr);
+	ft_strdel(&nstr);
 	return (size);
 }

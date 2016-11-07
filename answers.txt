@@ -537,11 +537,11 @@ Return size: 32
     
 Return size: 4
 ---Pointer---
-0x7fff5a62eb00 p
+0x7fff59c5db40 p
 Return size: 17
-0x1055d586e p
+0x105fa69ae p
 Return size: 14
-0x7fff5a62eabc p
+0x7fff59c5dafc p
 Return size: 17
 {(null)}
 Return size: 8
@@ -573,28 +573,3 @@ Return size: 7
 @main_ftprintf:                               256
 
 Return size: 50
----Color(Bonus)---
-[1;31;40mBOLD, RED, BLACK[0;37;40m T
-Return size: 39
-[2;34;43mDIM, BLUE, YELLOW[0;37;40m T
-Return size: 40
-[4;32;45mUNDERLINE, GREEN, MAGENTA[0;37;40m T
-Return size: 48
-[3;36;47mITALIC, CYAN, WHITE[0;37;40m T
-Return size: 42
-[5;30;42mBLINK, BLACK, GREEN[0;37;40m T
-Return size: 42
-[7;37;41mREVERSE, WHITE, RED[0;37;40m T
-Return size: 42
-[8;33;40mHIDDEN, YELLOW, BLACK[0;37;40m T
-Return size: 44
-[1;31;40m    BOLD, RED, BLACK[0;37;40m 20T
-Return size: 45
-[1;31;40mBOLD, RED, BLACK    [0;37;40m -20T
-Return size: 46
-[1;31;40mBOLD, RED,          [0;37;40m -20.10T
-Return size: 49
-[1;31;40m          BOLD, RED,[0;37;40m 20.10T
-Return size: 48
-[1;31;40mBOLD,[0;37;40m .5T
-Return size: 30

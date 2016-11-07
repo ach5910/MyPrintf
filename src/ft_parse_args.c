@@ -13,18 +13,6 @@
 
 void	parse_length(t_fmt **args, char **fmt)
 {
-	// if (**fmt == 'h' && *(*fmt + 1) == 'h')
-	// {
-	//   (*args)->length = LEN_MOD_HH;
-	//   (*fmt) +=  2;
-	//   return ;
-	// }
-	// else if (**fmt == 'l' && *(*fmt + 1) == 'l')
-	// {
-	// 	(*args)->length = LEN_MOD_LL;
-	// 	(*fmt) +=  2;
-	// 	return ;
-	// }
 	while (**fmt == 'h' || **fmt == 'l' || **fmt == 'j' || **fmt == 'z')
 	{
 		if (**fmt == 'h')
@@ -142,11 +130,9 @@ size_t	ft_print_conv(va_list *ap, t_fmt **args, char **fmt)
 size_t	parse_args(va_list *ap,t_fmt **args, char **fmt)
 {
 	size_t size;
-	t_conv_spec conv_spec;
 
-	size = 0;
 	if (*(*fmt + 1) == '\0')
-		return (size);
+		return (0);
 	(*fmt)++;
 	parse_flags(args, fmt);
 	parse_num(args, fmt, 1);
@@ -157,27 +143,20 @@ size_t	parse_args(va_list *ap,t_fmt **args, char **fmt)
 	}
 	parse_length(args, fmt);
 	parse_flags(args, fmt);
-	//size = parse_conv_spec(ap, args, fmt);
-	//if (size == 0 && **fmt != '\0')
-	if (parse_conv_spec(args, fmt))
-	{
-		conv_spec = ft_get_conv_spec(**fmt);
-		size = conv_spec(ap, args);
-	}
-	else if (**fmt != '\0')
-	{
-		// if ((ft_strchr("xXdDioOuUsScCpbT%", **fmt)) == NULL)
-		// {
-		// if (**fmt != '\0')
-		// {
-			if ((*args)->left_just)
-				ft_putchar(**fmt);
-			while ((size_t)(*args)->width > ++size)
-				(*args)->prepend_zeros ? ft_putchar('0') : ft_putchar(' ');
-			if (!(*args)->left_just)
-				ft_putchar(**fmt);
-		// }
-		// }
-	}	
+	size = ft_put_conv_spec(ap, args, fmt);
+	// if (parse_conv_spec(args, fmt))
+	// {
+	// 	conv_spec = ft_get_conv_spec(**fmt);
+	// 	size = conv_spec(ap, args);
+	// }
+	// else if (**fmt != '\0')
+	// {
+	// 		if ((*args)->left_just)
+	// 			ft_putchar(**fmt);
+	// 		while ((size_t)(*args)->width > ++size)
+	// 			(*args)->prepend_zeros ? ft_putchar('0') : ft_putchar(' ');
+	// 		if (!(*args)->left_just)
+	// 			ft_putchar(**fmt);
+	// }	
 	return (size);
 }

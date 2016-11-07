@@ -728,8 +728,8 @@ int main(void)
     size = printf("@main_ftprintf: %####0000 33..1..#00d\n", 256);
     printf("\nReturn size: %d\n", size);
 
-    size = ft_printf("%lhh", "2147483647");
-    ft_printf("\nReturn size: %d\n", size);
+    // size = ft_printf("%lhh", "2147483647");
+    // ft_printf("\nReturn size: %d\n", size);
 
 	// printf("---Color(Bonus)---\n");
 	// size = textcolor(BOLD, RED, BLACK);

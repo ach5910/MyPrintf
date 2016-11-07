@@ -32,6 +32,7 @@ void				ft_putnbr_fd(int n, int fd);
 void				ft_putstr_fd(const char *str, int fd);
 void				ft_putendl_fd(const char *str, int fd);
 size_t				ft_strlen(const char *str);
+char				*ft_strapp(const char *s1, const char *s2);
 char				*ft_strcpy(char *dest, const char *src);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(char const *s1, char const *s2, size_t n);

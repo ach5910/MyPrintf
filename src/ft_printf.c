@@ -41,23 +41,28 @@ size_t	parse_format(va_list *ap, const char *fmt)
 
 	size = 0;
 	cursor = ft_strdup(fmt);
+	args = new_format();
 	while ((iter = ft_strchr(cursor, '%')) != NULL)
 	{
 		*iter = '\0';
 		size += ft_strlen(cursor);
 		ft_putstr(cursor);
-		args = new_format();
+		//args = new_format();
 		size += parse_args(ap, &args, &iter);
-		ft_memdel((void **)&args);
+		ft_bzero(args, sizeof(t_fmt));
+		//ft_memdel((void **)&args);
 		if (*iter == '\0')
 			iter--;
-		cursor = iter + 1;
+		free(cursor);
+		cursor = ft_strdup(iter + 1);
 	}
 	if (*cursor != '\0')
 	{
 		size += ft_strlen(cursor);
 		ft_putstr(cursor);
 	}
+	ft_memdel((void **)&args);
+	ft_strdel(&cursor);
 	return (size);
 }
 

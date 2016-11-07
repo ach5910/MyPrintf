@@ -58,6 +58,7 @@ LIBFT_FUNC = ft_isdigit \
 			ft_bzero \
 			ft_strcpy \
 			ft_strncpy \
+			ft_strapp \
 
 SRC = $(addprefix src/, $(SRC_BASE))
 

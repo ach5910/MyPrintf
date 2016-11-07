@@ -46,3 +46,26 @@ t_conv_spec	ft_get_conv_spec(char c)
 	}
 	return (conv_funct[(int)c]);
 }
+
+size_t	ft_put_conv_spec(va_list *ap, t_fmt **args, char **fmt)
+{
+	t_conv_spec conv_spec;
+	size_t size;
+
+	size = 0;
+	if (parse_conv_spec(args, fmt))
+	{
+		conv_spec = ft_get_conv_spec(**fmt);
+		size = conv_spec(ap, args);
+	}
+	else if (**fmt != '\0')
+	{
+			if ((*args)->left_just)
+				ft_putchar(**fmt);
+			while ((size_t)(*args)->width > ++size)
+				(*args)->prepend_zeros ? ft_putchar('0') : ft_putchar(' ');
+			if (!(*args)->left_just)
+				ft_putchar(**fmt);
+	}
+	return (size);
+}
