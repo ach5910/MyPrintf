@@ -728,66 +728,69 @@ int main(void)
     size = printf("@main_ftprintf: %####0000 33..1..#00d\n", 256);
     printf("\nReturn size: %d\n", size);
 
-	printf("---Color(Bonus)---\n");
-	size = textcolor(BOLD, RED, BLACK);
-	size += printf("%s", "BOLD, RED, BLACK");
-	size += textcolor(RESET, WHITE, BLACK);
-	printf(" T\nReturn size: %d\n", size + 3);
+    size = ft_printf("%lhh", "2147483647");
+    ft_printf("\nReturn size: %d\n", size);
 
-	size = textcolor(DIM, BLUE, YELLOW);
-	size += printf("%s", "DIM, BLUE, YELLOW");
-	size += textcolor(RESET, WHITE, BLACK);
-	printf(" T\nReturn size: %d\n", size + 3);
+	// printf("---Color(Bonus)---\n");
+	// size = textcolor(BOLD, RED, BLACK);
+	// size += printf("%s", "BOLD, RED, BLACK");
+	// size += textcolor(RESET, WHITE, BLACK);
+	// printf(" T\nReturn size: %d\n", size + 3);
 
-	size = textcolor(UNDERLINE, GREEN, MAGENTA);
-	size += printf("%s", "UNDERLINE, GREEN, MAGENTA");
-	size += textcolor(RESET, WHITE, BLACK);
-	printf(" T\nReturn size: %d\n", size + 3);
+	// size = textcolor(DIM, BLUE, YELLOW);
+	// size += printf("%s", "DIM, BLUE, YELLOW");
+	// size += textcolor(RESET, WHITE, BLACK);
+	// printf(" T\nReturn size: %d\n", size + 3);
 
-	size = textcolor(ITALIC, CYAN, WHITE);
-	size += printf("%s", "ITALIC, CYAN, WHITE");
-	size += textcolor(RESET, WHITE, BLACK);
-	printf(" T\nReturn size: %d\n", size + 3);
+	// size = textcolor(UNDERLINE, GREEN, MAGENTA);
+	// size += printf("%s", "UNDERLINE, GREEN, MAGENTA");
+	// size += textcolor(RESET, WHITE, BLACK);
+	// printf(" T\nReturn size: %d\n", size + 3);
 
-	size = textcolor(BLINK, BLACK, GREEN);
-	size += printf("%s", "BLINK, BLACK, GREEN");
-	size += textcolor(RESET, WHITE, BLACK);
-	printf(" T\nReturn size: %d\n", size + 3);
+	// size = textcolor(ITALIC, CYAN, WHITE);
+	// size += printf("%s", "ITALIC, CYAN, WHITE");
+	// size += textcolor(RESET, WHITE, BLACK);
+	// printf(" T\nReturn size: %d\n", size + 3);
 
-	size = textcolor(REVERSE, WHITE, RED);
-	size += printf("%s", "REVERSE, WHITE, RED");
-	size += textcolor(RESET, WHITE, BLACK);
-	printf(" T\nReturn size: %d\n", size + 3);
+	// size = textcolor(BLINK, BLACK, GREEN);
+	// size += printf("%s", "BLINK, BLACK, GREEN");
+	// size += textcolor(RESET, WHITE, BLACK);
+	// printf(" T\nReturn size: %d\n", size + 3);
 
-	size = textcolor(HIDDEN, YELLOW, BLACK);
-	size += printf("%s", "HIDDEN, YELLOW, BLACK");
-	size += textcolor(RESET, WHITE, BLACK);
-	printf(" T\nReturn size: %d\n", size + 3);
+	// size = textcolor(REVERSE, WHITE, RED);
+	// size += printf("%s", "REVERSE, WHITE, RED");
+	// size += textcolor(RESET, WHITE, BLACK);
+	// printf(" T\nReturn size: %d\n", size + 3);
 
-	size = textcolor(BOLD, RED, BLACK);
-	size += printf("%20s", "BOLD, RED, BLACK");
-	size += textcolor(RESET, WHITE, BLACK);
-	printf(" 20T\nReturn size: %d\n", size + 5);
+	// size = textcolor(HIDDEN, YELLOW, BLACK);
+	// size += printf("%s", "HIDDEN, YELLOW, BLACK");
+	// size += textcolor(RESET, WHITE, BLACK);
+	// printf(" T\nReturn size: %d\n", size + 3);
 
-	size = textcolor(BOLD, RED, BLACK);
-	size += printf("%-20s", "BOLD, RED, BLACK");
-	size += textcolor(RESET, WHITE, BLACK);
-	printf(" -20T\nReturn size: %d\n", size + 6);
+	// size = textcolor(BOLD, RED, BLACK);
+	// size += printf("%20s", "BOLD, RED, BLACK");
+	// size += textcolor(RESET, WHITE, BLACK);
+	// printf(" 20T\nReturn size: %d\n", size + 5);
 
-	size = textcolor(BOLD, RED, BLACK);
-	size += printf("%-20.10s", "BOLD, RED, BLACK");
-	size += textcolor(RESET, WHITE, BLACK);
-	printf(" -20.10T\nReturn size: %d\n", size + 9);
+	// size = textcolor(BOLD, RED, BLACK);
+	// size += printf("%-20s", "BOLD, RED, BLACK");
+	// size += textcolor(RESET, WHITE, BLACK);
+	// printf(" -20T\nReturn size: %d\n", size + 6);
 
-	size = textcolor(BOLD, RED, BLACK);
-	size += printf("%20.10s", "BOLD, RED, BLACK");
-	size += textcolor(RESET, WHITE, BLACK);
-	printf(" 20.10T\nReturn size: %d\n", size + 8);
+	// size = textcolor(BOLD, RED, BLACK);
+	// size += printf("%-20.10s", "BOLD, RED, BLACK");
+	// size += textcolor(RESET, WHITE, BLACK);
+	// printf(" -20.10T\nReturn size: %d\n", size + 9);
 
-	size = textcolor(BOLD, RED, BLACK);
-	size += printf("%.5s", "BOLD, RED, BLACK");
-	size += textcolor(RESET, WHITE, BLACK);
-	printf(" .5T\nReturn size: %d\n", size + 5);
+	// size = textcolor(BOLD, RED, BLACK);
+	// size += printf("%20.10s", "BOLD, RED, BLACK");
+	// size += textcolor(RESET, WHITE, BLACK);
+	// printf(" 20.10T\nReturn size: %d\n", size + 8);
+
+	// size = textcolor(BOLD, RED, BLACK);
+	// size += printf("%.5s", "BOLD, RED, BLACK");
+	// size += textcolor(RESET, WHITE, BLACK);
+	// printf(" .5T\nReturn size: %d\n", size + 5);
 
 	return (0);
 }

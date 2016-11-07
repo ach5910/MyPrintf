@@ -92,9 +92,10 @@ void parse_flags(t_fmt **args, char **fmt)
 	}
 }
 
-size_t	parse_conv_spec(va_list *ap, t_fmt **args, char **fmt)
+int	parse_conv_spec(t_fmt **args, char **fmt)
 {
-	size_t size = 0;
+	if (**fmt == '\0')
+		return (0);
 	if (**fmt == 'S' || **fmt == 'O' || **fmt == 'D' || **fmt == 'U' ||
 			**fmt == 'C')
 	{
@@ -102,8 +103,9 @@ size_t	parse_conv_spec(va_list *ap, t_fmt **args, char **fmt)
 	}
 	if (**fmt == 'O' || **fmt == 'X')
 		(*args)->is_upper = 1;
-	size = ft_print_conv(ap, args, fmt);
-	return (size);
+	if ((ft_strchr("xXdDioOuUsScCpb%", **fmt)) == NULL)
+		return (0);
+	return (1);
 }
 
 size_t	ft_print_conv(va_list *ap, t_fmt **args, char **fmt)
@@ -129,21 +131,23 @@ size_t	ft_print_conv(va_list *ap, t_fmt **args, char **fmt)
 		size = ft_printf_binary(ap, args);
 	else if (**fmt == '%')
 		size = ft_printf_mod(ap, args);
-	else if (**fmt == 'T')
-	{
-		size = ft_print_color(ap, args);
-		(*fmt) += 8;
-	}
+	// else if (**fmt == 'T')
+	// {
+	// 	size = ft_print_color(ap, args);
+	// 	(*fmt) += 8;
+	// }
 	return (size);
 }
 
 size_t	parse_args(va_list *ap,t_fmt **args, char **fmt)
 {
 	size_t size;
+	t_conv_spec conv_spec;
 
 	size = 0;
-	if (++(*fmt) == '\0')
+	if (*(*fmt + 1) == '\0')
 		return (size);
+	(*fmt)++;
 	parse_flags(args, fmt);
 	parse_num(args, fmt, 1);
 	while (**fmt  == '.')
@@ -153,18 +157,27 @@ size_t	parse_args(va_list *ap,t_fmt **args, char **fmt)
 	}
 	parse_length(args, fmt);
 	parse_flags(args, fmt);
-	size = parse_conv_spec(ap, args, fmt);
-	if (size == 0 && **fmt != '\0')
+	//size = parse_conv_spec(ap, args, fmt);
+	//if (size == 0 && **fmt != '\0')
+	if (parse_conv_spec(args, fmt))
 	{
-		if ((ft_strchr("xXdDioOuUsScCpbT%", **fmt)) == NULL)
-		{
+		conv_spec = ft_get_conv_spec(**fmt);
+		size = conv_spec(ap, args);
+	}
+	else if (**fmt != '\0')
+	{
+		// if ((ft_strchr("xXdDioOuUsScCpbT%", **fmt)) == NULL)
+		// {
+		// if (**fmt != '\0')
+		// {
 			if ((*args)->left_just)
 				ft_putchar(**fmt);
 			while ((size_t)(*args)->width > ++size)
 				(*args)->prepend_zeros ? ft_putchar('0') : ft_putchar(' ');
 			if (!(*args)->left_just)
 				ft_putchar(**fmt);
-		}
-	}
+		// }
+		// }
+	}	
 	return (size);
 }
