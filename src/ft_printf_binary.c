@@ -14,9 +14,9 @@
 
 size_t	ft_printf_binary(va_list *ap, t_fmt **args)
 {
-	uintmax_t nbr;
-	char *prefix;
-	size_t size;
+	uintmax_t	nbr;
+	char		*prefix;
+	size_t		size;
 
 	nbr = ft_get_uint_length(ap, args);
 	prefix = ft_strnew(1);

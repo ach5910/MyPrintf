@@ -52,16 +52,16 @@
 
 typedef struct	s_fmt
 {
-	int			hash;
-	int			has_percision;
-	int			left_just;
-	int			pos_val;
-	int			prepend_sp;
-	int			prepend_zeros;
+	unsigned int	hash : 1;
+	unsigned int	has_percision : 1;
+	unsigned int	left_just : 1;
+	unsigned int	pos_val : 1;
+	unsigned int	prepend_sp : 1;
+	unsigned int	prepend_zeros : 1;
 	int			width;
 	int			min_width;
 	int			length;
-	int			is_upper;
+	unsigned int	is_upper : 1;
 }				t_fmt;
 
 typedef size_t	(*t_conv_spec)(va_list*, t_fmt**);

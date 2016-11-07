@@ -10,15 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libftprintf.h"
 #include <wchar.h>
 
 size_t	ft_printf_wchar(va_list *ap, t_fmt **args)
 {
-	size_t size;
-	unsigned char *dest;
-	wchar_t	ch;
+	size_t			size;
+	unsigned char	*dest;
+	wchar_t			ch;
 
 	if ((ch = (wchar_t)va_arg(*ap, wint_t)) == 0)
 	{
@@ -32,6 +31,6 @@ size_t	ft_printf_wchar(va_list *ap, t_fmt **args)
 	size = ft_putcharpad((size_t)(*args)->width, size, ' ');
 	if (!(*args)->left_just)
 		ft_putstr((const char *)dest);
-    ft_strdel((char **)&dest);
+	ft_strdel((char **)&dest);
 	return (size);
 }

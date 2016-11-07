@@ -14,7 +14,7 @@
 
 size_t			ft_printf_char(va_list *ap, t_fmt **args)
 {
-	unsigned char		ch;
+	unsigned char	ch;
 	size_t			size;
 	char			pad;
 

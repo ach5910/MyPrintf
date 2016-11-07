@@ -14,10 +14,10 @@
 
 size_t			ft_printf_string(va_list *ap, t_fmt **args)
 {
-	char		*str;
-	char		*temp;
-	size_t			size;
-	char		*pad;
+	char	*str;
+	char	*temp;
+	size_t	size;
+	char	*pad;
 
 	if ((*args)->length == LEN_MOD_L)
 		return (ft_printf_wstring(ap, args));
@@ -29,7 +29,7 @@ size_t			ft_printf_string(va_list *ap, t_fmt **args)
 	}
 	if ((*args)->has_percision && (*args)->min_width == 0)
 		return (ft_putcharpad((size_t)(*args)->width, 0, ' '));
-	pad = ft_get_justified_pad((*args)->prepend_zeros, (*args)->has_percision, 
+	pad = ft_get_justified_pad((*args)->prepend_zeros, (*args)->has_percision,
 		(*args)->left_just, 0);
 	str = ft_strdup(temp);
 	if ((*args)->min_width && (size_t)(*args)->min_width < ft_strlen(str))

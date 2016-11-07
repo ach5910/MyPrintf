@@ -12,15 +12,15 @@
 
 #include "libftprintf.h"
 
-size_t ft_printf_ptr(va_list *ap, t_fmt **args)
+size_t	ft_printf_ptr(va_list *ap, t_fmt **args)
 {
-	uintmax_t nbr;
-	size_t	size;
-	char *nstr;
-	char	*pad;
+	uintmax_t	nbr;
+	size_t		size;
+	char		*nstr;
+	char		*pad;
 
 	if ((*args)->has_percision && (*args)->min_width == 0)
-		return(ft_putstr("0x"));
+		return (ft_putstr("0x"));
 	(*args)->length = LEN_MOD_J;
 	(*args)->left_just = (*args)->prepend_zeros ? 1 : (*args)->left_just;
 	pad = ft_get_justified_pad((*args)->prepend_zeros, (*args)->has_percision,

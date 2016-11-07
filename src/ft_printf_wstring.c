@@ -15,8 +15,8 @@
 
 size_t	ft_printf_wstring(va_list *ap, t_fmt **args)
 {
-	wchar_t *src;
-	size_t		size;
+	wchar_t	*src;
+	size_t	size;
 	int		chcnt;
 	char	ch;
 	int		i;
@@ -43,9 +43,9 @@ size_t	ft_printf_wstring(va_list *ap, t_fmt **args)
 
 size_t	ft_put_wstr(t_fmt **args, wchar_t *src, int chcnt, size_t size)
 {
-	unsigned char *dest;
-	int i;
-	char 	pad;
+	unsigned char	*dest;
+	int				i;
+	char			pad;
 
 	i = 0;
 	pad = ((*args)->prepend_zeros && !(*args)->min_width) ? '0' : ' ';

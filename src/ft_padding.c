@@ -46,7 +46,8 @@ size_t	ft_strpad(size_t width, char **nstr, char *pad, int left_just)
 	return (size);
 }
 
-char	*ft_get_justified_pad(int prep_zeros, int has_percision, int left_just, int ptr)
+char	*ft_get_justified_pad(unsigned int prep_zeros, unsigned int percision,
+	unsigned int l_just, int ptr)
 {
 	char	*pad;
 

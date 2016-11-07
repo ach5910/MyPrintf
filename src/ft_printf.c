@@ -35,10 +35,10 @@ t_fmt	*new_format(void)
 
 size_t	parse_format(va_list *ap, const char *fmt)
 {
-	size_t size;
-	char *iter;
-	char *cursor;
-	t_fmt *args;
+	size_t	size;
+	char	*iter;
+	char	*cursor;
+	t_fmt	*args;
 
 	size = 0;
 	cursor = ft_strdup(fmt);
@@ -63,8 +63,8 @@ size_t	parse_format(va_list *ap, const char *fmt)
 
 size_t	ft_printf(const char *format, ...)
 {
-	size_t size;
-	va_list ap;
+	size_t	size;
+	va_list	ap;
 
 	va_start(ap, format);
 	size = parse_format(&ap, format);

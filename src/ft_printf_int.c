@@ -14,9 +14,9 @@
 
 size_t		ft_printf_int(va_list *ap, t_fmt **args)
 {
-	intmax_t		nbr;
+	intmax_t	nbr;
 	char		*prefix;
-	size_t			size;
+	size_t		size;
 
 	nbr = ft_get_int_length(ap, args);
 	prefix = ft_strnew(1);
@@ -27,7 +27,7 @@ size_t		ft_printf_int(va_list *ap, t_fmt **args)
 	}
 	else if ((*args)->pos_val)
 		prefix[0] = '+';
-	else if ((*args)->prepend_sp) // && !(*args)->prepend_zeros)
+	else if ((*args)->prepend_sp)
 		prefix[0] = ' ';
 	else
 		prefix[0] = '\0';
