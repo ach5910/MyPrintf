@@ -1,6 +1,0 @@
-#! /bin/sh
-make ptest
-./ptest > results.txt
-gcc test.c -w
-./a.out > answers.txt
-diff --text answers.txt results.txt

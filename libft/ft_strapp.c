@@ -6,7 +6,7 @@
 /*   By: ahunt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 01:37:31 by ahunt             #+#    #+#             */
-/*   Updated: 2016/11/07 01:37:40 by ahunt            ###   ########.fr       */
+/*   Updated: 2016/12/05 02:23:13 by ahunt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*ft_strapp(char const *s1, char const *s2)
 {
-	char *res;
-	size_t size1;
-	size_t size2;
+	char	*res;
+	size_t	size1;
+	size_t	size2;
 
 	size1 = ft_strlen(s1);
 	size2 = ft_strlen(s2);

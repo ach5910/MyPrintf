@@ -6,7 +6,7 @@
 /*   By: ahunt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 09:22:06 by ahunt             #+#    #+#             */
-/*   Updated: 2016/10/25 04:53:36 by ahunt            ###   ########.fr       */
+/*   Updated: 2016/12/05 02:25:28 by ahunt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ int					parse_conv_spec(t_fmt **args, char **fmt);
 void				parse_flags(t_fmt **args, char **fmt);
 void				parse_num(t_fmt **args, char **fmt, int is_width);
 void				parse_length(t_fmt **args, char **fmt);
-char				*ft_get_justified_pad(unsigned int zeros, unsigned int percision,
-						unsigned int l_just, int ptr);
+char				*ft_get_justified_pad(unsigned int zeros,
+						unsigned int percision, unsigned int l_just, int ptr);
 size_t				ft_strpad(size_t width, char **nstr, char *pad,
 						int left_just);
 size_t				ft_putcharpad(size_t width, size_t size, char ch);
