@@ -52,10 +52,10 @@ char	*ft_get_justified_pad(unsigned int prep_zeros, unsigned int percision,
 	char	*pad;
 
 	pad = ft_strnew(1);
-	pad[0] = (prep_zeros && !has_percision) ? '0' : ' ';
+	pad[0] = (prep_zeros && !percision) ? '0' : ' ';
 	if (ptr)
-		pad[0] = left_just ? pad[0] : ' ';
+		pad[0] = l_just ? pad[0] : ' ';
 	else
-		pad[0] = left_just ? ' ' : pad[0];
+		pad[0] = l_just ? ' ' : pad[0];
 	return (pad);
 }
