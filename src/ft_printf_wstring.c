@@ -25,14 +25,14 @@ size_t	ft_printf_wstring(va_list *ap, t_fmt **args)
 	size = 0;
 	if ((src = va_arg(*ap, wchar_t*)) == NULL)
 		return (ft_putstr(NULL_STR));
-	if ((*args)->has_percision && (*args)->min_width == 0)
+	if ((*args)->has_percision && (*args)->percision == 0)
 	{
 		ch = (*args)->prepend_zeros ? '0' : ' ';
 		return (ft_putcharpad((size_t)(*args)->width, size, ch));
 	}
 	while ((i = ft_get_bytes_wc(src[chcnt])) != 0)
 	{
-		if ((*args)->has_percision && ((*args)->min_width -= i) < 0)
+		if ((*args)->has_percision && ((*args)->percision -= i) < 0)
 			break ;
 		size += i;
 		chcnt++;
@@ -48,7 +48,7 @@ size_t	ft_put_wstr(t_fmt **args, wchar_t *src, int chcnt, size_t size)
 	char			pad;
 
 	i = 0;
-	pad = ((*args)->prepend_zeros && !(*args)->min_width) ? '0' : ' ';
+	pad = ((*args)->prepend_zeros && !(*args)->percision) ? '0' : ' ';
 	if (!(*args)->left_just)
 		size = ft_putcharpad((size_t)(*args)->width, size, pad);
 	while (chcnt > i)

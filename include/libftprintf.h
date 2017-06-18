@@ -12,7 +12,7 @@
 
 #ifndef LIBFTPRINTF_H
 # define LIBFTPRINTF_H
-# include "libft.h"
+# include "../libft/libft.h"
 # include "ft_colors.h"
 # include <stdio.h>
 # include <stdlib.h>
@@ -25,6 +25,9 @@
 # define LEN_MOD_J	5
 # define LEN_MOD_Z	6
 # define NULL_STR	"(null)"
+# define CONV_SPEC	"spdiouxcbXOSDUC%"
+# define ALPHA_LOW	"0123456789abcdef"
+# define ALPHA_UP	"0123456789ABCDEF"
 # define MAX(a,b) (((a)>(b))?(a):(b))
 
 typedef struct		s_fmt
@@ -36,7 +39,7 @@ typedef struct		s_fmt
 	unsigned int	prepend_sp : 1;
 	unsigned int	prepend_zeros : 1;
 	int				width;
-	int				min_width;
+	int				percision;
 	int				length;
 	unsigned int	is_upper : 1;
 }					t_fmt;

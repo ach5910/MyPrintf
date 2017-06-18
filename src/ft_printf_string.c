@@ -27,13 +27,13 @@ size_t			ft_printf_string(va_list *ap, t_fmt **args)
 			return (ft_putcharpad((size_t)(*args)->width, 0, '0'));
 		return (ft_putstr(NULL_STR));
 	}
-	if ((*args)->has_percision && (*args)->min_width == 0)
+	if ((*args)->has_percision && (*args)->percision == 0)
 		return (ft_putcharpad((size_t)(*args)->width, 0, ' '));
 	pad = ft_get_justified_pad((*args)->prepend_zeros, (*args)->has_percision,
 		(*args)->left_just, 0);
 	str = ft_strdup(temp);
-	if ((*args)->min_width && (size_t)(*args)->min_width < ft_strlen(str))
-		str[(*args)->min_width] = '\0';
+	if ((*args)->percision && (size_t)(*args)->percision < ft_strlen(str))
+		str[(*args)->percision] = '\0';
 	size = ft_strpad((size_t)(*args)->width, &str, pad, (*args)->left_just);
 	ft_putstr(str);
 	ft_strdel(&pad);

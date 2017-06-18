@@ -56,7 +56,7 @@ size_t	ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base)
 	char	*temp;
 	size_t	size;
 
-	if ((*args)->has_percision && (*args)->min_width == 0 && nbr == 0)
+	if ((*args)->has_percision && (*args)->percision == 0 && nbr == 0)
 		return (ft_unassigned_precision(args, base));
 	nstr = ft_itoa_base((uintmax_t)nbr, base, (*args)->is_upper);
 	temp = nstr;
@@ -64,7 +64,7 @@ size_t	ft_putuint(t_fmt **args, char *prefix, uintmax_t nbr, int base)
 		temp++;
 	free(nstr);
 	nstr = ft_strdup(temp);
-	size = ft_strpad((size_t)(*args)->min_width, &nstr, "0", 0);
+	size = ft_strpad((size_t)(*args)->percision, &nstr, "0", 0);
 	if ((*args)->left_just || ((*args)->prepend_zeros &&
 		!(*args)->has_percision))
 		ft_justify(args, &nstr, ft_strlen(prefix));

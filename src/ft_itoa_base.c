@@ -26,8 +26,8 @@ char		*ft_itoa_base(uintmax_t value, int base, int is_upper)
 	int		size;
 	char	*nbr;
 
-	buf = is_upper ? ft_strdup("0123456789ABCDEF") :
-		ft_strdup("0123456789abcdef");
+	buf = is_upper ? ft_strdup(ALPHA_UP) :
+		ft_strdup(ALPHA_LOW);
 	size = 1;
 	while (ft_pow(base, size) - 1 < value)
 		size++;

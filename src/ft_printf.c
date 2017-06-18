@@ -27,7 +27,7 @@ t_fmt	*new_format(void)
 	temp->prepend_zeros = 0;
 	temp->width = 0;
 	temp->has_percision = 0;
-	temp->min_width = 0;
+	temp->percision = 0;
 	temp->length = 0;
 	temp->is_upper = 0;
 	return (temp);

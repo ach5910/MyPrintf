@@ -59,7 +59,7 @@ void	parse_num(t_fmt **args, char **fmt, int is_width)
 	if (is_width)
 		(*args)->width = nbr;
 	else
-		(*args)->min_width = nbr;
+		(*args)->percision = nbr;
 }
 
 void	parse_flags(t_fmt **args, char **fmt)
@@ -87,7 +87,7 @@ int		parse_conv_spec(t_fmt **args, char **fmt)
 
 	if (**fmt == '\0')
 		return (-1);
-	i = ft_str_index("spdiouxcbXOSDUC%", **fmt);
+	i = ft_str_index(CONV_SPEC, **fmt);
 	if (i >= 9)
 		(*args)->is_upper = 1;
 	if (i >= 10)
